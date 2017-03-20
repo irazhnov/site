@@ -1,0 +1,103 @@
+:local(.loginInputItem){
+    position: relative;
+}
+:local(.loginInput)
+{
+    padding-left: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: normal;
+    width: 260px;
+    height: 34px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 5px 20px 15px 20px;
+    border: 3px solid rgba(236, 63, 105, 0);
+    outline: none;
+}
+
+:local(.loginLabel)
+{
+    padding-left: 20px;
+    outline: none;
+}
+
+:local(.loginLabel) {
+    height: 20px;
+    font-size: 16px;
+}
+
+::-webkit-input-placeholder {
+    color: #9f9f9f;
+}
+
+
+:local(.loginWarning),
+:local(.loginWarningMatch){
+    color: #ffffff;
+    margin: -7px 20px 20px 20px;
+    height: 67px;
+    background-color: #ec3f69;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+}
+:local(.loginWarningArrow),
+:local(.loginWarningMatchArrow){
+    top: 67px;
+    left: 15%;
+    position: absolute;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #ec3f69;
+}
+
+:local(.loginWarningMatch) {
+    height: 40px
+}
+
+:local(.loginWarningArrow) {
+    left: 50%;
+}
+
+:local(.loginWarningContainer) {
+    display: flex;
+    padding: 10px 20px 20px 10px;
+}
+
+:local(.loginWarningMessage),
+:local(.loginWarningButton)
+{
+    font-size: 14px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: normal;
+}
+
+:local(.loginWarningMessage) {
+    color: #ffffff;
+    padding-right: 20px;
+}
+:local(.loginWarningButton) {
+    width: 130px;
+    height: 35px;
+    background-color: white;
+
+    border:none;
+    color: #ec3f69;
+    border-radius: 5px;
+}
+:local(.loginLabel) {
+    width: 260px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    color: #ffffff;
+}
+:local(.hasError){
+    border: 3px solid rgb(236, 63, 105);
+}
+:local(.loginError){
+    color: #ec3f69;
+}

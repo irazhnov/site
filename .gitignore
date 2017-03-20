@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+platforms
+plugins
+.DS_Store
+dist
+.idea
+www

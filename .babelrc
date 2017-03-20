@@ -1,0 +1,20 @@
+{
+  "presets": ["es2015", "stage-0", "react"],
+  "plugins": [
+    "react-hot-loader/babel",
+    "transform-decorators-legacy",
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        [
+          "babel-plugin-webpack-loaders",
+          {
+            "config": "./tests/runtime.webpack.config.js",
+            "verbose": false
+          }
+        ]
+      ]
+    }
+  }
+}

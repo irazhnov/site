@@ -1,0 +1,44 @@
+:local(.loginContainer) {
+    width: 100%;
+    height: 100%;
+    background-color:#1f2731;
+    position: relative;
+}
+:local(.logoLayout) {
+    padding: 20px 25%;
+}
+:local(.loginLogo) {
+    left: 20%;
+    position: relative;
+    padding-top: 28px;
+    padding-bottom: 10px;
+}
+:local(.loginForm) {
+    width: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color:#344356;
+}
+
+:local(.loginBtn)
+{
+    font-family: 'Source Sans Pro', sans-serif;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 5px 20px 15px 20px;
+    width: 260px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    color: #ffffff;
+    height: 40px;
+    background-color: #188ec6;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+

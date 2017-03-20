@@ -1,0 +1,11 @@
+:global(.notif__container) {
+    left: auto;
+    right: 10px;
+}
+
+:global(button) {
+    cursor: pointer;
+}
+:local(.popup){
+    height: 477px;
+}
