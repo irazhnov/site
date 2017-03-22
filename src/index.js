@@ -5,14 +5,14 @@ import { combineReducers, applyMiddleware, compose, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import { Router, browserHistory, Route, IndexRedirect } from 'react-router';
-//import createSagaMiddleware from 'redux-saga';
+import createSagaMiddleware from 'redux-saga';
 //import { megadraftMessages } from 'megadraft';
 //import { intlReducer } from 'react-intl-redux';
 //import { IntlProvider } from 'react-intl';
 
 //import { crashReporter, errorReporter } from './newrelic-reporter';
 import * as reducers from './reducers';
-//import rootSaga from './sagas';
+import rootSaga from './sagas';
 //import '../favicon.ico';
 //import '../assets/pointer.png';
 //import '../assets/minusrect.png';
@@ -26,22 +26,23 @@ import LoginApp from './containers/LoginApp';
 //import SwiftApp from './containers/SwiftApp';
 import NotFound from './containers/NotFound';
 
+const sagaMiddleware = createSagaMiddleware();
 const reducer = combineReducers({
   ...reducers,
   routing: routerReducer,
 });
-//const middlewares = [sagaMiddleware];
-//const appliedMiddlewares = applyMiddleware(...middlewares);
+const middlewares = [sagaMiddleware];
+const appliedMiddlewares = applyMiddleware(...middlewares);
 window.env = process.env.NODE_ENV;
 
 const storeFactory = compose(
-//  appliedMiddlewares,
+  appliedMiddlewares,
   // install redux dev tools extension for chrome to use that
   window.devToolsExtension ? window.devToolsExtension() : f => f)(createStore);
 
 const store = storeFactory(reducer);
 
-//sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);
 
 const history = syncHistoryWithStore(browserHistory, store);
 

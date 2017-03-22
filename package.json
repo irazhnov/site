@@ -1,5 +1,5 @@
 {
-  "name": "sDic",
+  "name": "soldr-frontend",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -72,6 +72,7 @@
     "react-router": "^3.0.0",
     "react-router-redux": "^4.0.6",
     "redux": "^3.6.0",
+    "redux-saga": "^0.12.0",
     "redux-reporter": "^0.1.0"
   },
   "main": "index.js"
