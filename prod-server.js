@@ -29,14 +29,12 @@ app.use('/assets', express.static('dist/assets'));
 app.get('/*', (req, res) => {
   res.setHeader('Content-Security-Policy',
     "default-src 'self' " + baseUrl + ";" +
-    "script-src 'self' 'unsafe-eval' 'unsafe-inline'  https://bam.nr-data.net https://maps.googleapis.com https://d10lpsik1i8c69.cloudfront.net https://js-agent.newrelic.com https://settings.luckyorange.net https://geo.luckyorange.net https://cs.luckyorange.net https://ping.luckyorange.net https://www.luckyorange.com http://js.pusher.com https://stats.pusher.com;" +
-    "style-src 'self' 'unsafe-inline' https://fonts.gstatic.com https://fonts.googleapis.com https://d10lpsik1i8c69.cloudfront.net https://cs.luckyorange.net;" +
+    "script-src 'self' 'unsafe-eval' 'unsafe-inline'" +
+    "style-src 'self' 'unsafe-inline' https://fonts.gstatic.com https://fonts.googleapis.com https://d10lpsik1i8c69.cloudfront.net" +
     'font-src https://fonts.gstatic.com https://fonts.googleapis.com;' +
-    'object-src https://cs.luckyorange.net;' +
-    'media-src https://d10lpsik1i8c69.cloudfront.net;' +
-    'connect-src ' + baseUrl + ' https://bam.nr-data.net *.luckyorange.net *.luckyorange.com wss://ws.pusherapp.com https://sockjs.pusher.com;' +
-    "img-src 'self' https://csi.gstatic.com " + baseImageUrl + " https://maps.gstatic.com https://maps.googleapis.com https://d10lpsik1i8c69.cloudfront.net https://www.gravatar.com;" +
-    'child-src http://snpwebstage001.mmk.mm.loc:3000 http://www.youtube.com https://mittmedia.solidtango.com https://d10lpsik1i8c69.cloudfront.net;');
+    'connect-src ' + baseUrl +
+    "img-src 'self' https://csi.gstatic.com " + baseImageUrl +
+    'child-src ');
   // TODO: add reporter uri (some BE endpoint for saving report messages of violating CSP)
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('X-XSS-Protection', '1');
