@@ -21,7 +21,7 @@ module.exports = {
     app: entry,
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'www'),
     filename: 'js/[name]_bundle.js',
     publicPath: '/',
   },
@@ -33,7 +33,6 @@ module.exports = {
     }),
   ] : [
     new HtmlWebpackPlugin({
-      newrelicString: '',
       inject: 'head',
       chunks: [],
       template: path.join(__dirname, 'index.html'),
@@ -53,7 +52,7 @@ module.exports = {
     fs: 'empty',
   },
   resolve: {
-    modulesDirectories: ['node_modules'], // '../node_modules/soldr-client/src'],
+    modulesDirectories: ['node_modules', '../node_modules/dic_client/src'],
   },
   module: {
     loaders: [

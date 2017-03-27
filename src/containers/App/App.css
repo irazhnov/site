@@ -1,3 +1,7 @@
+:local(.mainContainer) {
+    heght: 300px;
+    background-color: red;
+}
 :global(.notif__container) {
     left: auto;
     right: 10px;

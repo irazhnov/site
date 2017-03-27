@@ -23,23 +23,23 @@ app.engine('html', ejs.renderFile);
 
 app.locals.newrelic = newrelic;
 
-app.use('/js', express.static('dist/js'));
-app.use('/assets', express.static('dist/assets'));
+app.use('/js', express.static('www/js'));
+app.use('/assets', express.static('www/assets'));
 
 app.get('/*', (req, res) => {
-  res.setHeader('Content-Security-Policy',
-    "default-src 'self' " + baseUrl + ";" +
-    "script-src 'self' 'unsafe-eval' 'unsafe-inline'" +
-    "style-src 'self' 'unsafe-inline' https://fonts.gstatic.com https://fonts.googleapis.com https://d10lpsik1i8c69.cloudfront.net" +
-    'font-src https://fonts.gstatic.com https://fonts.googleapis.com;' +
-    'connect-src ' + baseUrl +
-    "img-src 'self' https://csi.gstatic.com " + baseImageUrl +
-    'child-src ');
+//   res.setHeader('Content-Security-Policy',
+//     "default-src 'self' " + baseUrl + ";" +
+//     "script-src 'self' 'unsafe-eval' 'unsafe-inline'" +
+//     "style-src 'self' 'unsafe-inline' https://fonts.gstatic.com https://fonts.googleapis.com https://d10lpsik1i8c69.cloudfront.net" +
+//     'font-src https://fonts.gstatic.com https://fonts.googleapis.com;' +
+//     'connect-src ' + baseUrl +
+//     "img-src 'self' https://csi.gstatic.com " + baseImageUrl +
+//     'child-src ');
   // TODO: add reporter uri (some BE endpoint for saving report messages of violating CSP)
-  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
-  res.setHeader('X-XSS-Protection', '1');
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.removeHeader('X-Powered-By');
+//   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+//   res.setHeader('X-XSS-Protection', '1');
+//   res.setHeader('X-Content-Type-Options', 'nosniff');
+//   res.removeHeader('X-Powered-By');
   res.render('index.html');
 });
 

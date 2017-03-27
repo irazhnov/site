@@ -3,26 +3,46 @@ import { put, call } from 'redux-saga/effects';
 
 import * as types from './constants';
 import api from '../../api';
+import * as DicClient from 'dic_client';
+const dicClient = new DicClient.PostsApi();
+// var defaultClient = DicClient.ApiClient.instance;
 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
 
-export function* getUserSettings() {
+export function* getPosts() {
   try {
     const apiInstance = api.getInstance();
-    yield put({ type: types.FETCHING_USER_SETTINGS, fetching: true });
-    const userSettings = yield call([apiInstance, apiInstance.getUserSettings]);
-    yield put({ type: types.FETCHING_USER_SETTINGS, fetching: false });
-    yield put({ type: types.FETCHING_USER_SETTINGS_SUCCEEDED, userSettings });
+    const dicClient = new DicClient.PostsApi();
+    dicClient.diabetesTherapiesGet(1, callback);
+
+//     yield put({ type: types.FETCHING_POSTS_SETTINGS, fetching: true });
+//     const userSettings =  yield dicClient.diabetesTherapiesGet(1, callback);
+    debugger;
+//     yield put({ type: types.FETCHING_POSTS_SETTINGS, fetching: false });
+//     yield put({ type: types.FETCHING_POSTS_SETTINGS_SUCCEEDED, userSettings });
   } catch (e) {
     console.error(e);
-    yield put({ type: types.FETCHING_USER_SETTINGS, fetching: false });
-    yield put({ type: types.FETCHING_USER_SETTINGS_FAILED, message: e, error: true, payload: e });
+    yield put({ type: types.FETCHING_POSTS_SETTINGS, fetching: false });
+    yield put({ type: types.FETCHING_POSTS_SETTINGS_FAILED, message: e, error: true, payload: e });
   }
 }
 
 
-export function* getUserSettingsFlow() {
-  yield* takeLatest(types.FETCHING_USER_SETTINGS_REQUESTED, getUserSettings);
+export function* getPostsFlow() {
+  yield* takeLatest(types.FETCHING_POSTS_SETTINGS_REQUESTED, getPosts);
 }
+
+
+
+// ----------------------------------------------------------
+
+
 
 export function* updateUserSettings(action) {
   try {

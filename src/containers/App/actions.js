@@ -1,5 +1,10 @@
 import * as types from './constants';
 
+export function getPosts() {
+  return { type: types.FETCHING_POSTS_SETTINGS_REQUESTED };
+}
+
+
 
 export function getUserSettings() {
   return { type: types.FETCHING_USER_SETTINGS_REQUESTED };

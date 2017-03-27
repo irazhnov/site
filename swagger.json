@@ -5,66 +5,26 @@
         "description": "Move your app forward with the diabetesincontrol API",
         "version": "1.0.0"
     },
-    "host": "diabetesincontrol.com",
+    "host": "dev.diabetesincontrol.com",
     "schemes": [
-        "https"
+        "http"
     ],
-    "basePath": "/v2",
+    "basePath": "/",
     "produces": [
         "application/json"
     ],
     "paths": {
-        "/wp-json/wp/v2/posts": {
+        "/diabetes-therapies": {
             "get": {
                 "summary": "List Posts",
-                "description": "The Products endpoint returns information about the *Uber* products\noffered at a given location. The response includes the display name\nand other details about each product, and lists the products in the\nproper display order.\n",
+                "description": "posts list\n",
                 "parameters": [
                     {
-                        "name": "context",
+                        "name": "json",
                         "in": "query",
-                        "description": "Scope under which the request is made; determines fields present in response. Default view .One of view, embed, edit",
+                        "description": "Scope under which the request is made; determines fields present in response.",
                         "required": true,
                         "type": "number",
-                        "format": "double"
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Current page of the collection. Default 1",
-                        "required": true,
-                        "type": "number",
-                        "format": "double"
-                    },
-                    {
-                        "name": "per_page",
-                        "in": "query",
-                        "description": "Maximum number of items to be returned in result set. Default 10",
-                        "required": true,
-                        "type": "number",
-                        "format": "double"
-                    },
-                    {
-                        "name": "search",
-                        "in": "query",
-                        "description": "Limit results to those matching a string.",
-                        "required": true,
-                        "type": "string",
-                        "format": "double"
-                    },
-                    {
-                        "name": "after",
-                        "in": "query",
-                        "description": "Limit response to posts published after a given ISO8601 compliant date.",
-                        "required": true,
-                        "type": "string",
-                        "format": "double"
-                    },
-                    {
-                        "name": "author",
-                        "in": "query",
-                        "description": "Limit result set to posts assigned to specific authors.",
-                        "required": true,
-                        "type": "string",
                         "format": "double"
                     }
                 ],
@@ -77,7 +37,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Product"
+                                "$ref": "#/definitions/Feed"
                             }
                         }
                     },
@@ -271,6 +231,118 @@
         }
     },
     "definitions": {
+        "Category": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "slug"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "title"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "description"
+                },
+                "parent": {
+                    "type": "number",
+                    "description": "parent"
+                },
+                "post_count": {
+                    "type": "number",
+                    "description": "post_count"
+                }
+            }
+        },
+        "Post": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "id"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "slug"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "title"
+                },
+                "title_plain": {
+                    "type": "string",
+                    "description": "title_plain"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "content"
+                },
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Category"
+                    }
+                }
+            }
+        },
+        "Feed": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "status"
+                },
+                "count": {
+                    "type": "number",
+                    "description": "count"
+                },
+                "pages": {
+                    "type": "number",
+                    "description": "pages"
+                },
+                "category": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "description": "id"
+                        },
+                        "slug": {
+                            "type": "string",
+                            "description": "slug"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "title"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "description"
+                        },
+                        "parent": {
+                            "type": "number",
+                            "description": "parent"
+                        },
+                        "post_count": {
+                            "type": "number",
+                            "description": "post_count"
+                        },
+                        "posts": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Post"
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "Product": {
             "type": "object",
             "properties": {

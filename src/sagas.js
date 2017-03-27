@@ -1,5 +1,9 @@
 import { fork } from 'redux-saga/effects';
 
+
+import {
+ getPostsFlow,
+} from './containers/App/saga';
 //import { loginFlow } from './containers/LoginApp/saga';
 //import {
 //    createArticleFlow,
@@ -18,12 +22,7 @@ import { fork } from 'redux-saga/effects';
 //    getLocationMetadataByIdFlow,
 //    findAreasFlow,
 //    findLocationsByTermFlow } from './containers/LocationsPopupApp/saga';
-//import {
-//  getUserSettingsFlow,
-//  getCurrentUserFlow,
-//  updateUserSettingsFlow,
-//  getChannelsFlow,
-//} from './containers/App/saga';
+
 //import { createAdminTagFlow, deleteAdminTagFlow, updateAdminTagFlow } from './containers/AdminTagsApp/saga';
 
 // The root saga is what we actually send to Redux's middleware. In here we fork
@@ -31,31 +30,6 @@ import { fork } from 'redux-saga/effects';
 // Sagas are fired once at the start of an app and can be thought of as processes running
 // in the background, watching actions dispatched to the store.
 export default function* rootSaga() {
+ yield fork(getPostsFlow);
 //  yield fork(loginFlow);
-//  yield fork(createArticleFlow);
-//  yield fork(findArticleByIdFlow);
-//  yield fork(updateArticleFlow);
-//  yield fork(uploadImageSaga);
-//  yield fork(articleListSaga);
-//  yield fork(usersListFlow);
-//  yield fork(findImageByIdFlow);
-//  yield fork(findTagsFlow);
-//  yield fork(updateImageFlow);
-//  yield fork(findLocationsFlow);
-//  yield fork(findAreasFlow);
-//  yield fork(findLocationsByTermFlow);
-//  yield fork(createLocationFlow);
-//  yield fork(getMediaFlow);
-//  yield fork(getImageMetadataByIdFlow);
-//  yield fork(searchArticlesFlow);
-//  yield fork(findFunctionTagsFlow);
-//  yield fork(getLocationMetadataByIdFlow);
-//  yield fork(getUserSettingsFlow);
-//  yield fork(getCurrentUserFlow);
-//  yield fork(updateUserSettingsFlow);
-//  yield fork(findCategoriesFlow);
-//  yield fork(createAdminTagFlow);
-//  yield fork(deleteAdminTagFlow);
-//  yield fork(updateAdminTagFlow);
-//  yield fork(getChannelsFlow);
 }

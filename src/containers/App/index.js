@@ -23,33 +23,33 @@ const defaultNotificationOpts = {
   autoDismiss: 3,
 };
 
-const notificationStyles = {
-  Containers: {
-    DefaultStyle: {
-      width: 'auto',
-      padding: '11px 8px 11px 15px',
-    },
-  },
-  NotificationItem: {
-    DefaultStyle: { // Applied to every notification, regardless of the notification level
-      borderRadius: 4,
-      borderTop: 'none',
-      margin: 0,
-      boxShadow: 'none',
-    },
-
-    success: { // Applied only to the success notification item
-      color: '#ffffff',
-      background: '#3db790',
-    },
-  },
-  Dismiss: {
-    DefaultStyle: {
-      background: '#ffffff',
-      color: '#3db790',
-    },
-  },
-};
+// const notificationStyles = {
+//   Containers: {
+//     DefaultStyle: {
+//       width: 'auto',
+//       padding: '11px 8px 11px 15px',
+//     },
+//   },
+//   NotificationItem: {
+//     DefaultStyle: { // Applied to every notification, regardless of the notification level
+//       borderRadius: 4,
+//       borderTop: 'none',
+//       margin: 0,
+//       boxShadow: 'none',
+//     },
+//
+//     success: { // Applied only to the success notification item
+//       color: '#ffffff',
+//       background: '#3db790',
+//     },
+//   },
+//   Dismiss: {
+//     DefaultStyle: {
+//       background: '#ffffff',
+//       color: '#3db790',
+//     },
+//   },
+// };
 
 
 @connect(state => ({
@@ -67,142 +67,66 @@ const notificationStyles = {
 
 export default class App extends Component {
   static propTypes = {
-    isContextMenuOpened: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
-    children: PropTypes.element.isRequired,
-    router: PropTypes.shape({
-      isActive: PropTypes.func.isRequired,
-    }).isRequired,
-    isPopupOpened: PropTypes.bool.isRequired,
-    imageMetaData: PropTypes.shape({
-      imageId: PropTypes.string,
-    }),
-    isEditListMode: PropTypes.bool.isRequired,
-    notification: PropTypes.shape(Object),
-    isSaveOpened: PropTypes.bool.isRequired,
-    user: PropTypes.shape({
-      firstName: PropTypes.string,
-    }).isRequired,
-    settings: PropTypes.shape(Object).isRequired,
-    preferredChannels: PropTypes.arrayOf(Object).isRequired,
-    channels: PropTypes.arrayOf(Object).isRequired,
-    defaultPlus: PropTypes.bool.isRequired,
   };
 
-  static defaultProps = {
-    imageMetaData: {
-      imageId: '',
-    },
-    isEditListMode: false,
-    notification: null,
-  };
+//   static defaultProps = {
+//   };
 
   constructor(props) {
     super(props);
-    this.state = {
-      isSettingsOpened: false,
-      channels: props.channels,
-    };
-    this.handleContainerClick = ::this.handleContainerClick;
-    this.closeSettings = ::this.closeSettings;
-    this.openSettings = ::this.openSettings;
-    this.filterChannels = ::this.filterChannels;
-    this.resetChannels = ::this.resetChannels;
-    this.saveSettings = ::this.saveSettings;
-    this.logout = ::this.logout;
+    this.receivedEvent = ::this.receivedEvent;
+    this.addBanner = ::this.addBanner;
+    this.onDeviceReady = ::this.onDeviceReady;
 
     this.actions = bindActionCreators(AppActions, props.dispatch);
-
   }
 
   componentWillMount() {
-    this.actions.getUserSettings();
-    this.actions.getCurrentUser();
-    this.actions.getChannels();
+    document.addEventListener('deviceready', this.onDeviceReady, false);
+    this.actions.getPosts();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.channels.length && nextProps.channels.length) {
-      this.setState({
-        channels: nextProps.channels,
-      });
-    }
-    if (JSON.stringify(this.props.notification) !== JSON.stringify(nextProps.notification)) {
-      this.notificationSystem.addNotification({
-        ...defaultNotificationOpts,
-        ...nextProps.notification,
-      });
-    }
+  onDeviceReady() {
+    debugger;
+    this.receivedEvent('deviceready');
   }
 
-  handleContainerClick() {
-    const { dispatch } = this.props;
-    if (this.props.isContextMenuOpened) {
-      const actions = bindActionCreators(ContextMenuActions, dispatch);
-      actions.blockUnSelected();
-    }
-    if (this.props.isSaveOpened) {
-      this.props.dispatch(WriterAppActions.setSaveMenuVisibility(false));
-    }
-    if (this.props.isEditListMode) {
-      this.props.dispatch(AdminTagsAppActions.closeEditListMode());
+  receivedEvent (id) {
+//     this.addBanner();
+    console.log('Received Event: ' + id);
+  }
+
+  addBanner() {
+    console.warn('window.plugins.AdMob' +  window.plugins.AdMob);
+    if ( window.plugins && window.plugins.AdMob ) {
+
+      window.plugins.AdMob.requestAd({'isTesting': true}, this.success, this.error); };
+      console.warn('AdMob');
+      var options = {
+        'publisherId': 'ca-app-pub-4789158063632032/7680949608',
+        'adSize': window.plugins.AdMob.AD_SIZE.BANNER
+      }
+      window.plugins.AdMob.createBannerView(options, this.successCreateBannerView, this.error);
     }
 
-    if (this.props.imageMetaData.imageId) {
-      const actionsMediaSearch = bindActionCreators(MediaSearchActions, dispatch);
-      setTimeout(() => {
-        actionsMediaSearch.closeMediaSearchInfo();
-      }, 0);
-    }
-    // make to close SideBar
-    document.dispatchEvent(new Event('sidebarClose'));
+  successCreateBannerView() {
+    console.warn("addBanner Success");
   }
 
-  openSettings() {
-    this.setState({
-      isSettingsOpened: true,
-    });
-  }
+    success() {
+    console.warn("requestAd Success");
+  };
 
-  closeSettings(wasSaved) {
-    this.setState({
-      isSettingsOpened: false,
-    });
-    if (!wasSaved || typeof wasSaved === 'object') {
-      this.actions.getUserSettings();
-    }
-  }
-
-  filterChannels(value) {
-    this.setState({
-      channels: this.props.channels.filter(item => item.name.indexOf(value) !== -1),
-    });
-  }
-
-  resetChannels() {
-    this.setState({
-      channels: this.props.channels,
-    });
-  }
-
-  saveSettings() {
-    this.actions.updateUserSettings(this.props.settings);
-    this.closeSettings(true);
-  }
-
-  logout() {
-    this.props.dispatch(setAuthState(false));
-    auth.logout();
-    browserHistory.push('/login');
-  }
+    error(message) {
+      console.log("Oopsie! " + message);
+    };
 
   render() {
     return (
-      <div
-        style={{ height: '100%' }}
-        onClick={this.handleContainerClick}
-        onDrop={(e) => { e.preventDefault(); }}
-      >
+      <div onClick={this.addBanner}
+      >Hi !!!
+        <div  className={styles.mainContainer}>asdajsdksjsldfsdjl fldsfj dlfjs dfldjf</div>
         {this.props.children}
       </div>
     );
