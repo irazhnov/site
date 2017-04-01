@@ -1,0 +1,10 @@
+:local(.created){
+  color: #008ed7;
+}
+:local(.readMore){
+  width: 100%;
+  height: 96px;
+  border: 1px solid #575757;
+  background-color: #f7f7f7;
+  margin: 10px;
+}

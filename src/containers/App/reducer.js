@@ -1,16 +1,21 @@
 import * as types from './constants';
 
 const initialState = {
-  fetching: false
+  fetching: false,
+  feed: {},
 };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-
     case types.FETCHING_CATEGORY_SUCCEEDED:
       return {
         ...state,
-        defaultPlus: action.value,
+        feed: action.feed,
+      };
+    case types.FETCHING_CATEGORY:
+      return {
+        ...state,
+        fetching: action.fetching,
       };
 //     case types.FETCHING_USER_SETTINGS_SUCCEEDED:
 //       return {

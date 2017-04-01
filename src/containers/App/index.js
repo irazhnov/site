@@ -14,6 +14,7 @@ import * as AppActions from './actions';
 import styles from './App.css';
 import SplashScreen from '../../components/SplashScreen';
 import MainMenu from '../../components/MainMenu';
+import PostsList from '../../components/PostsList';
 
 @connect(state => ({
  app: state.app,
@@ -119,16 +120,20 @@ export default class App extends Component {
       <div>
         {/*<div onClick={this.addBanner}>asdajsdksjsldfsdjl fldsfj dlfjs dfldjf</div>*/}
         <div onClick={this.manageMenuVisibility}>Menu</div>
-        <div className={classnames({[styles.menuActivated]: !this.state.isMenuVisible} )}>
+        <div className={classnames(styles.menuContainer, {[styles.menuActivated]: !this.state.isMenuVisible} )}>
           <MainMenu
             getCategory={this.getCategory}/>
         </div>
-        <div>
+        <div className={styles.postContainer}>
           {
             this.props.app.fetching &&
-            <div className={styles.spinner}/>
+            <div className={'loadingContainer'}>
+              <div className={'spinner'} />
+            </div>
           }
-          
+          { !this.state.isMenuVisible && !this.props.app.fetching && this.props.app.feed && this.props.app.feed.posts &&
+            <PostsList posts={this.props.app.feed.posts}/>
+          }
         </div>
         {this.props.children}
       </div>

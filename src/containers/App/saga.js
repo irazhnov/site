@@ -44,10 +44,10 @@ export function* getCategory(action) {
 //     dicClient.diabetesTherapiesGet(1, callback);
 
     yield put({ type: types.FETCHING_CATEGORY, fetching: true });
-    const userSettings =  yield call([dicClient, dicClient.categorySubcategoriesGet], action.category, action.subCategory, 1);
+    const feed =  yield call([dicClient, dicClient.categorySubcategoriesGet], action.category, action.subCategory, 1);
 //     debugger;
     yield put({ type: types.FETCHING_CATEGORY, fetching: false });
-    yield put({ type: types.FETCHING_CATEGORY_SUCCEEDED, userSettings });
+    yield put({ type: types.FETCHING_CATEGORY_SUCCEEDED, feed });
   } catch (e) {
     console.error(e);
     yield put({ type: types.FETCHING_CATEGORY, fetching: false });

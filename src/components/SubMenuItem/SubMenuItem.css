@@ -2,6 +2,8 @@
   background-color: #ebebeb;
 }
 :local(.subMenuItemContainer) {
-  height: 150px;
-  width: 100%;
+  line-height: 50px;
+  padding-left: 20px;
+  font-size: 16px;
+  letter-spacing: -0.5px;
 }
