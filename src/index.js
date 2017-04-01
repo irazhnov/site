@@ -53,13 +53,13 @@ function checkAuth(nextState, replace) {
 
   if (loggedIn) {
     if (nextState.location.pathname === '/login') {
-      replace('/diabetes-therapies');
+      replace('/categories');
     }
     if (nextState.location.pathname && nextState.location.state) {
       replace(nextState.location.pathname);
     }
-  } else if (nextState.location.pathname !== '/diabetes-therapies') {
-    replace('/diabetes-therapies');
+  } else if (nextState.location.pathname !== '/categories') {
+    replace('/categories');
   }
 }
 
@@ -67,9 +67,9 @@ ReactDOM.render(
   <AppContainer>
     <Provider store={store}>
       <Router history={history}>
-        <Route path="/diabetes-therapies" onEnter={checkAuth} component={App} />
+        <Route path="/categories" onEnter={checkAuth} component={App} />
         <Route path="/" onEnter={checkAuth} component={App}>
-          <IndexRedirect to="/diabetes-therapies" />
+          <IndexRedirect to="/categories" />
           {/*
             <Route path="/create" component={WriterApp} />
           <Route path="/article/:articleId/edit" component={WriterApp} />

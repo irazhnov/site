@@ -2,7 +2,8 @@ import { fork } from 'redux-saga/effects';
 
 
 import {
- getPostsFlow,
+  getGlucoseControlFlow,
+  getCategoryFlow,
 } from './containers/App/saga';
 //import { loginFlow } from './containers/LoginApp/saga';
 //import {
@@ -30,6 +31,6 @@ import {
 // Sagas are fired once at the start of an app and can be thought of as processes running
 // in the background, watching actions dispatched to the store.
 export default function* rootSaga() {
- yield fork(getPostsFlow);
-//  yield fork(loginFlow);
+ yield fork(getGlucoseControlFlow);
+ yield fork(getCategoryFlow);
 }

@@ -13,3 +13,30 @@
 :local(.popup){
     height: 477px;
 }
+
+:local(.menuActivated){
+    visibility: hidden;
+}
+
+:global(.spinner) {
+    -webkit-animation: rotating 1.5s linear infinite;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #188ec6;
+    border-radius: 20px;
+    border-left-color: #188ec6;
+    border-right-color: #188ec6;
+    border-bottom-color: #188ec6;
+    border-top-color: #e8ebed;
+}
+
+/* font-family: "OpenSansRegular"; */
+/*@font-face {*/
+    /*font-family: "OpenSansRegular";*/
+    /*src: url("../../../fonts/OpenSansRegular/OpenSansRegular.eot");*/
+    /*src: url("../../../fonts/OpenSansRegular/OpenSansRegular.eot?#iefix")format("embedded-opentype"),*/
+    /*url("../../../fonts/OpenSansRegular/OpenSansRegular.woff") format("woff");*/
+    /*!*url("../../../fonts/OpenSansRegular/OpenSansRegular.ttf") format("truetype");*!*/
+    /*font-style: normal;*/
+    /*font-weight: normal;*/
+/*}*/

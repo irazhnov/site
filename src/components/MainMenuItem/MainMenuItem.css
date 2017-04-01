@@ -1,0 +1,24 @@
+:local(.itemContainer:hover) {
+  background-color: #ebebeb;
+}
+:local(.itemContainer) {
+  /*font-family: "OpenSansRegular";*/
+  background-color: white;
+  height: 142px;
+  width: 40%;
+  color: #4c4c4c;
+  line-height: 140px;
+  padding-left: 20px;
+}
+:local(.subMenuContainer) {
+  background-color: #f4f4f4;
+  position: absolute;
+  left: 40%;
+  top: 0;
+}
+:local(.menuArrow){
+  width: 31px;
+  height: 56px;
+  float: right;
+  padding-right: 10px;
+}

@@ -2,93 +2,57 @@ import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-//import { injectIntl } from 'react-intl';
-//import NotificationSystem from 'react-notification-system';
+import classnames from 'classnames';
+import icons from '../../icons';
 
-
-import { setAuthState } from '../LoginApp/actions';
-import auth from '../LoginApp/auth';
-//import LeftToolbar from '../../components/LeftToolbar';
-//import * as ContextMenuActions from '../ContextMenu/actions';
+// import { setAuthState } from '../LoginApp/actions';
+// import auth from '../LoginApp/auth';
 //import * as MediaSearchActions from '../MediaSearchApp/actions';
 import * as AppActions from './actions';
-//import PopUp from '../../components/PopUp';
-//import SettingsForm from '../../components/SettingsForm';
-//
 //import * as WriterAppActions from '../WriterApp/actions';
 //import * as AdminTagsAppActions from '../AdminTagsApp/actions';
 import styles from './App.css';
-
-const defaultNotificationOpts = {
-  autoDismiss: 3,
-};
-
-// const notificationStyles = {
-//   Containers: {
-//     DefaultStyle: {
-//       width: 'auto',
-//       padding: '11px 8px 11px 15px',
-//     },
-//   },
-//   NotificationItem: {
-//     DefaultStyle: { // Applied to every notification, regardless of the notification level
-//       borderRadius: 4,
-//       borderTop: 'none',
-//       margin: 0,
-//       boxShadow: 'none',
-//     },
-//
-//     success: { // Applied only to the success notification item
-//       color: '#ffffff',
-//       background: '#3db790',
-//     },
-//   },
-//   Dismiss: {
-//     DefaultStyle: {
-//       background: '#ffffff',
-//       color: '#3db790',
-//     },
-//   },
-// };
-
+import SplashScreen from '../../components/SplashScreen';
+import MainMenu from '../../components/MainMenu';
 
 @connect(state => ({
-//  isContextMenuOpened: state.contextMenu.isContextMenuOpened,
-//  isSaveOpened: state.article.isSaveOpened,
-//  isPopupOpened: state.settings.isPopupOpened,
-//  imageMetaData: state.mediaSearch.imageMetaData,
-//  notification: state.settings.notification,
-//  user: state.settings.user,
-//  channels: state.settings.channels,
-//  preferredChannels: state.settings.preferredChannels,
-//  settings: state.settings,
-//  defaultPlus: state.settings.defaultPlus,
+ app: state.app,
 }))
 
 export default class App extends Component {
   static propTypes = {
+    app: PropTypes.shape({
+      fetching: PropTypes.bool.isRequired,
+    }),
     dispatch: PropTypes.func.isRequired,
   };
 
-//   static defaultProps = {
-//   };
+  static defaultProps = {
+    app: {},
+  };
 
   constructor(props) {
     super(props);
+    this.state = {
+      isMenuVisible: false,
+    };
     this.receivedEvent = ::this.receivedEvent;
     this.addBanner = ::this.addBanner;
     this.onDeviceReady = ::this.onDeviceReady;
+    this.successCreateBannerView = ::this.successCreateBannerView;
+    this.getCategory = ::this.getCategory;
+    this.manageMenuVisibility = ::this.manageMenuVisibility;
 
     this.actions = bindActionCreators(AppActions, props.dispatch);
   }
 
   componentWillMount() {
+//     this.actions.getGlucoseControl();
     document.addEventListener('deviceready', this.onDeviceReady, false);
-    this.actions.getPosts();
+
   }
 
   onDeviceReady() {
-    debugger;
     this.receivedEvent('deviceready');
   }
 
@@ -98,20 +62,34 @@ export default class App extends Component {
   }
 
   addBanner() {
-    console.warn('window.plugins.AdMob' +  window.plugins.AdMob);
-    if ( window.plugins && window.plugins.AdMob ) {
+    this.actions.getGlucoseControl();
+    return;
+    console.warn('window.plugins.AdMob' + window.AdMob);
+//     if ( window.plugins && window.plugins.AdMob ) {
+//
+//       window.plugins.AdMob.requestAd({'isTesting': true}, this.success, this.error); };
+//       console.warn('AdMob');
+//       var options = {
+//         'publisherId': '6499/example/banner',
+//         'adSize': window.plugins.AdMob.AD_SIZE.BANNER
+//       }
+//       window.plugins.AdMob.createBannerView(options, this.successCreateBannerView, this.error);
 
-      window.plugins.AdMob.requestAd({'isTesting': true}, this.success, this.error); };
-      console.warn('AdMob');
-      var options = {
-        'publisherId': 'ca-app-pub-4789158063632032/7680949608',
-        'adSize': window.plugins.AdMob.AD_SIZE.BANNER
-      }
-      window.plugins.AdMob.createBannerView(options, this.successCreateBannerView, this.error);
-    }
 
+    let options = {
+      'adUnitId': '/6253334/dfp_example_ad/banner',
+      'adSize': 'BANNER',
+      'tags': {'test': '1'},
+      'networkId': 'test.p',
+      'backgroundColor': '#FFFFFF'
+    };
+    DFPPlugin.createBannerAd(options, this.successCreateBannerView, this.error);
+  }
   successCreateBannerView() {
     console.warn("addBanner Success");
+    DFPPlugin.requestAd({
+      'isTesting': false
+    }, success, error);
   }
 
     success() {
@@ -122,11 +100,36 @@ export default class App extends Component {
       console.log("Oopsie! " + message);
     };
 
+  getCategory(options) {
+    if (this.state.isMenuVisible) {
+      this.setState({ isMenuVisible: false});
+    }
+    this.actions.getCategoryList({
+      category:options.category,
+      subCategory:options.subCategory,
+    })
+  }
+
+  manageMenuVisibility() {
+    this.setState({ isMenuVisible: !this.state.isMenuVisible });
+  }
+
   render() {
     return (
-      <div onClick={this.addBanner}
-      >Hi !!!
-        <div  className={styles.mainContainer}>asdajsdksjsldfsdjl fldsfj dlfjs dfldjf</div>
+      <div>
+        {/*<div onClick={this.addBanner}>asdajsdksjsldfsdjl fldsfj dlfjs dfldjf</div>*/}
+        <div onClick={this.manageMenuVisibility}>Menu</div>
+        <div className={classnames({[styles.menuActivated]: !this.state.isMenuVisible} )}>
+          <MainMenu
+            getCategory={this.getCategory}/>
+        </div>
+        <div>
+          {
+            this.props.app.fetching &&
+            <div className={styles.spinner}/>
+          }
+          
+        </div>
         {this.props.children}
       </div>
     );

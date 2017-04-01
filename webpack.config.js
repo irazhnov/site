@@ -52,7 +52,7 @@ module.exports = {
     fs: 'empty',
   },
   resolve: {
-    modulesDirectories: ['node_modules', '../node_modules/dic_client/src'],
+    modulesDirectories: ['node_modules', '../node_modules/dic-client/src'],
   },
   module: {
     loaders: [

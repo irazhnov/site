@@ -1,4 +1,4 @@
-import * as DicClient from 'dic_client';
+import * as DicClient from 'dic-client';
 
 // const api = new DicClient.PostsApi();
 

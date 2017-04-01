@@ -3,11 +3,12 @@ import { put, call } from 'redux-saga/effects';
 
 import * as types from './constants';
 import api from '../../api';
-import * as DicClient from 'dic_client';
-const dicClient = new DicClient.PostsApi();
-// var defaultClient = DicClient.ApiClient.instance;
+import * as DicClient from 'dic-client';
+const dicClient = new DicClient.TherapiesApi();
+var defaultClient = DicClient.ApiClient.instance;
 
 var callback = function(error, data, response) {
+  debugger;
   if (error) {
     console.error(error);
   } else {
@@ -15,92 +16,45 @@ var callback = function(error, data, response) {
   }
 };
 
-export function* getPosts() {
+export function* getGlucoseControl() {
   try {
     const apiInstance = api.getInstance();
-    const dicClient = new DicClient.PostsApi();
-    dicClient.diabetesTherapiesGet(1, callback);
+    const dicClient = new DicClient.TherapiesApi();
+//     dicClient.diabetesTherapiesGet(1, callback);
 
-//     yield put({ type: types.FETCHING_POSTS_SETTINGS, fetching: true });
-//     const userSettings =  yield dicClient.diabetesTherapiesGet(1, callback);
-    debugger;
-//     yield put({ type: types.FETCHING_POSTS_SETTINGS, fetching: false });
-//     yield put({ type: types.FETCHING_POSTS_SETTINGS_SUCCEEDED, userSettings });
+    yield put({ type: types.FETCHING_GLUC_CONTROL_SETTINGS, fetching: true });
+    const userSettings =  yield call([dicClient, dicClient.diabetesTherapiesBloodGlucoseControlGet], 1);
+//     debugger;
+    yield put({ type: types.FETCHING_GLUC_CONTROL_SETTINGS, fetching: false });
+    yield put({ type: types.FETCHING_GLUC_CONTROL_SETTINGS_SUCCEEDED, userSettings });
   } catch (e) {
     console.error(e);
-    yield put({ type: types.FETCHING_POSTS_SETTINGS, fetching: false });
-    yield put({ type: types.FETCHING_POSTS_SETTINGS_FAILED, message: e, error: true, payload: e });
+    yield put({ type: types.FETCHING_GLUC_CONTROL_SETTINGS, fetching: false });
+    yield put({ type: types.FETCHING_GLUC_CONTROL_SETTINGS_FAILED, message: e, error: true, payload: e });
   }
 }
 
-
-export function* getPostsFlow() {
-  yield* takeLatest(types.FETCHING_POSTS_SETTINGS_REQUESTED, getPosts);
+export function* getGlucoseControlFlow() {
+  yield* takeLatest(types.FETCHING_GLUC_CONTROL_SETTINGS_REQUESTED, getGlucoseControl);
 }
 
-
-
-// ----------------------------------------------------------
-
-
-
-export function* updateUserSettings(action) {
+export function* getCategory(action) {
   try {
-    const apiInstance = api.getInstance();
-    yield put({ type: types.UPDATING_USER_SETTINGS, updating: true });
-    const updatedSettings = yield call(
-      [apiInstance, apiInstance.updateUserSettings],
-      { settings: action.form },
-    );
-    yield put({ type: types.UPDATING_USER_SETTINGS, updating: false });
-    yield put({ type: types.UPDATING_USER_SETTINGS_SUCCEEDED, updatedSettings });
+    const dicClient = new DicClient.CategoriesApi();
+//     dicClient.diabetesTherapiesGet(1, callback);
+
+    yield put({ type: types.FETCHING_CATEGORY, fetching: true });
+    const userSettings =  yield call([dicClient, dicClient.categorySubcategoriesGet], action.category, action.subCategory, 1);
+//     debugger;
+    yield put({ type: types.FETCHING_CATEGORY, fetching: false });
+    yield put({ type: types.FETCHING_CATEGORY_SUCCEEDED, userSettings });
   } catch (e) {
     console.error(e);
-    yield put({ type: types.UPDATING_USER_SETTINGS, updating: false });
-    yield put({ type: types.UPDATING_USER_SETTINGS_FAILED, message: e, error: true, payload: e });
+    yield put({ type: types.FETCHING_CATEGORY, fetching: false });
+    yield put({ type: types.FETCHING_CATEGORY_FAILED, message: e, error: true, payload: e });
   }
 }
 
-
-export function* updateUserSettingsFlow() {
-  yield* takeLatest(types.UPDATING_USER_SETTINGS_REQUESTED, updateUserSettings);
+export function* getCategoryFlow() {
+  yield* takeLatest(types.FETCHING_CATEGORY_REQUESTED, getCategory);
 }
-
-export function* getCurrentUser() {
-  try {
-    const apiInstance = api.getInstance();
-    yield put({ type: types.FETCHING_USER, fetching: true });
-    const user = yield call([apiInstance, apiInstance.getCurrentUser]);
-    yield put({ type: types.FETCHING_USER, fetching: false });
-    yield put({ type: types.FETCHING_USER_SUCCEEDED, user });
-  } catch (e) {
-    console.error(e);
-    yield put({ type: types.FETCHING_USER, fetching: false });
-    yield put({ type: types.FETCHING_USER_FAILED, message: e, error: true, payload: e });
-  }
-}
-
-
-export function* getCurrentUserFlow() {
-  yield* takeLatest(types.FETCHING_USER_REQUESTED, getCurrentUser);
-}
-
-export function* getChannels() {
-  try {
-    const apiInstance = api.getInstance();
-    yield put({ type: types.FETCHING_CHANNELS, fetching: true });
-    const channels = yield call([apiInstance, apiInstance.getChannels]);
-    yield put({ type: types.FETCHING_CHANNELS, fetching: false });
-    yield put({ type: types.FETCHING_CHANNELS_SUCCEEDED, channels });
-  } catch (e) {
-    console.error(e);
-    yield put({ type: types.FETCHING_CHANNELS, fetching: false });
-    yield put({ type: types.FETCHING_CHANNELS_FAILED, message: e, error: true, payload: e });
-  }
-}
-
-
-export function* getChannelsFlow() {
-  yield* takeLatest(types.FETCHING_CHANNELS_REQUESTED, getChannels);
-}
-
