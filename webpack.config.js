@@ -68,9 +68,6 @@ module.exports = {
         ],
       },
       {
-        test: /\.ico$/, loader: 'file?name=[name].[ext]',
-      },
-      {
         test: /\.(jpe?g|png|gif)$/, loader: 'file-loader?name=assets/[name].[ext]',
       },
       {

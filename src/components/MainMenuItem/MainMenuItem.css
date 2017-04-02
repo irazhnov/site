@@ -18,9 +18,10 @@
   width: 500px;
   left: 100%;
   top: 0;
+  border-left: 1px solid #838383;
 }
 :local(.menuArrow){
   right: 5px;
   position: absolute;
-  transform: translate(0, -80%);
+  transform: translate(0, -90%);
 }

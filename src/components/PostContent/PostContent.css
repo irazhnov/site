@@ -1,0 +1,24 @@
+:local(.backButton svg) {
+  float: left;
+  padding-top: 5px;
+}
+
+:local(.backButton span) {
+  line-height: 30px;
+  font-family: 'OpenSansRegular';
+  padding-left: 10px;
+  float: left;
+  font-size: 20px;
+}
+
+:local(.backButton) {
+  width: 100%;
+  height: 40px;
+}
+:local(.contentContainer){
+  padding: 0 10px;
+}
+
+:local(.titleContent){
+  font-size: 20px;
+}

@@ -13,6 +13,7 @@ export default class PostsList extends Component {
             <PostsListItem
               key={item.id}
               post={item}
+              activatePost={this.props.activatePost}
             />
           )
         }

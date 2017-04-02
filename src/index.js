@@ -70,9 +70,8 @@ ReactDOM.render(
         <Route path="/categories" onEnter={checkAuth} component={App} />
         <Route path="/" onEnter={checkAuth} component={App}>
           <IndexRedirect to="/categories" />
-          {/*
-            <Route path="/create" component={WriterApp} />
-          <Route path="/article/:articleId/edit" component={WriterApp} />
+            <Route path="/categories/:categoryId" component={App} />
+           {/*  <Route path="/article/:articleId/edit" component={WriterApp} />
           <Route path="/articles" component={ArticlesList} />
           <Route path="/articles/folder/:folderId" component={ArticlesList} />
           <Route path="/swift" component={SwiftApp} />

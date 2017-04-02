@@ -15,6 +15,7 @@ import styles from './App.css';
 import SplashScreen from '../../components/SplashScreen';
 import MainMenu from '../../components/MainMenu';
 import PostsList from '../../components/PostsList';
+import PostContent from '../../components/PostContent';
 import '../../../fonts/OpenSansRegular.eot';
 import '../../../fonts/OpenSansRegular.woff';
 import '../../../fonts/OpenSansRegular.ttf';
@@ -39,6 +40,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       isMenuVisible: false,
+      postMode: false
     };
     this.receivedEvent = ::this.receivedEvent;
     this.addBanner = ::this.addBanner;
@@ -46,6 +48,8 @@ export default class App extends Component {
     this.successCreateBannerView = ::this.successCreateBannerView;
     this.getCategory = ::this.getCategory;
     this.manageMenuVisibility = ::this.manageMenuVisibility;
+    this.activatePost = ::this.activatePost;
+    this.returnToList = ::this.returnToList;
 
     this.actions = bindActionCreators(AppActions, props.dispatch);
   }
@@ -117,6 +121,14 @@ export default class App extends Component {
   manageMenuVisibility() {
     this.setState({ isMenuVisible: !this.state.isMenuVisible });
   }
+  
+  activatePost(post) {
+    this.setState({ postMode: post});
+  }
+
+  returnToList() {
+    this.setState({ postMode: null});
+  }
 
   render() {
     return (
@@ -134,8 +146,11 @@ export default class App extends Component {
               <div className={'spinner'} />
             </div>
           }
-          { !this.state.isMenuVisible && !this.props.app.fetching && this.props.app.feed && this.props.app.feed.posts &&
-            <PostsList posts={this.props.app.feed.posts}/>
+          { !this.state.isMenuVisible && !this.state.postMode && !this.props.app.fetching && this.props.app.feed && this.props.app.feed.posts &&
+            <PostsList posts={this.props.app.feed.posts} activatePost={this.activatePost}/>
+          }
+          { this.state.postMode &&
+            <PostContent post={this.state.postMode} returnToList={this.returnToList}/>
           }
         </div>
         {this.props.children}
