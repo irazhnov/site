@@ -43,7 +43,6 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: process.env.NODE_ENV ? JSON.stringify(process.env.NODE_ENV) : null,
-        SENTRY_DSN: process.env.SENTRY_DSN ? JSON.stringify(process.env.SENTRY_DSN) : null,
         BASE_URL: process.env.BASE_URL ? JSON.stringify(process.env.BASE_URL) : null,
       },
     }),
@@ -69,10 +68,13 @@ module.exports = {
         ],
       },
       {
-        test: /\.ico$/i, loader: 'file?name=[name].[ext]',
+        test: /\.ico$/, loader: 'file?name=[name].[ext]',
       },
       {
         test: /\.(jpe?g|png|gif)$/, loader: 'file-loader?name=assets/[name].[ext]',
+      },
+      {
+        test: /\.(eot|woff|ttf)$/, loader: 'file-loader?name=fonts/[name].[ext]&context=./www/fonts"',
       },
       {
         test: /\.json$/, loader: 'json',

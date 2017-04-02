@@ -15,6 +15,9 @@ import styles from './App.css';
 import SplashScreen from '../../components/SplashScreen';
 import MainMenu from '../../components/MainMenu';
 import PostsList from '../../components/PostsList';
+import '../../../fonts/OpenSansRegular.eot';
+import '../../../fonts/OpenSansRegular.woff';
+import '../../../fonts/OpenSansRegular.ttf';
 
 @connect(state => ({
  app: state.app,

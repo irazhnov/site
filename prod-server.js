@@ -1,6 +1,5 @@
 require('dotenv').config();
 const path = require('path');
-const newrelic = require('newrelic');
 const ejs = require('ejs');
 const express = require('express');
 const hsts = require('hsts');
@@ -17,7 +16,7 @@ app.use(hsts({
 }));
 
 
-app.set('views', path.join(__dirname, 'dist'));
+app.set('views', path.join(__dirname, 'www'));
 app.set('view engine', 'html');
 app.engine('html', ejs.renderFile);
 

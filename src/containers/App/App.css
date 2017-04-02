@@ -45,13 +45,17 @@
     }
 }
 
-/* font-family: "OpenSansRegular"; */
-/*@font-face {*/
-    /*font-family: "OpenSansRegular";*/
-    /*src: url("../../../fonts/OpenSansRegular/OpenSansRegular.eot");*/
-    /*src: url("../../../fonts/OpenSansRegular/OpenSansRegular.eot?#iefix")format("embedded-opentype"),*/
-    /*url("../../../fonts/OpenSansRegular/OpenSansRegular.woff") format("woff");*/
-    /*!*url("../../../fonts/OpenSansRegular/OpenSansRegular.ttf") format("truetype");*!*/
-    /*font-style: normal;*/
-    /*font-weight: normal;*/
-/*}*/
+@font-face {
+    font-family: "OpenSansRegular";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../../../fonts/OpenSansRegular.eot");
+    src: local('OpenSansRegular'),
+        url("../../../fonts/OpenSansRegular.eot?#iefix")format("embedded-opentype"),
+        url("../../../fonts/OpenSansRegular.woff") format("woff"),
+        url("../../../fonts/OpenSansRegular.ttf") format("truetype");
+}
+
+body {
+    font-family: 'OpenSansRegular';
+}
