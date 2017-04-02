@@ -7,11 +7,10 @@ export default class ManinMenuItem extends Component {
 static propTypes = {
   getSubCategoryData:  PropTypes.func.isRequired,
   onMenuClicked:  PropTypes.func.isRequired,
-  menuData: PropTypes.arrayOf( PropTypes.shape({
+  menuData: PropTypes.shape({
     label: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
-  }),
-  ).isRequired,
+  }).isRequired,
 };
 
   constructor(props) {

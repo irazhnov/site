@@ -1,24 +1,24 @@
 import React, { Component, PropTypes } from 'react';
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import classnames from 'classnames';
-import icons from '../../icons';
+
+import MainMenu from '../../components/MainMenu';
+import PostsList from '../../components/PostsList';
+import PostContent from '../../components/PostContent';
+import SearchApp from '../../containers/SearchApp';
+import '../../../fonts/OpenSansRegular.eot';
+import '../../../fonts/OpenSansRegular.woff';
+import '../../../fonts/OpenSansRegular.ttf';
+import * as AppActions from './actions';
+import styles from './App.css';
+// import icons from '../../icons';
 
 // import { setAuthState } from '../LoginApp/actions';
 // import auth from '../LoginApp/auth';
 //import * as MediaSearchActions from '../MediaSearchApp/actions';
-import * as AppActions from './actions';
-//import * as WriterAppActions from '../WriterApp/actions';
-//import * as AdminTagsAppActions from '../AdminTagsApp/actions';
-import styles from './App.css';
-import SplashScreen from '../../components/SplashScreen';
-import MainMenu from '../../components/MainMenu';
-import PostsList from '../../components/PostsList';
-import PostContent from '../../components/PostContent';
-import '../../../fonts/OpenSansRegular.eot';
-import '../../../fonts/OpenSansRegular.woff';
-import '../../../fonts/OpenSansRegular.ttf';
+// import SplashScreen from '../../components/SplashScreen';
 
 @connect(state => ({
  app: state.app,
@@ -134,6 +134,7 @@ export default class App extends Component {
     return (
       <div>
         {/*<div onClick={this.addBanner}>asdajsdksjsldfsdjl fldsfj dlfjs dfldjf</div>*/}
+        <SearchApp />
         <div onClick={this.manageMenuVisibility}>Menu</div>
         <div className={classnames(styles.menuContainer, {[styles.menuActivated]: !this.state.isMenuVisible} )}>
           <MainMenu
