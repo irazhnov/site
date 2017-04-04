@@ -17,11 +17,11 @@ import styles from './App.css';
 
 // import { setAuthState } from '../LoginApp/actions';
 // import auth from '../LoginApp/auth';
-//import * as MediaSearchActions from '../MediaSearchApp/actions';
 // import SplashScreen from '../../components/SplashScreen';
 
 @connect(state => ({
- app: state.app,
+  app: state.app,
+  searchData: state.search,
 }))
 
 export default class App extends Component {
@@ -29,6 +29,15 @@ export default class App extends Component {
     app: PropTypes.shape({
       fetching: PropTypes.bool.isRequired,
     }),
+    selected: PropTypes.shape({
+      posts: PropTypes.shape({
+        id:PropTypes.string.isRequired,
+        thumbnail:PropTypes.string.isRequired,
+        title_plain:PropTypes.string.isRequired,
+        excerpt:PropTypes.string.isRequired,
+        content:PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
     dispatch: PropTypes.func.isRequired,
   };
 
@@ -55,9 +64,7 @@ export default class App extends Component {
   }
 
   componentWillMount() {
-//     this.actions.getGlucoseControl();
     document.addEventListener('deviceready', this.onDeviceReady, false);
-
   }
 
   onDeviceReady() {
@@ -70,7 +77,6 @@ export default class App extends Component {
   }
 
   addBanner() {
-    this.actions.getGlucoseControl();
     return;
     console.warn('window.plugins.AdMob' + window.AdMob);
 //     if ( window.plugins && window.plugins.AdMob ) {
@@ -135,26 +141,32 @@ export default class App extends Component {
       <div>
         {/*<div onClick={this.addBanner}>asdajsdksjsldfsdjl fldsfj dlfjs dfldjf</div>*/}
         <SearchApp />
-        <div onClick={this.manageMenuVisibility}>Menu</div>
-        <div className={classnames(styles.menuContainer, {[styles.menuActivated]: !this.state.isMenuVisible} )}>
-          <MainMenu
-            getCategory={this.getCategory}/>
-        </div>
-        <div className={styles.postContainer}>
-          {
-            this.props.app.fetching &&
-            <div className={'loadingContainer'}>
-              <div className={'spinner'} />
+        <div>
+          {this.props.searchData.selected.posts &&
+            <div>
+              <div onClick={this.manageMenuVisibility}>Menu</div>
+              <div className={classnames(styles.menuContainer, {[styles.menuActivated]: !this.state.isMenuVisible} )}>
+                <MainMenu
+                  getCategory={this.getCategory}/>
+              </div>
+              <div className={styles.postContainer}>
+                {
+                  this.props.app.fetching &&
+                  <div className={'loadingContainer'}>
+                    <div className={'spinner'} />
+                  </div>
+                }
+                { !this.state.isMenuVisible && !this.state.postMode && !this.props.app.fetching && this.props.app.feed && this.props.app.feed.posts &&
+                <PostsList posts={this.props.app.feed.posts} activatePost={this.activatePost}/>
+                }
+                { this.state.postMode &&
+                <PostContent post={this.state.postMode} returnToList={this.returnToList}/>
+                }
+              </div>
+              {this.props.children}
             </div>
           }
-          { !this.state.isMenuVisible && !this.state.postMode && !this.props.app.fetching && this.props.app.feed && this.props.app.feed.posts &&
-            <PostsList posts={this.props.app.feed.posts} activatePost={this.activatePost}/>
-          }
-          { this.state.postMode &&
-            <PostContent post={this.state.postMode} returnToList={this.returnToList}/>
-          }
         </div>
-        {this.props.children}
       </div>
     );
   }

@@ -1,0 +1,11 @@
+:local(.itemContainer){
+  padding-right: 20px;
+}
+:local(.contentContainer){
+  font-size: 12px
+}
+:local(.titleContent){
+  color: #008ed7;
+  font-size: 15px;
+  padding-top: 10px;
+}

@@ -3,6 +3,7 @@ import * as types from './constants';
 const initialState = {
   fetching: false,
   feed: {},
+  selected: {},
 };
 
 function reducer(state = initialState, action) {
@@ -17,24 +18,6 @@ function reducer(state = initialState, action) {
         ...state,
         fetching: action.fetching,
       };
-//     case types.FETCHING_USER_SETTINGS_SUCCEEDED:
-//       return {
-//         ...state,
-//         folders: action.userSettings.settings.folders || [],
-//         preferredChannels: action.userSettings.settings.preferredChannels || [],
-//         defaultPlus: action.userSettings.settings.defaultPlus || false,
-//       };
-//     case types.FETCHING_CHANNELS_SUCCEEDED:
-//       return {
-//         ...state,
-//         channels: action.channels.items.map((channel) => {
-//           return {
-//             ...channel,
-//             type: channel.storagePartitionType,
-//             icon: channelsIconsMap[channel.name],
-//           };
-//         }),
-//       };
 //     case types.UPDATING_USER_SETTINGS_SUCCEEDED:
 //       return {
 //         ...state,

@@ -1,0 +1,30 @@
+:local(.backButton svg) {
+  float: left;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+:local(.backButton) {
+  display: inline-flex;
+  width: 100%;
+  /*height: 40px;*/
+  border: 1px solid #575757;
+  background-color: #f7f7f7;
+  outline: none;
+}
+:local(.searchInput) {
+  font-family: 'OpenSansRegular';
+  width: 100%;
+  height: 30px;
+  line-height: 25px;
+  margin: 5px 10px 5px 15px;
+}
+
+:local(.searchListContainer) {
+  padding: 10px;
+}
+
+:local(.searchInput) {
+  width: 100%;
+  height: 40px;
+}
