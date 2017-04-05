@@ -2,7 +2,9 @@ import * as types from './constants';
 
 const initialState = {
   fetching: false,
-  selected: {},
+  selected: {
+    posts: [],
+  },
 };
 
 function reducer(state = initialState, action) {
@@ -17,10 +19,13 @@ function reducer(state = initialState, action) {
         ...state,
         selected: action.selected,
       };
+    case types.CLEAN_SEARCH:
     case types.FETCHING_FREE_SEARCH_FAILED:
       return {
         ...state,
-        selected: {},
+        selected: {
+          posts:[],
+        },
       };
     default:
       return state;

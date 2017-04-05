@@ -30,19 +30,22 @@ export default class App extends Component {
       fetching: PropTypes.bool.isRequired,
     }),
     selected: PropTypes.shape({
-      posts: PropTypes.shape({
+      posts: PropTypes.arrayOf(PropTypes.shape({
         id:PropTypes.string.isRequired,
         thumbnail:PropTypes.string.isRequired,
         title_plain:PropTypes.string.isRequired,
         excerpt:PropTypes.string.isRequired,
         content:PropTypes.string.isRequired,
-      }).isRequired,
-    }).isRequired,
+      }).isRequired,)
+    }),
     dispatch: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     app: {},
+    selected: {
+      posts: [],
+    },
   };
 
   constructor(props) {
@@ -139,10 +142,9 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        {/*<div onClick={this.addBanner}>asdajsdksjsldfsdjl fldsfj dlfjs dfldjf</div>*/}
         <SearchApp />
         <div>
-          {this.props.searchData.selected.posts &&
+          { this.props.searchData.selected.posts.length === 0 &&
             <div>
               <div onClick={this.manageMenuVisibility}>Menu</div>
               <div className={classnames(styles.menuContainer, {[styles.menuActivated]: !this.state.isMenuVisible} )}>

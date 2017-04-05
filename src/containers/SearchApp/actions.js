@@ -5,3 +5,7 @@ export function makeSearch(query) {
     query: query,
   };
 }
+export function cleanSearch() {
+  return { type: types.CLEAN_SEARCH,
+  };
+}
