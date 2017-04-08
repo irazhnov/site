@@ -11,9 +11,10 @@ import SearchApp from '../../containers/SearchApp';
 import '../../../fonts/OpenSansRegular.eot';
 import '../../../fonts/OpenSansRegular.woff';
 import '../../../fonts/OpenSansRegular.ttf';
+
 import * as AppActions from './actions';
 import styles from './App.css';
-// import icons from '../../icons';
+import icons from '../../icons';
 
 // import { setAuthState } from '../LoginApp/actions';
 // import auth from '../LoginApp/auth';
@@ -28,6 +29,20 @@ export default class App extends Component {
   static propTypes = {
     app: PropTypes.shape({
       fetching: PropTypes.bool.isRequired,
+      feed: PropTypes.shape({
+        category: PropTypes.shape({
+          post_count: PropTypes.number.isRequired,
+        }),
+        pages: PropTypes.number.isRequired,
+        count: PropTypes.number.isRequired,
+        posts: PropTypes.arrayOf(PropTypes.shape({
+          id:PropTypes.string.isRequired,
+          thumbnail:PropTypes.string.isRequired,
+          title_plain:PropTypes.string.isRequired,
+          excerpt:PropTypes.string.isRequired,
+          content:PropTypes.string.isRequired,
+        }).isRequired,)
+      }),
     }),
     selected: PropTypes.shape({
       posts: PropTypes.arrayOf(PropTypes.shape({
@@ -42,7 +57,11 @@ export default class App extends Component {
   };
 
   static defaultProps = {
-    app: {},
+    app: {
+      feed: {
+        posts: [],
+      }
+    },
     selected: {
       posts: [],
     },
@@ -59,10 +78,12 @@ export default class App extends Component {
     this.onDeviceReady = ::this.onDeviceReady;
     this.successCreateBannerView = ::this.successCreateBannerView;
     this.getCategory = ::this.getCategory;
+    this.getCategoriesByPage = ::this.getCategoriesByPage;
     this.manageMenuVisibility = ::this.manageMenuVisibility;
     this.activatePost = ::this.activatePost;
     this.returnToList = ::this.returnToList;
 
+    this.currentOpptions = {};
     this.actions = bindActionCreators(AppActions, props.dispatch);
   }
 
@@ -118,6 +139,7 @@ export default class App extends Component {
     };
 
   getCategory(options) {
+    this.currentOptions = options;
     if (this.state.isMenuVisible) {
       this.setState({ isMenuVisible: false});
     }
@@ -125,6 +147,11 @@ export default class App extends Component {
       category:options.category,
       subCategory:options.subCategory,
     })
+  }
+
+  getCategoriesByPage() {
+    this.currentOptions.pageNumber = this.props.app.feed.posts.length / this.props.app.feed.count + 1;
+    this.actions.getCategoriesByPage(this.currentOptions);
   }
 
   manageMenuVisibility() {
@@ -141,25 +168,29 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ height: '100%' }}>
         <SearchApp />
-        <div>
+        <div style={{ height: '100%' }}>
           { this.props.searchData.selected.posts.length === 0 &&
-            <div>
+            <div style={{ height: '100%' }}>
               <div onClick={this.manageMenuVisibility}>Menu</div>
               <div className={classnames(styles.menuContainer, {[styles.menuActivated]: !this.state.isMenuVisible} )}>
                 <MainMenu
                   getCategory={this.getCategory}/>
               </div>
               <div className={styles.postContainer}>
+                { !this.state.isMenuVisible && !this.state.postMode && this.props.app.feed && this.props.app.feed.posts &&
+                <PostsList
+                  posts={this.props.app.feed.posts}
+                  activatePost={this.activatePost}
+                  numFound={this.props.app.feed.category.post_count}
+                  getCategoriesByPage={this.getCategoriesByPage}/>
+                }
                 {
                   this.props.app.fetching &&
                   <div className={'loadingContainer'}>
                     <div className={'spinner'} />
                   </div>
-                }
-                { !this.state.isMenuVisible && !this.state.postMode && !this.props.app.fetching && this.props.app.feed && this.props.app.feed.posts &&
-                <PostsList posts={this.props.app.feed.posts} activatePost={this.activatePost}/>
                 }
                 { this.state.postMode &&
                 <PostContent post={this.state.postMode} returnToList={this.returnToList}/>

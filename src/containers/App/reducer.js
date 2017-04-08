@@ -18,24 +18,18 @@ function reducer(state = initialState, action) {
         ...state,
         fetching: action.fetching,
       };
-//     case types.UPDATING_USER_SETTINGS_SUCCEEDED:
-//       return {
-//         ...state,
-//         folders: action.updatedSettings.settings.folders,
-//         preferredChannels: action.updatedSettings.settings.preferredChannels,
-//       };
-//     case types.ADD_CHANNEL:
-//       return { ...state,
-//         preferredChannels: [
-//           ...state.preferredChannels,
-//           {
-//             relationType: GENERAL,
-//             relatedObjectType: action.tag.type,
-//             relatedObjectId: action.tag.id,
-//             relatedObjectName: action.tag.name,
-//           },
-//         ],
-//       };
+    case types.FETCHING_PAGINATED_CATEGORY_SUCCEEDED:
+      return {
+        ...state,
+        feed: {
+          ...state.feed,
+          posts: [
+            ...state.feed.posts,
+            ...action.feed.posts,
+          ]
+        },
+      };
+//
 //     case types.REMOVE_CHANNEL:
 //       return {
 //         ...state,

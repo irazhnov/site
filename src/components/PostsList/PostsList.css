@@ -1,0 +1,5 @@
+:local(.postList){
+  overflow-y: scroll;
+  height: calc(100% - 120px);
+  position: relative;
+}

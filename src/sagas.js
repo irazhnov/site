@@ -1,6 +1,7 @@
 import { fork } from 'redux-saga/effects';
 import {
   getCategoryFlow,
+  getPaginatedCategoryFlow,
 } from './containers/App/saga';
 import { freeSearchFlow } from './containers/SearchApp/saga';
 
@@ -24,4 +25,5 @@ import { freeSearchFlow } from './containers/SearchApp/saga';
 export default function* rootSaga() {
  yield fork(freeSearchFlow);
  yield fork(getCategoryFlow);
+ yield fork(getPaginatedCategoryFlow);
 }

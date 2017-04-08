@@ -19,7 +19,7 @@ const dicClient = new DicClient.DefaultApi();
 
 export function* getCategory(options) {
   try {
-    const dicClient = new DicClient.CategoriesApi();
+    const dicClient = new DicClient.DefaultApi();
 //     dicClient.diabetesTherapiesGet(1, callback);
     yield put({ type: types.FETCHING_CATEGORY, fetching: true });
     const feed =  yield call([dicClient, dicClient.categorySubcategoriesGet], options.category, options.subCategory, 1);
@@ -35,4 +35,24 @@ export function* getCategory(options) {
 
 export function* getCategoryFlow() {
   yield* takeLatest(types.FETCHING_CATEGORY_REQUESTED, getCategory);
+}
+
+export function* getPaginatedCategory(options) {
+  try {
+    const dicClient = new DicClient.DefaultApi();
+//     dicClient.diabetesTherapiesGet(1, callback);
+    yield put({ type: types.FETCHING_CATEGORY, fetching: true });
+    const feed =  yield call([dicClient, dicClient.categorySubcategoriesPagePageGet], options.category, options.subCategory,  options.pageNumber, 1);
+//     debugger;
+    yield put({ type: types.FETCHING_CATEGORY, fetching: false });
+    yield put({ type: types.FETCHING_PAGINATED_CATEGORY_SUCCEEDED, feed });
+  } catch (e) {
+    console.error(e);
+    yield put({ type: types.FETCHING_CATEGORY, fetching: false });
+    yield put({ type: types.FETCHING_PAGINATED_CATEGORY_FAILED, message: e, error: true, payload: e });
+  }
+}
+
+export function* getPaginatedCategoryFlow() {
+  yield* takeLatest(types.FETCHING_PAGINATED_CATEGORY_REQUESTED, getPaginatedCategory);
 }

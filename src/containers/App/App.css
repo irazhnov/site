@@ -12,6 +12,7 @@
 :local(.menuActivated){
     visibility: hidden;
 }
+
 :local(.postContainer){
     height: 100%;
     overflow-x: hidden;

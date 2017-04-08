@@ -3,11 +3,10 @@ import styles from './SubMenuItem.css';
 
 export default class SubMenuItem extends Component {
   static propTypes = {
-    data: PropTypes.arrayOf( PropTypes.shape({
+    data: PropTypes.shape({
         label: PropTypes.string.isRequired,
         slug: PropTypes.string.isRequired,
       }),
-    ).isRequired,
   };
 
   constructor(props) {

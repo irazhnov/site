@@ -2,6 +2,13 @@
   overflow: visible;
   padding: 10px;
 }
+:local(.postItemConteainer:nth-child(2n)){
+
+}
+:local(.postItemConteainer:nth-child(2n)){
+
+}
+
 :global(.created){
   color: #008ed7;
   font-size: 15px;
