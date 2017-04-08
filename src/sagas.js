@@ -3,7 +3,7 @@ import {
   getCategoryFlow,
   getPaginatedCategoryFlow,
 } from './containers/App/saga';
-import { freeSearchFlow } from './containers/SearchApp/saga';
+import { freeSearchFlow, freePaginatedSearchFlow } from './containers/SearchApp/saga';
 
 
 //import { loginFlow } from './containers/LoginApp/saga';
@@ -24,6 +24,7 @@ import { freeSearchFlow } from './containers/SearchApp/saga';
 // in the background, watching actions dispatched to the store.
 export default function* rootSaga() {
  yield fork(freeSearchFlow);
+ yield fork(freePaginatedSearchFlow);
  yield fork(getCategoryFlow);
  yield fork(getPaginatedCategoryFlow);
 }

@@ -30,7 +30,6 @@ export default class PostsList extends Component {
 
 
   handleScroll(e) {
-
     const listEl = e.target;
     // top shadow
     if (listEl.scrollTop === 0) {

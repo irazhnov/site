@@ -31,6 +31,10 @@
 
 :local(.searchListContainer) {
   padding: 10px;
+  overflow-y: scroll;
+  height: calc(100% - 96pt);
+  position: relative;
+  margin: 15pt 30pt;
 }
 
 :local(.searchInput) {

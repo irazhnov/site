@@ -1,5 +1,7 @@
 :local(.postList){
   overflow-y: scroll;
-  height: calc(100% - 120px);
+  height: calc(100% - 96pt);
   position: relative;
+  padding: 0;
+  margin: 15pt 30pt;
 }

@@ -57,6 +57,17 @@
         url("../../../fonts/OpenSansRegular.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "OpenSansLight";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../../../fonts/OpenSansLight.eot");
+    src: local('OpenSansLight'),
+    url("../../../fonts/OpenSansLight.eot?#iefix")format("embedded-opentype"),
+    url("../../../fonts/OpenSansLight.woff") format("woff"),
+    url("../../../fonts/OpenSansLight.ttf") format("truetype");
+}
+
 body {
     font-family: 'OpenSansRegular';
 }

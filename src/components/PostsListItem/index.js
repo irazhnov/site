@@ -31,12 +31,19 @@ export default class PostsListItem extends Component {
   render () {
     const { post } = this.props;
     return (
-      <div className={styles.postItemConteainer}>
-        <img src={post.thumbnail}
-             alt=""/>
-        <div dangerouslySetInnerHTML={this.createTitle()} ></div>
-        <div className={'created'}>{moment(post.date).format('MMMM Do, YYYY')}</div>
-        <div dangerouslySetInnerHTML={this.createExcerpt()} ></div>
+      <div className={styles.postItemContainer}>
+        <div className={styles.postItemContent}>
+          <div className={styles.postHeader}>
+            <img
+              className={styles.postImage}
+              src={post.thumbnail}
+              alt=""/>
+            <div className={styles.postTitle} dangerouslySetInnerHTML={this.createTitle()} ></div>
+          </div>
+
+          <div className={'created'}>{moment(post.date).format('MMMM Do, YYYY')}</div>
+          <div className={styles.postsText} dangerouslySetInnerHTML={this.createExcerpt()} ></div>
+        </div>
         {
           this.props.mode === '' &&
           <button className={styles.readMore} onClick={() => { this.props.activatePost(post) }}

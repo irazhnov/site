@@ -12,11 +12,27 @@ export default class SearchApp extends Component {
   static propsTypes = {
     searchData: PropTypes.shape({
       fetching: PropTypes.bool.isRequired,
-      selected: PropTypes.shape({}).isRequired,
+      selected: PropTypes.shape({
+        count: PropTypes.number.isRequired,
+        count_total: PropTypes.number.isRequired,
+        posts: PropTypes.arrayOf(PropTypes.shape({
+          id:PropTypes.string.isRequired,
+          thumbnail:PropTypes.string.isRequired,
+          title_plain:PropTypes.string.isRequired,
+          excerpt:PropTypes.string.isRequired,
+          content:PropTypes.string.isRequired,
+        }))
+      }).isRequired,
     }),
   };
   static defaultProps = {
-    searchData: {}
+    searchData: {
+      selected: {
+        category: {
+          post_count: 0,
+        },
+      },
+    }
   };
 
   constructor(props) {
@@ -28,7 +44,8 @@ export default class SearchApp extends Component {
     this.backToMenu = ::this.backToMenu;
     this.goToPost = ::this.goToPost;
     this.returnToList = ::this.returnToList;
-   this.actions =  bindActionCreators(SearchActions, props.dispatch);
+    this.makeSearchByPage = ::this.makeSearchByPage;
+    this.actions =  bindActionCreators(SearchActions, props.dispatch);
   }
 
   componentWillMount() {
@@ -38,6 +55,12 @@ export default class SearchApp extends Component {
   makeSearch(query) {
     if(query !== '') {
       this.actions.makeSearch(query);
+    }
+  }
+
+  makeSearchByPage(query) {
+    if(query !== '') {
+      this.actions.makeSearchByPage(query, this.props.searchData.selected.posts.length / this.props.searchData.selected.count + 1);
     }
   }
 
@@ -56,12 +79,13 @@ export default class SearchApp extends Component {
   render () {
     const { selected, fetching } = this.props.searchData;
     return (
-      <div>
+      <div style={{ height: '100%' }}>
         { !this.state.postMode &&
           <SearchControl
             selected={selected}
             fetching={fetching}
             makeSearch={this.makeSearch}
+            makeSearchByPage={this.makeSearchByPage}
             backToMenu={this.backToMenu}
             goToPost={this.goToPost}
           />

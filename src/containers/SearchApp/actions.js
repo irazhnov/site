@@ -5,7 +5,15 @@ export function makeSearch(query) {
     query: query,
   };
 }
+
 export function cleanSearch() {
   return { type: types.CLEAN_SEARCH,
+  };
+}
+
+export function makeSearchByPage(query, pageNum) {
+  return { type: types.FETCHING_PAGINATED_FREE_SEARCH_REQUESTED,
+    query: query,
+    pageNum: pageNum,
   };
 }

@@ -8,9 +8,6 @@ import MainMenu from '../../components/MainMenu';
 import PostsList from '../../components/PostsList';
 import PostContent from '../../components/PostContent';
 import SearchApp from '../../containers/SearchApp';
-import '../../../fonts/OpenSansRegular.eot';
-import '../../../fonts/OpenSansRegular.woff';
-import '../../../fonts/OpenSansRegular.ttf';
 
 import * as AppActions from './actions';
 import styles from './App.css';
@@ -33,7 +30,7 @@ export default class App extends Component {
         category: PropTypes.shape({
           post_count: PropTypes.number.isRequired,
         }),
-        pages: PropTypes.number.isRequired,
+        pages: PropTypes.number,
         count: PropTypes.number.isRequired,
         posts: PropTypes.arrayOf(PropTypes.shape({
           id:PropTypes.string.isRequired,
@@ -41,7 +38,7 @@ export default class App extends Component {
           title_plain:PropTypes.string.isRequired,
           excerpt:PropTypes.string.isRequired,
           content:PropTypes.string.isRequired,
-        }).isRequired,)
+        }))
       }),
     }),
     selected: PropTypes.shape({
@@ -59,6 +56,7 @@ export default class App extends Component {
   static defaultProps = {
     app: {
       feed: {
+        pages: 0,
         posts: [],
       }
     },
@@ -183,7 +181,6 @@ export default class App extends Component {
                 <PostsList
                   posts={this.props.app.feed.posts}
                   activatePost={this.activatePost}
-                  numFound={this.props.app.feed.category.post_count}
                   getCategoriesByPage={this.getCategoriesByPage}/>
                 }
                 {
