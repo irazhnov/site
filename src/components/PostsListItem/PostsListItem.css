@@ -17,6 +17,7 @@
 }
 
 :local(.postHeader){
+  padding: 10px;
   display: inline-flex;
 }
 :local(.postImage){
@@ -31,6 +32,13 @@
   text-align: left;
   font-size: 18pt;
   color: #333333;
+}
+
+:local(.postsText){
+  padding: 10px;
+}
+:local(.postsText p){
+  padding: 0;
 }
 
 :local(.postTitle){

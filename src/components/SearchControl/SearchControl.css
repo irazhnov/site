@@ -30,11 +30,10 @@
 }
 
 :local(.searchListContainer) {
-  padding: 10px;
-  overflow-y: scroll;
-  height: calc(100% - 96pt);
+  padding: 10px 0;
+  overflow-y: auto;
+  height: calc(100% - 55px);
   position: relative;
-  margin: 15pt 30pt;
 }
 
 :local(.searchInput) {

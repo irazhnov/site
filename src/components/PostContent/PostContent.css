@@ -16,6 +16,8 @@
   height: 40px;
 }
 :local(.contentContainer){
+  overflow-y: auto;
+  height: calc(100% - 40px);
   padding: 0 10px;
 }
 

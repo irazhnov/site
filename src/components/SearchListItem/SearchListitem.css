@@ -1,11 +1,33 @@
 :local(.itemContainer){
-  padding-right: 20px;
 }
+:local(.itemContainer:nth-child(2n+1) span),
+:local(.itemContainer:nth-child(2n+1)){
+  background-color: #ecf8ff !important;
+}
+:local(.itemContainer:nth-child(2n) span),
+:local(.itemContainer:nth-child(2n)){
+  background-color: white !important;
+}
+
 :local(.contentContainer){
-  font-size: 12px
+  font-family: 'OpenSansLight';
+  font-size: 12px;
+  margin: 0 10pt 0 10pt;
+}
+:local(.contentContainer svg g g g g path){
+  fill: #008ed7;
+}
+
+:local(.iconBack){
+  position: absolute;
+  right: 10pt;
+  transform: scale(-1,1);
 }
 :local(.titleContent){
+  font-family: 'OpenSansRegular';
   color: #008ed7;
   font-size: 15px;
   padding-top: 10px;
+  margin: 0 10pt 0 10pt;
 }
+

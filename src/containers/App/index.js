@@ -31,7 +31,7 @@ export default class App extends Component {
           post_count: PropTypes.number.isRequired,
         }),
         pages: PropTypes.number,
-        count: PropTypes.number.isRequired,
+        count: PropTypes.number,
         posts: PropTypes.arrayOf(PropTypes.shape({
           id:PropTypes.string.isRequired,
           thumbnail:PropTypes.string.isRequired,
@@ -58,6 +58,7 @@ export default class App extends Component {
       feed: {
         pages: 0,
         posts: [],
+        count: 0,
       }
     },
     selected: {

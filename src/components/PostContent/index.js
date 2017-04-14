@@ -31,12 +31,14 @@ export default class PostsLContent extends Component {
       <div>
         <button className={styles.backButton} onClick={() => { this.props.returnToList() }}
         ><icons.NavArrow /><span>BACK</span></button>
-        <img src={post.thumbnail}
-             alt=""/>
-        <div className={styles.contentContainer}>
-          <div className={styles.titleContent} dangerouslySetInnerHTML={this.createTitle()} ></div>
-          <div className={'created'}>{moment(post.date).format('MMMM Do, YYYY')}</div>
-          <div dangerouslySetInnerHTML={this.createContent()} ></div>
+        <div className={styles.postContainer}>
+          <img src={post.thumbnail}
+               alt=""/>
+          <div className={styles.contentContainer}>
+            <div className={styles.titleContent} dangerouslySetInnerHTML={this.createTitle()} ></div>
+            <div className={'created'}>{moment(post.date).format('MMMM Do, YYYY')}</div>
+            <div dangerouslySetInnerHTML={this.createContent()} ></div>
+          </div>
         </div>
       </div>
     )
