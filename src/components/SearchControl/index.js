@@ -72,7 +72,6 @@ export default class SearchControl extends Component {
           className={styles.backButton}
         >
           <div
-            className={classnames(styles.backIcon, {[styles.backIconActive]: posts && posts.length > 0 })}
             onClick={(e) => {e.stopPropagation(); this.input.value = ''; this.props.backToMenu()}}
           >
             <icons.NavArrow />

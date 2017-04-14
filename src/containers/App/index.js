@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-// import { browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import classnames from 'classnames';
@@ -13,13 +13,8 @@ import * as AppActions from './actions';
 import styles from './App.css';
 import icons from '../../icons';
 
-// import { setAuthState } from '../LoginApp/actions';
-// import auth from '../LoginApp/auth';
-// import SplashScreen from '../../components/SplashScreen';
-
 @connect(state => ({
   app: state.app,
-  searchData: state.search,
 }))
 
 export default class App extends Component {
@@ -81,6 +76,7 @@ export default class App extends Component {
     this.manageMenuVisibility = ::this.manageMenuVisibility;
     this.activatePost = ::this.activatePost;
     this.returnToList = ::this.returnToList;
+    this.goToSearch = ::this.goToSearch;
 
     this.currentOpptions = {};
     this.actions = bindActionCreators(AppActions, props.dispatch);
@@ -165,39 +161,52 @@ export default class App extends Component {
     this.setState({ postMode: null});
   }
 
+  goToSearch() {
+    browserHistory.push('/search');
+  }
+
   render() {
     return (
       <div style={{ height: '100%' }}>
-        <SearchApp />
-        <div style={{ height: '100%' }}>
-          { this.props.searchData.selected.posts.length === 0 &&
-            <div style={{ height: '100%' }}>
-              <div onClick={this.manageMenuVisibility}>Menu</div>
-              <div className={classnames(styles.menuContainer, {[styles.menuActivated]: !this.state.isMenuVisible} )}>
-                <MainMenu
-                  getCategory={this.getCategory}/>
-              </div>
-              <div className={styles.postContainer}>
-                { !this.state.isMenuVisible && !this.state.postMode && this.props.app.feed && this.props.app.feed.posts &&
-                <PostsList
-                  posts={this.props.app.feed.posts}
-                  activatePost={this.activatePost}
-                  getCategoriesByPage={this.getCategoriesByPage}/>
-                }
-                {
-                  this.props.app.fetching &&
-                  <div className={'loadingContainer'}>
-                    <div className={'spinner'} />
-                  </div>
-                }
-                { this.state.postMode &&
-                <PostContent post={this.state.postMode} returnToList={this.returnToList}/>
-                }
-              </div>
-              {this.props.children}
+        <div className={styles.searchHeader} onClick={this.goToSearch}>
+          <div className={styles.searchInput}>
+            <span style={{color:'#245428'}}>Diabetes</span>
+            <span style={{color:'#cba24e'}}>In</span>
+            <span style={{color:'#245428'}}>Control </span>
+            <span style={{color:'#afafaf'}}>: Search </span>
+            <icons.SearchLens />
+          </div>
+        </div>
+        <div className={styles.menuButton} onClick={this.manageMenuVisibility}>
+          <div className={styles.menuIcon}>
+            <div className={styles.menuLine}></div>
+            <div className={styles.menuLine}></div>
+            <div className={styles.menuLine}></div>
+          </div>
+          <span className={styles.menuTitle}>MENU</span></div>
+        <div className={styles.selectedHeader}></div>
+        <div className={classnames(styles.menuContainer, {[styles.menuActivated]: !this.state.isMenuVisible} )}>
+          <MainMenu
+            getCategory={this.getCategory}/>
+        </div>
+        <div className={styles.postContainer}>
+          { !this.state.isMenuVisible && !this.state.postMode && this.props.app.feed && this.props.app.feed.posts &&
+          <PostsList
+            posts={this.props.app.feed.posts}
+            activatePost={this.activatePost}
+            getCategoriesByPage={this.getCategoriesByPage}/>
+          }
+          {
+            this.props.app.fetching &&
+            <div className={'loadingContainer'}>
+              <div className={'spinner'} />
             </div>
           }
+          { this.state.postMode &&
+          <PostContent post={this.state.postMode} returnToList={this.returnToList}/>
+          }
         </div>
+        {this.props.children}
       </div>
     );
   }

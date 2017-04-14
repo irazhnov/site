@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import SearchControl from '../../components/SearchControl';
 import PostContent from '../../components/PostContent';
@@ -66,6 +67,7 @@ export default class SearchApp extends Component {
 
   backToMenu() {
     this.actions.cleanSearch();
+    browserHistory.push('/categories');
   }
 
   goToPost(post) {

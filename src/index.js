@@ -10,8 +10,7 @@ import createSagaMiddleware from 'redux-saga';
 import * as reducers from './reducers';
 import rootSaga from './sagas';
 import App from './containers/App';
-//import ArticlesList from './containers/ArticlesListApp';
-//import SwiftApp from './containers/SwiftApp';
+import SearchApp from './containers/SearchApp';
 import NotFound from './containers/NotFound';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -56,6 +55,7 @@ ReactDOM.render(
     <Provider store={store}>
       <Router history={history}>
         <Route path="/categories" onEnter={checkAuth} component={App} />
+        <Route path="/search" component={SearchApp} />
         <Route path="/" onEnter={checkAuth} component={App}>
           <IndexRedirect to="/categories" />
             <Route path="/categories/:categoryId" component={App} />

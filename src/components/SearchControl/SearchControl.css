@@ -11,14 +11,14 @@
   outline: none;
 }
 
-:local(.backIcon) {
-  visibility: hidden;
-  pointer-events: none;
-}
-:local(.backIconActive) {
-  visibility: visible;
-  pointer-events: auto;
-}
+/*:local(.backIcon) {*/
+  /*visibility: hidden;*/
+  /*pointer-events: none;*/
+/*}*/
+/*:local(.backIconActive) {*/
+  /*visibility: visible;*/
+  /*pointer-events: auto;*/
+/*}*/
 :local(.searchInput) {
   font-family: 'OpenSansRegular';
   font-size: 20px;

@@ -1,10 +1,9 @@
 :local(.itemContainer){
 }
-:local(.itemContainer:nth-child(2n+1) span),
 :local(.itemContainer:nth-child(2n+1)){
   background-color: #ecf8ff !important;
 }
-:local(.itemContainer:nth-child(2n) span),
+
 :local(.itemContainer:nth-child(2n)){
   background-color: white !important;
 }
