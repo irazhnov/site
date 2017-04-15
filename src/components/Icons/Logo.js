@@ -13,7 +13,7 @@ export default () => (
         <path
          id="path16"
          d="M 0,165.486 H 650 V 0 H 0 Z" /></clipPath>
-    </defs>
+    </defs>i
       <g
      transform="matrix(1.3333333,0,0,-1.3333333,0,220.648)"
      id="g10">

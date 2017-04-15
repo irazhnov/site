@@ -65,7 +65,8 @@ export default class App extends Component {
     super(props);
     this.state = {
       isMenuVisible: false,
-      postMode: false
+      postMode: false,
+      currentCategory: '',
     };
     this.receivedEvent = ::this.receivedEvent;
     this.addBanner = ::this.addBanner;
@@ -166,6 +167,7 @@ export default class App extends Component {
   }
 
   render() {
+    const title = this.props.app.feed && this.props.app.feed.category ? this.props.app.feed.category.title : '';
     return (
       <div style={{ height: '100%' }}>
         <div className={styles.searchHeader} onClick={this.goToSearch}>
@@ -184,7 +186,12 @@ export default class App extends Component {
             <div className={styles.menuLine}></div>
           </div>
           <span className={styles.menuTitle}>MENU</span></div>
-        <div className={styles.selectedHeader}></div>
+        {/*<icons.Logo />*/}
+        <div className={styles.selectedHeader}>
+          { !this.state.isMenuVisible &&
+            <div className={styles.categoryTitle}>{title}</div>
+          }
+        </div>
         <div className={classnames(styles.menuContainer, {[styles.menuActivated]: !this.state.isMenuVisible} )}>
           <MainMenu
             getCategory={this.getCategory}/>

@@ -62,7 +62,6 @@ ReactDOM.render(
            {/*  <Route path="/article/:articleId/edit" component={WriterApp} />
           <Route path="/articles" component={ArticlesList} />
           <Route path="/articles/folder/:folderId" component={ArticlesList} />
-          <Route path="/swift" component={SwiftApp} />
           <Route path="/admin" component={AdminApp}>
             <Route path="tags" component={AdminTagsApp} />
           </Route>

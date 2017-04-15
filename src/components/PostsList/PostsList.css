@@ -1,9 +1,9 @@
 :local(.postList){
-  overflow-y: scroll;
+  overflow-y: auto;
   height: calc(100% - 96pt);
   position: relative;
   padding: 0;
-  margin: 5pt 10pt;
+  margin: 5px;
 }
 
 /* (ldpi) Android*/

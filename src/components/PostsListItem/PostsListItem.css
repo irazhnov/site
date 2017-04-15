@@ -1,13 +1,12 @@
 :local(.postItemContainer){
-  margin: 0 0 30pt 0;
+  margin: 0 5px 25px 0;
 }
 :local(.postItemContent){
-  overflow: visible;
-
-  padding: 20pt 29pt 17.5pt 22pt;
-  border-top: 1pt solid #575757;
-  border-left: 1pt solid #575757;
-  border-right: 1pt solid #575757;
+  overflow: auto;
+  padding: 10px 10px 10px 10px;
+  border-top: 1px solid #575757;
+  border-left: 1px solid #575757;
+  border-right: 1px solid #575757;
 }
 :local(.postItemConteainer:nth-child(2n)){
 
@@ -17,7 +16,7 @@
 }
 
 :local(.postHeader){
-  padding: 10px;
+  padding: 0 0 10px 0;
   display: inline-flex;
 }
 :local(.postImage){
@@ -30,21 +29,20 @@
 :global(.created){
   font-family: "OpenSansLight";
   text-align: left;
-  font-size: 18pt;
+  font-size: 18px;
   color: #333333;
 }
 
 :local(.postsText){
-  padding: 10px;
+  /*padding: 10px;*/
 }
 :local(.postsText p){
   padding: 0;
 }
 
 :local(.postTitle){
-  padding-left: 21pt;
-  font-size: 24pt;
-  line-height: 30pt;
+  padding-left: 15px;
+  /*line-height: 30px;*/
 }
 
 :global(.created){
@@ -52,10 +50,10 @@
 }
 :local(.readMore){
   font-family: "OpenSansRegular";
-  font-size: 18pt;
+  font-size: 18px;
   width: 100%;
-  height: 50pt;
-  border: 1pt solid #333333;
+  height: 50px;
+  border: 1px solid #333333;
   background-color: #f7f7f7;
   color: #575757;
   outline: none;

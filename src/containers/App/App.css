@@ -56,9 +56,16 @@
     line-height: 26px;
     background-color: white;
     border: 1px solid #333333;
-    margin: 5px;
+    margin: 5px 10px;
 }
 
+:local(.categoryTitle) {
+    font-family: "OpenSansLight";
+    color: white;
+    font-size: 16px;
+    line-height: 36px;
+    padding-left: 20px;
+}
 :local(.menuTitle) {
     font-family: "OpenSansRegular";
     font-size: 16px;
