@@ -15,9 +15,10 @@
 :local(.subMenuContainer) {
   background-color: #f4f4f4;
   position: absolute;
-  width: 500px;
+  width: 150%;
   left: 100%;
   top: 0;
+  height: 100%;
   border-left: 1px solid #838383;
 }
 :local(.menuArrow){

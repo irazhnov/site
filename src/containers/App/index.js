@@ -7,6 +7,8 @@ import classnames from 'classnames';
 import MainMenu from '../../components/MainMenu';
 import PostsList from '../../components/PostsList';
 import PostContent from '../../components/PostContent';
+import Intro from '../../components/Intro';
+import Ad from '../../components/Ad';
 import * as AppActions from './actions';
 import styles from './App.css';
 import icons from '../../icons';
@@ -15,10 +17,15 @@ const PER_PAGE = 10;
 
 @connect(state => ({
   app: state.app,
+  intro: state.app.intro,
 }))
 
 export default class App extends Component {
   static propTypes = {
+    intro:  PropTypes.shape({
+      editor: PropTypes.shape({}),
+      recent: PropTypes.shape({}),
+    }),
     app: PropTypes.shape({
       fetching: PropTypes.bool.isRequired,
       feed: PropTypes.shape({
@@ -45,6 +52,10 @@ export default class App extends Component {
       posts: [],
       count: 0,
     },
+    intro: {
+      editor: {},
+      recent: {},
+    },
   };
 
   constructor(props) {
@@ -52,14 +63,12 @@ export default class App extends Component {
     this.state = {
       isMenuVisible: false,
       postMode: false,
-//       currentCategory: '',
     };
     this.receivedEvent = ::this.receivedEvent;
     this.addBanner = ::this.addBanner;
     this.onDeviceReady = ::this.onDeviceReady;
     this.successCreateBannerView = ::this.successCreateBannerView;
     this.getCategory = ::this.getCategory;
-//     this.getCategoriesByPage = ::this.getCategoriesByPage;
     this.manageMenuVisibility = ::this.manageMenuVisibility;
     this.activatePost = ::this.activatePost;
     this.returnToList = ::this.returnToList;
@@ -70,7 +79,7 @@ export default class App extends Component {
   }
 
   componentWillMount() {
-//     this.actions.getIntroData();
+    this.actions.getIntroData();
 
     document.addEventListener('deviceready', this.onDeviceReady, false);
   }
@@ -125,6 +134,7 @@ export default class App extends Component {
   getCategory(category) {
     if (category) {
       this.currentCategory = category;
+      this.actions.cleanCategory();
     }
     if (this.state.isMenuVisible) {
       this.setState({ isMenuVisible: false});
@@ -136,11 +146,6 @@ export default class App extends Component {
       per_page: PER_PAGE,
     })
   }
-
-//   getCategoriesByPage() {
-//     this.currentCategory.pageNumber = this.props.app.feed.posts.length / this.props.app.feed.count + 1;
-//     this.actions.getCategoriesByPage(this.currentCategory);
-//   }
 
   manageMenuVisibility() {
     this.setState({ isMenuVisible: !this.state.isMenuVisible });
@@ -171,6 +176,7 @@ export default class App extends Component {
             <icons.SearchLens />
           </div>
         </div>
+        {/*<Ad />*/}
         <div className={styles.menuButton} onClick={this.manageMenuVisibility}>
           <div className={styles.menuIcon}>
             <div className={styles.menuLine}></div>
@@ -180,16 +186,27 @@ export default class App extends Component {
           <span className={styles.menuTitle}>MENU</span></div>
         {/*<icons.Logo />*/}
         <div className={styles.selectedHeader}>
-          { !this.state.isMenuVisible &&
-            <div className={styles.categoryTitle}>{title}</div>
+          { !this.state.isMenuVisible && title &&
+            <div
+              className={styles.categoryTitle}
+              onClick={(e) => {e.stopPropagation(); this.actions.cleanCategory()}}
+            >
+              <div className={styles.backToIntro}>
+                <icons.NavArrow />
+              </div>
+              <span>{title}</span>
+            </div>
           }
         </div>
+        { this.props.intro && !this.props.app.posts.length > 0 &&
+        <Intro intro={this.props.intro} />
+        }
         <div className={classnames(styles.menuContainer, {[styles.menuActivated]: !this.state.isMenuVisible} )}>
           <MainMenu
             getCategory={this.getCategory}/>
         </div>
         <div className={styles.postContainer}>
-          { !this.state.isMenuVisible && !this.state.postMode && this.props.app && this.props.app.posts && this.props.app.category &&
+          { !this.state.isMenuVisible && !this.state.postMode && this.props.app && this.props.app.posts.length > 0 && this.props.app.category &&
           <PostsList
             numFound={this.props.app.category.post_count}
             posts={this.props.app.posts}

@@ -14,12 +14,18 @@ export function getCategoryList(options) {
   };
 }
 
+export function cleanCategory() {
+  return {
+    type: types.CLEAN_CATEGORY,
+  }
+}
 
-// export function getCategoriesByPage(options) {
-//   return {
-//     type: types.FETCHING_PAGINATED_CATEGORY_REQUESTED,
-//     category: options.category,
-//     subCategory: options.subCategory,
-//     pageNumber: options.pageNumber,
-//   };
-// }
+
+export function getIntroData() {
+  return {
+    type: types.FETCHING_INTRO_REQUESTED,
+    category: types.EDITOR_CATEGORY,
+    page: 1,
+    per_page: 1,
+  };
+}

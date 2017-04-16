@@ -1,0 +1,8 @@
+:local(.latestArticleTitle) {
+  font-family: 'OpenSansRegular';
+  font-size: 16px;
+  color: #2e6733;
+  letter-spacing: 1.5px;
+  width: 100%;
+  text-align: center;
+}

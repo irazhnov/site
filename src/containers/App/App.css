@@ -3,8 +3,6 @@
     background-color: red;
 }
 
-
-:local(.postContainer),
 :local(.menuContainer) {
     height: calc(100% - 108px);
 }
@@ -14,6 +12,8 @@
     height: calc(100% - 108px);
     width: 40%;
     border-right: 1px solid #838383;
+    top: 108px;
+    background-color: white;
 }
 :local(.menuActivated){
     visibility: hidden;
@@ -31,6 +31,7 @@
 }
 
 :local(.postContainer){
+    height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -64,7 +65,17 @@
     margin: 5px 10px;
 }
 
+:local(.backToIntro) {
+    padding-top: 5px;
+}
+:local(.backToIntro svg g g g g path) {
+    stroke: white !important;
+}
+
 :local(.categoryTitle) {
+    display: inline-flex;
+}
+:local(.categoryTitle span) {
     font-family: "OpenSansLight";
     color: white;
     font-size: 16px;

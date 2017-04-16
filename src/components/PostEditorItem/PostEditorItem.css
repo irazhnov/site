@@ -1,5 +1,5 @@
-:local(.postItemContainer){
-  margin: 0 5px 25px 0;
+:local(.editorItemContainer){
+  margin: 5px 5px 25px 5px;
 }
 :local(.postItemContent){
   overflow-x: hidden;
@@ -9,24 +9,19 @@
   border-left: 1px solid #575757;
   border-right: 1px solid #575757;
 }
-:local(.postItemConteainer:nth-child(2n)){
 
-}
-:local(.postItemConteainer:nth-child(2n)){
-
-}
-
-:local(.postHeader){
-  padding: 0 0 10px 0;
+:local(.editorHeader){
+  padding: 0;
   display: inline-flex;
 }
-:local(.postImage){
-  width: 155pt;
-  /*height: 104pt;*/
+:local(.editorImage){
+  width: 130px;
+  height: 150px;
+  margin-right: 5px;
 }
 
 :local(.postTitle),
-:local(.postsText),
+:local(.editorText),
 :global(.created){
   font-family: "OpenSansLight";
   text-align: left;
@@ -34,11 +29,16 @@
   color: #333333;
 }
 
-:local(.postsText){
-  /*padding: 10px;*/
+:local(.editorText){
+  font-size: 16px;
 }
-:local(.postsText p){
+:local(.editorText p){
   padding: 0;
+  margin-bottom: 0;
+}
+
+:local(.imageContainer){
+
 }
 
 :local(.postTitle){
