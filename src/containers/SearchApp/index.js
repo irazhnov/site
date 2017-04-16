@@ -6,6 +6,8 @@ import SearchControl from '../../components/SearchControl';
 import PostContent from '../../components/PostContent';
 import * as SearchActions from '../SearchApp/actions';
 
+const PER_PAGE = 10;
+
 @connect(state => ({
   searchData: state.search,
 }))
@@ -45,7 +47,7 @@ export default class SearchApp extends Component {
     this.backToMenu = ::this.backToMenu;
     this.goToPost = ::this.goToPost;
     this.returnToList = ::this.returnToList;
-    this.makeSearchByPage = ::this.makeSearchByPage;
+//     this.makeSearchByPage = ::this.makeSearchByPage;
     this.actions =  bindActionCreators(SearchActions, props.dispatch);
   }
 
@@ -55,15 +57,16 @@ export default class SearchApp extends Component {
 
   makeSearch(query) {
     if(query !== '') {
-      this.actions.makeSearch(query);
+      const page = this.props.searchData.posts.length > 0 ? (this.props.searchData.posts.length / PER_PAGE) + 1 : 1;
+      this.actions.makeSearch(query, page, PER_PAGE);
     }
   }
 
-  makeSearchByPage(query) {
-    if(query !== '') {
-      this.actions.makeSearchByPage(query, this.props.searchData.selected.posts.length / this.props.searchData.selected.count + 1);
-    }
-  }
+//   makeSearchByPage(query) {
+//     if(query !== '') {
+//       this.actions.makeSearchByPage(query, this.props.searchData.selected.posts.length / this.props.searchData.selected.count + 1);
+//     }
+//   }
 
   backToMenu() {
     this.actions.cleanSearch();
@@ -79,15 +82,14 @@ export default class SearchApp extends Component {
   }
 
   render () {
-    const { selected, fetching } = this.props.searchData;
+    const { fetching } = this.props.searchData;
     return (
       <div style={{ height: '100%' }}>
         { !this.state.postMode &&
           <SearchControl
-            selected={selected}
+            selected={this.props.searchData}
             fetching={fetching}
             makeSearch={this.makeSearch}
-            makeSearchByPage={this.makeSearchByPage}
             backToMenu={this.backToMenu}
             goToPost={this.goToPost}
           />

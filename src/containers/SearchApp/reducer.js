@@ -2,9 +2,10 @@ import * as types from './constants';
 
 const initialState = {
   fetching: false,
-  selected: {
-    posts: [],
-  },
+  count: 0,
+  count_total: 0,
+  pages: 0,
+  posts: [],
 };
 
 function reducer(state = initialState, action) {
@@ -17,26 +18,31 @@ function reducer(state = initialState, action) {
     case types.FETCHING_FREE_SEARCH_SUCCEEDED:
       return {
         ...state,
-        selected: action.selected,
-      };
-    case types.FETCHING_PAGINATED_FREE_SEARCH_SUCCEEDED:
-      return {
-        ...state,
-        selected: {
-          ...state.selected,
+        count: action.selected.count,
+        count_total: action.selected.count_total,
           posts: [
-            ...state.selected.posts,
+            ...state.posts,
             ...action.selected.posts,
           ]
-        },
       };
+//     case types.FETCHING_PAGINATED_FREE_SEARCH_SUCCEEDED:
+//       return {
+//         ...state,
+//         selected: {
+//           ...state.selected,
+//           posts: [
+//             ...state.selected.posts,
+//             ...action.selected.posts,
+//           ]
+//         },
+//       };
     case types.CLEAN_SEARCH:
+      return {
+        initialState,
+      };
     case types.FETCHING_FREE_SEARCH_FAILED:
       return {
         ...state,
-        selected: {
-          posts:[],
-        },
       };
     default:
       return state;

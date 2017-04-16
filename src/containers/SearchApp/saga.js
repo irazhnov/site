@@ -12,7 +12,7 @@ export function* freeSearch(options) {
 
     yield put({ type: types.FETCHING_FREE_SEARCH, fetching: true });
     yield delay(350);
-    const selected =  yield call([dicClient, dicClient.rootGet], options.query, 1);
+    const selected =  yield call([dicClient, dicClient.getSearchResultsGet], options.query, options.page, options.per_page);
 
     yield put({ type: types.FETCHING_FREE_SEARCH, fetching: false });
     yield put({ type: types.FETCHING_FREE_SEARCH_SUCCEEDED, selected });

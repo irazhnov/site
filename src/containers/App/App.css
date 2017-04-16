@@ -3,9 +3,15 @@
     background-color: red;
 }
 
+
+:local(.postContainer),
+:local(.menuContainer) {
+    height: calc(100% - 108px);
+}
+
 :local(.menuContainer){
     position: absolute;
-    height: 100%;
+    height: calc(100% - 108px);
     width: 40%;
     border-right: 1px solid #838383;
 }
@@ -25,7 +31,6 @@
 }
 
 :local(.postContainer){
-    height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
 }

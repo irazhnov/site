@@ -12,7 +12,7 @@ export default class PostsList extends Component {
       excerpt:PropTypes.string.isRequired,
       content:PropTypes.string.isRequired,
     }).isRequired),
-    getCategoriesByPage: PropTypes.func.isRequired,
+    getCategory: PropTypes.func.isRequired,
     numFound: PropTypes.number.isRequired,
     post: PropTypes.shape({
       id:PropTypes.string.isRequired,
@@ -42,7 +42,7 @@ export default class PostsList extends Component {
     if (this.props.posts.length < this.props.numFound &&
       listEl.scrollTop > listEl.scrollHeight -
       (listEl.offsetHeight * 2)) {
-      this.props.getCategoriesByPage();
+      this.props.getCategory();
     }
 
     // changing paging numbers

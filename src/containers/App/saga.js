@@ -22,7 +22,7 @@ export function* getCategory(options) {
     const dicClient = new DicClient.DefaultApi();
 //     dicClient.diabetesTherapiesGet(1, callback);
     yield put({ type: types.FETCHING_CATEGORY, fetching: true });
-    const feed =  yield call([dicClient, dicClient.categorySubcategoriesGet], options.category, options.subCategory, 1);
+    const feed =  yield call([dicClient, dicClient.getCategoryPostsGet], options.category, options.page, options.per_page);
 //     debugger;
     yield put({ type: types.FETCHING_CATEGORY, fetching: false });
     yield put({ type: types.FETCHING_CATEGORY_SUCCEEDED, feed });
@@ -37,12 +37,12 @@ export function* getCategoryFlow() {
   yield* takeLatest(types.FETCHING_CATEGORY_REQUESTED, getCategory);
 }
 
-export function* getPaginatedCategory(options) {
+export function* getIntorCategory(options) {
   try {
     const dicClient = new DicClient.DefaultApi();
 //     dicClient.diabetesTherapiesGet(1, callback);
     yield put({ type: types.FETCHING_CATEGORY, fetching: true });
-    const feed =  yield call([dicClient, dicClient.categorySubcategoriesPagePageGet], options.category, options.subCategory,  options.pageNumber, 1);
+    const feed =  yield call([dicClient, dicClient.getCategoryPostsGet], options.category, options.subCategory,  options.pageNumber, 1);
 //     debugger;
     yield put({ type: types.FETCHING_CATEGORY, fetching: false });
     yield put({ type: types.FETCHING_PAGINATED_CATEGORY_SUCCEEDED, feed });
@@ -53,6 +53,6 @@ export function* getPaginatedCategory(options) {
   }
 }
 
-export function* getPaginatedCategoryFlow() {
-  yield* takeLatest(types.FETCHING_PAGINATED_CATEGORY_REQUESTED, getPaginatedCategory);
+export function* getIntorCategoryFlow() {
+  yield* takeLatest(types.FETCHING_INTRO_REQUESTED, getIntorCategory);
 }

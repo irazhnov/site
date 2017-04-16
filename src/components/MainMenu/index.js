@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
 import menuMock from '../../Utils/menuMock';
 import MainMenuItem from '../MainMenuItem';
 
@@ -7,7 +6,7 @@ export default class ManinMenu extends Component {
 
   constructor(props) {
     super(props);
-    this.categorySelected = '';
+//     this.categorySelected = '';
     this.onMenuClicked = :: this.onMenuClicked;
     this.getSubCategoryData = :: this.getSubCategoryData;
   }
@@ -17,14 +16,11 @@ export default class ManinMenu extends Component {
       this[menuMock[i].id].deselectMenu();
     }
     this[item.id].selectMenu();
-    this.categorySelected = item.slug;
+//     this.categorySelected = item.slug;
   }
 
-  getSubCategoryData(subCategory) {
-    this.props.getCategory({
-      category: this.categorySelected,
-      subCategory: subCategory,
-  });
+  getSubCategoryData(category) {
+    this.props.getCategory(category);
   }
 
   render () {

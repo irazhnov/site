@@ -6,7 +6,6 @@ import icons from '../../icons';
 
 export default class SearchControl extends Component {
   static propTypes = {
-    makeSearchByPage: PropTypes.func.isRequired,
     goToPost: PropTypes.func.isRequired,
     backToMenu: PropTypes.func.isRequired,
     makeSearch: PropTypes.func.isRequired,
@@ -60,7 +59,7 @@ export default class SearchControl extends Component {
     if (this.props.selected.posts.length < this.props.selected.count_total &&
       listEl.scrollTop > listEl.scrollHeight -
       (listEl.offsetHeight * 2)) {
-      this.props.makeSearchByPage(this.query);
+      this.props.makeSearch(this.query);
     }
   }
 

@@ -7,11 +7,11 @@ import classnames from 'classnames';
 import MainMenu from '../../components/MainMenu';
 import PostsList from '../../components/PostsList';
 import PostContent from '../../components/PostContent';
-import SearchApp from '../../containers/SearchApp';
-
 import * as AppActions from './actions';
 import styles from './App.css';
 import icons from '../../icons';
+
+const PER_PAGE = 10;
 
 @connect(state => ({
   app: state.app,
@@ -36,28 +36,14 @@ export default class App extends Component {
         }))
       }),
     }),
-    selected: PropTypes.shape({
-      posts: PropTypes.arrayOf(PropTypes.shape({
-        id:PropTypes.string.isRequired,
-        thumbnail:PropTypes.string.isRequired,
-        title_plain:PropTypes.string.isRequired,
-        excerpt:PropTypes.string.isRequired,
-        content:PropTypes.string.isRequired,
-      }).isRequired,)
-    }),
     dispatch: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     app: {
-      feed: {
-        pages: 0,
-        posts: [],
-        count: 0,
-      }
-    },
-    selected: {
+      pages: 0,
       posts: [],
+      count: 0,
     },
   };
 
@@ -66,24 +52,26 @@ export default class App extends Component {
     this.state = {
       isMenuVisible: false,
       postMode: false,
-      currentCategory: '',
+//       currentCategory: '',
     };
     this.receivedEvent = ::this.receivedEvent;
     this.addBanner = ::this.addBanner;
     this.onDeviceReady = ::this.onDeviceReady;
     this.successCreateBannerView = ::this.successCreateBannerView;
     this.getCategory = ::this.getCategory;
-    this.getCategoriesByPage = ::this.getCategoriesByPage;
+//     this.getCategoriesByPage = ::this.getCategoriesByPage;
     this.manageMenuVisibility = ::this.manageMenuVisibility;
     this.activatePost = ::this.activatePost;
     this.returnToList = ::this.returnToList;
     this.goToSearch = ::this.goToSearch;
 
-    this.currentOpptions = {};
+    this.currentCategory = '';
     this.actions = bindActionCreators(AppActions, props.dispatch);
   }
 
   componentWillMount() {
+//     this.actions.getIntroData();
+
     document.addEventListener('deviceready', this.onDeviceReady, false);
   }
 
@@ -134,21 +122,25 @@ export default class App extends Component {
       console.log("Oopsie! " + message);
     };
 
-  getCategory(options) {
-    this.currentOptions = options;
+  getCategory(category) {
+    if (category) {
+      this.currentCategory = category;
+    }
     if (this.state.isMenuVisible) {
       this.setState({ isMenuVisible: false});
     }
+    const pageNumber = this.props.app.posts.length > 0 ? this.props.app.posts.length / PER_PAGE + 1 : 1;
     this.actions.getCategoryList({
-      category:options.category,
-      subCategory:options.subCategory,
+      category: this.currentCategory,
+      page: pageNumber,
+      per_page: PER_PAGE,
     })
   }
 
-  getCategoriesByPage() {
-    this.currentOptions.pageNumber = this.props.app.feed.posts.length / this.props.app.feed.count + 1;
-    this.actions.getCategoriesByPage(this.currentOptions);
-  }
+//   getCategoriesByPage() {
+//     this.currentCategory.pageNumber = this.props.app.feed.posts.length / this.props.app.feed.count + 1;
+//     this.actions.getCategoriesByPage(this.currentCategory);
+//   }
 
   manageMenuVisibility() {
     this.setState({ isMenuVisible: !this.state.isMenuVisible });
@@ -167,7 +159,7 @@ export default class App extends Component {
   }
 
   render() {
-    const title = this.props.app.feed && this.props.app.feed.category ? this.props.app.feed.category.title : '';
+    const title = this.props.app && this.props.app.category ? this.props.app.category.title : '';
     return (
       <div style={{ height: '100%' }}>
         <div className={styles.searchHeader} onClick={this.goToSearch}>
@@ -197,11 +189,12 @@ export default class App extends Component {
             getCategory={this.getCategory}/>
         </div>
         <div className={styles.postContainer}>
-          { !this.state.isMenuVisible && !this.state.postMode && this.props.app.feed && this.props.app.feed.posts &&
+          { !this.state.isMenuVisible && !this.state.postMode && this.props.app && this.props.app.posts && this.props.app.category &&
           <PostsList
-            posts={this.props.app.feed.posts}
+            numFound={this.props.app.category.post_count}
+            posts={this.props.app.posts}
             activatePost={this.activatePost}
-            getCategoriesByPage={this.getCategoriesByPage}/>
+            getCategory={this.getCategory}/>
           }
           {
             this.props.app.fetching &&
