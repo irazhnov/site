@@ -183,8 +183,12 @@ export default class App extends Component {
             <div className={styles.menuLine}></div>
             <div className={styles.menuLine}></div>
           </div>
-          <span className={styles.menuTitle}>MENU</span></div>
-        {/*<icons.Logo />*/}
+          <span className={styles.menuTitle}>MENU</span>
+          <div className={styles.logo}>
+            <icons.Logo />
+          </div>
+        </div>
+
         <div className={styles.selectedHeader}>
           { !this.state.isMenuVisible && title &&
             <div

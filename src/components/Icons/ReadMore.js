@@ -1,61 +1,18 @@
 import React from 'react';
 
 export default () => (
-<svg
-   viewBox="0 0 90.666664 131.60027"
-   height="131.60027"
-   width="90.666664"
-   xml:space="preserve"
-   id="svg2"
-   version="1.1">
-  <defs
-     id="defs6">
-    <clipPath
-       id="clipPath18"
-       clipPathUnits="userSpaceOnUse">
-      <path
-         id="path16"
-         d="M 0,98.7 H 68 V 0 H 0 Z" />
-    </clipPath>
-  </defs>
-  <g
-     transform="matrix(1.3333333,0,0,-1.3333333,0,131.60027)"
-     id="g10">
-    <g
-       id="g12">
-      <g
-         clip-path="url(#clipPath18)"
-         id="g14">
-        <g
-           transform="translate(57,63)"
-           id="g20">
-          <path
-             id="path22"
-             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-             d="m 0,0 h -8 c -1.104,0 -2,-0.896 -2,-2 0,-1.104 0.896,-2 2,-2 h 8 c 3.309,0 6,-2.691 6,-6 v -42 c 0,-3.309 -2.691,-6 -6,-6 h -46 c -3.309,0 -6,2.691 -6,6 v 42 c 0,3.309 2.691,6 6,6 h 8 c 1.104,0 2,0.896 2,2 0,1.104 -0.896,2 -2,2 h -8 c -5.514,0 -10,-4.486 -10,-10 v -42 c 0,-5.514 4.486,-10 10,-10 H 0 c 5.514,0 10,4.486 10,10 v 42 C 10,-4.486 5.514,0 0,0" /></g><g
-           transform="translate(57,63)"
-           id="g24"><path
-             id="path26"
-             style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-             d="m 0,0 h -8 c -1.104,0 -2,-0.896 -2,-2 0,-1.104 0.896,-2 2,-2 h 8 c 3.309,0 6,-2.691 6,-6 v -42 c 0,-3.309 -2.691,-6 -6,-6 h -46 c -3.309,0 -6,2.691 -6,6 v 42 c 0,3.309 2.691,6 6,6 h 8 c 1.104,0 2,0.896 2,2 0,1.104 -0.896,2 -2,2 h -8 c -5.514,0 -10,-4.486 -10,-10 v -42 c 0,-5.514 4.486,-10 10,-10 H 0 c 5.514,0 10,4.486 10,10 v 42 C 10,-4.486 5.514,0 0,0 Z" /></g><g
-           transform="translate(34,36)"
-           id="g28"><path
-             id="path30"
-             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-             d="m 0,0 c -1.104,0 -2,-0.896 -2,-2 v -3 c 0,-1.104 0.896,-2 2,-2 1.104,0 2,0.896 2,2 v 3 C 2,-0.896 1.104,0 0,0" /></g><g
-           transform="translate(34,36)"
-           id="g32"><path
-             id="path34"
-             style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-             d="m 0,0 c -1.104,0 -2,-0.896 -2,-2 v -3 c 0,-1.104 0.896,-2 2,-2 1.104,0 2,0.896 2,2 v 3 C 2,-0.896 1.104,0 0,0 Z" /></g><g
-           transform="translate(53.1143,79.4141)"
-           id="g36"><path
-             id="path38"
-             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-             d="m 0,0 -17.7,17.7 c -0.781,0.781 -2.047,0.781 -2.828,0 L -38.229,0 c -0.781,-0.781 -0.781,-2.047 0,-2.828 0.782,-0.781 2.047,-0.781 2.829,0 l 14.286,14.286 v -47.872 c 0,-1.105 0.895,-2 2,-2 1.104,0 2,0.895 2,2 V 11.458 L -2.828,-2.828 c 0.39,-0.391 0.902,-0.586 1.414,-0.586 0.512,0 1.023,0.195 1.414,0.586 0.781,0.781 0.781,2.047 0,2.828" /></g><g
-           transform="translate(53.1143,79.4141)"
-           id="g40"><path
-             id="path42"
-             style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-             d="m 0,0 -17.7,17.7 c -0.781,0.781 -2.047,0.781 -2.828,0 L -38.229,0 c -0.781,-0.781 -0.781,-2.047 0,-2.828 0.782,-0.781 2.047,-0.781 2.829,0 l 14.286,14.286 v -47.872 c 0,-1.105 0.895,-2 2,-2 1.104,0 2,0.895 2,2 V 11.458 L -2.828,-2.828 c 0.39,-0.391 0.902,-0.586 1.414,-0.586 0.512,0 1.023,0.195 1.414,0.586 0.781,0.781 0.781,2.047 0,2.828 z" /></g></g></g></g></svg>
-)
+  <svg version="1.1" id="Isolation_Mode" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 68 98.7" style={{ enableBackground: 'new 0 0 68 98.7' }} xmlSpace="preserve">
+{/*<style type="text/css">*/}
+	{/*.st0{stroke:#000000;stroke-width:2;stroke-miterlimit:10;}*/}
+{/*</style>*/}
+<path style={{ stroke: '#000000', strokeWidth:2, strokeMiterlimit:10 }} d="M57,35.7h-8c-1.1,0-2,0.9-2,2s0.9,2,2,2h8c3.3,0,6,2.7,6,6v42c0,3.3-2.7,6-6,6H11c-3.3,0-6-2.7-6-6v-42
+	c0-3.3,2.7-6,6-6h8c1.1,0,2-0.9,2-2s-0.9-2-2-2h-8c-5.5,0-10,4.5-10,10v42c0,5.5,4.5,10,10,10h46c5.5,0,10-4.5,10-10v-42
+	C67,40.2,62.5,35.7,57,35.7z"/>
+<g>
+	<path style={{ stroke: '#000000', strokeWidth:2, strokeMiterlimit:10 }} d="M34,62.7c-1.1,0-2,0.9-2,2v3c0,1.1,0.9,2,2,2s2-0.9,2-2v-3C36,63.6,35.1,62.7,34,62.7z"/>
+	<path style={{ stroke: '#000000', strokeWidth:2, strokeMiterlimit:10 }} d="M53.1,19.3L35.4,1.6c-0.8-0.8-2-0.8-2.8,0L14.9,19.3c-0.8,0.8-0.8,2,0,2.8s2,0.8,2.8,0L32,7.8v47.9
+		c0,1.1,0.9,2,2,2s2-0.9,2-2V7.8l14.3,14.3c0.4,0.4,0.9,0.6,1.4,0.6s1-0.2,1.4-0.6C53.9,21.3,53.9,20.1,53.1,19.3z"/>
+</g>
+</svg>
+);
