@@ -1,0 +1,43 @@
+:global(.menuLine) {
+  height:5px;
+  width: 40px;
+  margin-bottom: 5px;
+  background-color: #2b7831;
+}
+
+:global(.searchHeader),
+:global(.menuButton),
+:global(.selectedHeader) {
+  height: 36px;
+}
+:global(.selectedHeader) {
+  background-color:  #245428;
+}
+:global(.searchHeader){
+  width: 100%;
+  background-color: #245428;
+  display: inline-flex;
+}
+
+:global(.menuButton) {
+  background-color: #102612;
+  display: inline-flex;
+  width: 100%;
+}
+
+:global(.menuIcon) {
+  padding: 5px 20px;
+}
+
+:global(.searchInput svg) {
+  float: right;
+  margin: 5px;
+}
+:global(.searchInput) {
+  width: 100%;
+  padding: 0 10px;
+  line-height: 26px;
+  background-color: white;
+  border: 1px solid #333333;
+  margin: 5px 10px;
+}

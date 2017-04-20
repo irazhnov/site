@@ -1,0 +1,7 @@
+:local(.postList){
+  overflow-y: auto;
+  height: calc(100% - 96pt);
+  position: relative;
+  padding: 0;
+  margin: 5px;
+}

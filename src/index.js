@@ -9,6 +9,7 @@ import createSagaMiddleware from 'redux-saga';
 
 import * as reducers from './reducers';
 import rootSaga from './sagas';
+import IntroApp from './containers/IntroApp';
 import App from './containers/App';
 import SearchApp from './containers/SearchApp';
 import NotFound from './containers/NotFound';
@@ -40,13 +41,13 @@ function checkAuth(nextState, replace) {
 
   if (loggedIn) {
     if (nextState.location.pathname === '/login') {
-      replace('/categories');
+      replace('/intro');
     }
     if (nextState.location.pathname && nextState.location.state) {
       replace(nextState.location.pathname);
     }
-  } else if (nextState.location.pathname !== '/categories') {
-    replace('/categories');
+  } else if (nextState.location.pathname !== '/intro') {
+    replace('/intro');
   }
 }
 
@@ -54,10 +55,11 @@ ReactDOM.render(
   <AppContainer>
     <Provider store={store}>
       <Router history={history}>
+        <Route path="/intro" component={IntroApp} />
         <Route path="/categories" onEnter={checkAuth} component={App} />
         <Route path="/search" component={SearchApp} />
-        <Route path="/" onEnter={checkAuth} component={App}>
-          <IndexRedirect to="/categories" />
+        <Route path="/" component={IntroApp}>
+          <IndexRedirect to="/intro" />
             <Route path="/categories/:categoryId" component={App} />
            {/*  <Route path="/article/:articleId/edit" component={WriterApp} />
           <Route path="/articles" component={ArticlesList} />

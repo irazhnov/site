@@ -19,13 +19,3 @@ export function cleanCategory() {
     type: types.CLEAN_CATEGORY,
   }
 }
-
-
-export function getIntroData() {
-  return {
-    type: types.FETCHING_INTRO_REQUESTED,
-    category: types.EDITOR_CATEGORY,
-    page: 1,
-    per_page: 1,
-  };
-}

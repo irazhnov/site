@@ -43,7 +43,7 @@ export default class PostEditorItem extends Component {
     const post = this.props.editor ? this.props.editor.posts[0] : {};
     return (
       <div className={styles.editorItemContainer}>
-        <div className={styles.postItemContent}>
+        <div className={styles.editorItemContent}>
           <div className={styles.editorHeader}>
             <div className={styles.imageContainer}>
               <img
@@ -52,7 +52,7 @@ export default class PostEditorItem extends Component {
                 alt=""/>
             </div>
 
-            <div>
+            <div className={styles.contentContainer}>
               <div className={'created'}>{moment(post.date).format('MMMM Do, YYYY')}</div>
               <div className={styles.postTitle} dangerouslySetInnerHTML={this.createTitle(post)} ></div>
               <div className={styles.editorText} dangerouslySetInnerHTML={this.createExcerpt(post)} ></div>

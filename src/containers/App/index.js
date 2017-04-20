@@ -79,7 +79,7 @@ export default class App extends Component {
   }
 
   componentWillMount() {
-    this.actions.getIntroData();
+//     this.actions.getIntroData();
 
     document.addEventListener('deviceready', this.onDeviceReady, false);
   }
@@ -96,40 +96,7 @@ export default class App extends Component {
   addBanner() {
     return;
     console.warn('window.plugins.AdMob' + window.AdMob);
-//     if ( window.plugins && window.plugins.AdMob ) {
-//
-//       window.plugins.AdMob.requestAd({'isTesting': true}, this.success, this.error); };
-//       console.warn('AdMob');
-//       var options = {
-//         'publisherId': '6499/example/banner',
-//         'adSize': window.plugins.AdMob.AD_SIZE.BANNER
-//       }
-//       window.plugins.AdMob.createBannerView(options, this.successCreateBannerView, this.error);
-
-
-    let options = {
-      'adUnitId': '/6253334/dfp_example_ad/banner',
-      'adSize': 'BANNER',
-      'tags': {'test': '1'},
-      'networkId': 'test.p',
-      'backgroundColor': '#FFFFFF'
-    };
-    DFPPlugin.createBannerAd(options, this.successCreateBannerView, this.error);
   }
-  successCreateBannerView() {
-    console.warn("addBanner Success");
-    DFPPlugin.requestAd({
-      'isTesting': false
-    }, success, error);
-  }
-
-    success() {
-    console.warn("requestAd Success");
-  };
-
-    error(message) {
-      console.log("Oopsie! " + message);
-    };
 
   getCategory(category) {
     if (category) {
@@ -167,8 +134,8 @@ export default class App extends Component {
     const title = this.props.app && this.props.app.category ? this.props.app.category.title : '';
     return (
       <div style={{ height: '100%' }}>
-        <div className={styles.searchHeader} onClick={this.goToSearch}>
-          <div className={styles.searchInput}>
+        <div className={'searchHeader'} onClick={this.goToSearch}>
+          <div className={'searchInput'}>
             <span style={{color:'#245428'}}>Diabetes</span>
             <span style={{color:'#cba24e'}}>In</span>
             <span style={{color:'#245428'}}>Control </span>
@@ -177,11 +144,11 @@ export default class App extends Component {
           </div>
         </div>
         {/*<Ad />*/}
-        <div className={styles.menuButton} onClick={this.manageMenuVisibility}>
-          <div className={styles.menuIcon}>
-            <div className={styles.menuLine}></div>
-            <div className={styles.menuLine}></div>
-            <div className={styles.menuLine}></div>
+        <div className={'menuButton'} onClick={this.manageMenuVisibility}>
+          <div className={'menuIcon'}>
+            <div className={'menuLine'}></div>
+            <div className={'menuLine'}></div>
+            <div className={'menuLine'}></div>
           </div>
           <span className={styles.menuTitle}>MENU</span>
           <div className={styles.logo}>
@@ -189,7 +156,7 @@ export default class App extends Component {
           </div>
         </div>
 
-        <div className={styles.selectedHeader}>
+        <div className={'selectedHeader'}>
           { !this.state.isMenuVisible && title &&
             <div
               className={styles.categoryTitle}
@@ -202,9 +169,9 @@ export default class App extends Component {
             </div>
           }
         </div>
-        { this.props.intro && !this.props.app.posts.length > 0 &&
-        <Intro intro={this.props.intro} />
-        }
+        {/*{ this.props.intro && !this.props.app.posts.length > 0 &&*/}
+        {/*<Intro intro={this.props.intro} />*/}
+        {/*}*/}
         <div className={classnames(styles.menuContainer, {[styles.menuActivated]: !this.state.isMenuVisible} )}>
           <MainMenu
             getCategory={this.getCategory}/>

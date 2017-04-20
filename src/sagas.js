@@ -1,23 +1,7 @@
 import { fork } from 'redux-saga/effects';
-import {
-  getCategoryFlow,
-  getIntroCategoryFlow,
-} from './containers/App/saga';
-
+import {   getCategoryFlow } from './containers/App/saga';
 import { freeSearchFlow } from './containers/SearchApp/saga';
-
-
-//import { loginFlow } from './containers/LoginApp/saga';
-
-//import { getMediaFlow, getImageMetadataByIdFlow } from './containers/MediaSearchApp/saga';
-//import { articleListSaga, searchArticlesFlow } from './containers/ArticlesListApp/saga';
-//import {
-//    findLocationsFlow,
-//    getLocationMetadataByIdFlow,
-//    findAreasFlow,
-//    findLocationsByTermFlow } from './containers/LocationsPopupApp/saga';
-
-//import { createAdminTagFlow, deleteAdminTagFlow, updateAdminTagFlow } from './containers/AdminTagsApp/saga';
+import { getEditorPostFlow, getRecentPostFlow } from './containers/IntroApp/saga';
 
 // The root saga is what we actually send to Redux's middleware. In here we fork
 // each saga so that they are all "active" and listening.
@@ -26,5 +10,6 @@ import { freeSearchFlow } from './containers/SearchApp/saga';
 export default function* rootSaga() {
  yield fork(freeSearchFlow);
  yield fork(getCategoryFlow);
- yield fork(getIntroCategoryFlow);
+ yield fork(getEditorPostFlow);
+ yield fork(getRecentPostFlow);
 }

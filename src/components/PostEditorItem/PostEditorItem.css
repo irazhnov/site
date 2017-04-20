@@ -1,23 +1,25 @@
 :local(.editorItemContainer){
-  margin: 5px 5px 25px 5px;
+  margin: 5px 5px 20px 5px;
 }
-:local(.postItemContent){
+:local(.editorItemContent){
   overflow-x: hidden;
   overflow-y: auto;
   padding: 10px 10px 10px 10px;
   border-top: 1px solid #575757;
   border-left: 1px solid #575757;
   border-right: 1px solid #575757;
+  background-color: white;
 }
 
 :local(.editorHeader){
   padding: 0;
   display: inline-flex;
+
 }
 :local(.editorImage){
   width: 130px;
-  height: 150px;
-  margin-right: 5px;
+  /*height: 150px;*/
+  /*margin-right: 5px;*/
 }
 
 :local(.postTitle),
@@ -29,6 +31,9 @@
   color: #333333;
 }
 
+:local(.contentContainer){
+  margin-left: 5px;
+}
 :local(.editorText){
   font-size: 16px;
 }
@@ -38,11 +43,13 @@
 }
 
 :local(.imageContainer){
-
+  background-color: #102512;
+  display: flex;
+  align-items: center;
 }
 
 :local(.postTitle){
-  padding-left: 15px;
+  /*padding-left: 15px;*/
   /*line-height: 30px;*/
 }
 
@@ -51,7 +58,7 @@
 }
 :local(.readMore){
   font-family: "OpenSansRegular";
-  font-size: 18px;
+  font-size: 16px;
   width: 100%;
   height: 50px;
   border: 1px solid #333333;

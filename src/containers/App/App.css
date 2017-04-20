@@ -19,54 +19,12 @@
     visibility: hidden;
 }
 
-:local(.searchHeader),
-:local(.menuButton),
-:local(.selectedHeader) {
-    height: 36px;
-}
-:local(.searchHeader){
-    width: 100%;
-    background-color: #245428;
-    display: inline-flex;
-}
+
 
 :local(.postContainer){
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-}
-
-:local(.menuButton) {
-    background-color: #102612;
-    display: inline-flex;
-    width: 100%;
-}
-
-:local(.selectedHeader) {
-    background-color:  #245428;
-}
-
-:local(.menuIcon) {
-    padding: 5px 20px;
-}
-:local(.menuLine) {
-    height:5px;
-    width: 40px;
-    margin-bottom: 5px;
-    background-color: #2b7831;
-}
-
-:local(.searchInput svg) {
-    float: right;
-    margin: 5px;
-}
-:local(.searchInput) {
-    width: 100%;
-    padding: 0 10px;
-    line-height: 26px;
-    background-color: white;
-    border: 1px solid #333333;
-    margin: 5px 10px;
 }
 
 :local(.logo) {

@@ -26,27 +26,3 @@ export function* getCategory(options) {
 export function* getCategoryFlow() {
   yield* takeLatest(types.FETCHING_CATEGORY_REQUESTED, getCategory);
 }
-
-export function* getIntroCategory(options) {
-  try {
-    const dicClient = new DicClient.DefaultApi();
-//     dicClient.diabetesTherapiesGet(1, callback);
-    yield put({ type: types.FETCHING_INTRO, fetching: true });
-    const editor =  yield call([dicClient, dicClient.getCategoryPostsGet], options.category, options.page, options.per_page);
-    const recent =  yield call([dicClient, dicClient.getRecentPostsGet], options.page, options.per_page);
-    const intro = {
-      editor: editor,
-      recent: recent,
-    };
-    yield put({ type: types.FETCHING_INTRO, fetching: false });
-    yield put({ type: types.FETCHING_INTRO_SUCCEEDED, intro});
-  } catch (e) {
-    console.error(e);
-    yield put({ type: types.FETCHING_INTRO, fetching: false });
-    yield put({ type: types.FETCHING_INTRO_FAILED, message: e, error: true, payload: e });
-  }
-}
-
-export function* getIntroCategoryFlow() {
-  yield* takeLatest(types.FETCHING_INTRO_REQUESTED, getIntroCategory);
-}
