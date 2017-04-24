@@ -1,6 +1,7 @@
 :local(.editorPageContainer) {
   position: relative;
   top: -25px;
+  height: 100%;
 }
 :local(.latestArticleTitle) {
   font-family: 'OpenSansRegular';
@@ -10,4 +11,12 @@
   width: 100%;
   text-align: center;
   padding-bottom: 20px;
+}
+
+:global(.introList) {
+  overflow-y: auto;
+  height: calc(100% - 394pt);
+  position: relative;
+  padding: 0;
+  margin: 5px;
 }

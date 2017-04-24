@@ -7,6 +7,8 @@ import styles from './Intro.css';
 import icons from '../../icons';
 import Intro from '../../components/Intro';
 
+const PER_PAGE = 10;
+
 @connect(state => ({
   fetching: state.intro.fetching,
   editor: state.intro.editor,
@@ -28,11 +30,21 @@ export default class IntroApp extends  Component {
     };
     this.actions = bindActionCreators(IntroActions, props.dispatch);
     this.goToSearch = ::this.goToSearch;
+    this.getRecentPosts = ::this.getRecentPosts;
   }
 
   componentWillMount() {
-    this.actions.getEditorPost();
-    this.actions.getRecentPosts();
+    if(!this.props.editor) {
+      this.actions.getEditorPost();
+    }
+    if (!this.props.recent) {
+      this.actions.getRecentPosts(1, PER_PAGE);
+    }
+  }
+
+  getRecentPosts() {
+   const page = this.props.recent && this.props.recent.posts && this.props.recent.posts.length ? this.props.recent && this.props.recent.posts && this.props.recent.posts.length / PER_PAGE + 1 : 1;
+    this.actions.getRecentPosts(page, PER_PAGE);
   }
 
   goToSearch() {
@@ -57,18 +69,26 @@ export default class IntroApp extends  Component {
             <div className={'menuLine'}></div>
             <div className={'menuLine'}></div>
           </div>
-          <span className={styles.menuTitle}>MENU</span>
-          <div className={styles.logo}>
+          <span className={'menuTitle'}>MENU</span>
+          <div className={'logo'}>
             <icons.Logo />
           </div>
         </div>
         <div className={'selectedHeader'}></div>
         { this.props.editor && this.props.recent &&
-          <Intro editor={this.props.editor} recent={this.props.recent} />
+          <Intro
+            editor={this.props.editor}
+            recent={this.props.recent}
+            getRecentPosts={this.getRecentPosts}
+          />
         }
         {
           this.props.fetching &&
           <div className={'loadingContainer'}>
+            <div className={styles.logoContainer}>
+              <icons.LogoFull />
+            </div>
+
             <div className={'spinner'} />
           </div>
         }

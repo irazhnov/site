@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment'
 import styles from './PostsListItem.css';
+import icons from '../../icons';
 
 export default class PostsListItem extends Component {
   static propTypes = {
@@ -46,8 +47,14 @@ export default class PostsListItem extends Component {
         </div>
         {
           this.props.mode === '' &&
-          <button className={styles.readMore} onClick={() => { this.props.activatePost(post) }}
-          >READ MORE</button>
+          <div>
+            <div className={styles.readMore} onClick={() => { this.props.activatePost(post) }}
+              >READ MORE
+              <div className={styles.shareIcon}>
+                <icons.Share />
+              </div>
+            </div>
+          </div>
         }
       </div>
     )

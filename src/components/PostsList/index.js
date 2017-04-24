@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-
+import classnames from 'classnames';
 import PostsListItem from '../../components/PostsListItem';
 import styles from './PostsList.css';
+
 
 export default class PostsList extends Component {
   static propTypes = {
@@ -64,7 +65,7 @@ export default class PostsList extends Component {
   render () {
     const { posts } = this.props;
     return (
-      <ul className={styles.postList}
+      <ul className={classnames(this.props.styles ? this.props.styles : styles.postList)}
            onScroll={this.handleScroll}>
         {
           this.props.posts.map((item, i) =>

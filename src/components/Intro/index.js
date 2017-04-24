@@ -8,6 +8,7 @@ export default class Intro extends Component {
   static propTypes = {
     editor: PropTypes.shape({}),
     recent: PropTypes.shape({}),
+    getRecentPosts: PropTypes.func.isRequired,
 //     post: PropTypes.shape({
 //       id:PropTypes.string.isRequired,
 //       thumbnail:PropTypes.string.isRequired,
@@ -24,14 +25,15 @@ export default class Intro extends Component {
           editor={this.props.editor}
           activatePost={()=> {}}/>
         <div className={styles.latestArticleTitle}>LATEST ARTICLES</div>
-        <PostRecentItem
-          recent={this.props.recent}
-          activatePost={()=> {}}/>
-        {/*<PostsList*/}
-          {/*numFound={this.props.category.post_count}*/}
-          {/*posts={this.props.app.posts}*/}
-          {/*activatePost={this.activatePost}*/}
-          {/*getCategory={this.getCategory}/>*/}
+        {/*<PostRecentItem*/}
+          {/*recent={this.props.recent}*/}
+          {/*activatePost={()=> {}}/>*/}
+        <PostsList
+          styles={'introList'}
+          numFound={this.props.recent.pages}
+          posts={this.props.recent.posts}
+          activatePost={this.activatePost}
+          getCategory={this.props.getRecentPosts}/>
         }
       </div>
     );

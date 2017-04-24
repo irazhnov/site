@@ -5,14 +5,33 @@
   background-color: #2b7831;
 }
 
+:global(.logo) {
+  width: 100%;
+  padding: 5px;
+}
+
+:global(.logo svg) {
+  float: right;
+}
+
 :global(.searchHeader),
 :global(.menuButton),
 :global(.selectedHeader) {
   height: 36px;
 }
+
+:global(.menuTitle) {
+  font-family: "OpenSansRegular";
+  font-size: 16px;
+  letter-spacing: 1.05px;
+  color: #2c6230;
+  line-height: 36px;
+}
+
 :global(.selectedHeader) {
   background-color:  #245428;
 }
+
 :global(.searchHeader){
   width: 100%;
   background-color: #245428;
@@ -31,8 +50,9 @@
 
 :global(.searchInput svg) {
   float: right;
-  margin: 5px;
+  margin: 2px 0;
 }
+
 :global(.searchInput) {
   width: 100%;
   padding: 0 10px;
@@ -40,4 +60,8 @@
   background-color: white;
   border: 1px solid #333333;
   margin: 5px 10px;
+}
+
+:local(.logoContainer) {
+  padding-bottom: 20px;
 }

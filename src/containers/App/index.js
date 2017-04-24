@@ -67,7 +67,6 @@ export default class App extends Component {
     this.receivedEvent = ::this.receivedEvent;
     this.addBanner = ::this.addBanner;
     this.onDeviceReady = ::this.onDeviceReady;
-    this.successCreateBannerView = ::this.successCreateBannerView;
     this.getCategory = ::this.getCategory;
     this.manageMenuVisibility = ::this.manageMenuVisibility;
     this.activatePost = ::this.activatePost;
@@ -150,8 +149,8 @@ export default class App extends Component {
             <div className={'menuLine'}></div>
             <div className={'menuLine'}></div>
           </div>
-          <span className={styles.menuTitle}>MENU</span>
-          <div className={styles.logo}>
+          <span className={'menuTitle'}>MENU</span>
+          <div className={'logo'}>
             <icons.Logo />
           </div>
         </div>

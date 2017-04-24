@@ -13,6 +13,7 @@
     margin: 5px 20px 15px 20px;
     border: 3px solid rgba(236, 63, 105, 0);
     outline: none;
+    color: #2a2a2a;
 }
 
 :local(.loginLabel)
@@ -29,7 +30,6 @@
 ::-webkit-input-placeholder {
     color: #9f9f9f;
 }
-
 
 :local(.loginWarning),
 :local(.loginWarningMatch){

@@ -49,6 +49,11 @@
 :global(.created){
   color: #008ed7;
 }
+:local(.shareIcon){
+  position: absolute;
+  left: 80%;
+  margin-top: -48px;
+}
 :local(.readMore){
   font-family: "OpenSansRegular";
   font-size: 18px;
@@ -58,4 +63,6 @@
   background-color: #f7f7f7;
   color: #575757;
   outline: none;
+  text-align: center;
+  line-height: 50px;
 }

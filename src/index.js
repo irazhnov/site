@@ -56,7 +56,7 @@ ReactDOM.render(
     <Provider store={store}>
       <Router history={history}>
         <Route path="/intro" component={IntroApp} />
-        <Route path="/categories" onEnter={checkAuth} component={App} />
+        <Route path="/categories" component={App} />
         <Route path="/search" component={SearchApp} />
         <Route path="/" component={IntroApp}>
           <IndexRedirect to="/intro" />

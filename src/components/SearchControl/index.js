@@ -79,6 +79,10 @@ export default class SearchControl extends Component {
           ref={(c) =>{ this.input = c; }}
           className={styles.searchInput} placeholder="Search"
           onChange={this.onChange}/>
+          <div className={styles.searchLensLogo}>
+            <icons.SearchLens />
+          </div>
+
         </div>
         {
           this.props.fetching && this.query !== '' &&

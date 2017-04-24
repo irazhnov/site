@@ -1,6 +1,10 @@
 import React, { Component, PropTypes } from 'react';
+import classnames from 'classnames';
 import menuMock from '../../Utils/menuMock';
 import MainMenuItem from '../MainMenuItem';
+import icons from '../../icons';
+import styles from './MainMenu.css';
+
 
 export default class ManinMenu extends Component {
 
@@ -37,6 +41,9 @@ export default class ManinMenu extends Component {
             />
           )
         }
+        <div className={classnames('logo', styles.menuLogo)}>
+          <icons.LogoMenu />
+        </div>
       </div>
     )
   }
