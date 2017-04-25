@@ -20,7 +20,11 @@ export function cleanCategory() {
   }
 }
 
-
+/**
+ *
+ * @param post
+ * @returns {{type, post: *}}
+ */
 export function selectedPost(post) {
   return {
     type: types.SELECT_POST,

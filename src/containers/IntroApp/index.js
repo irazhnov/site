@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import * as IntroActions from './actions';
+import * as AppActions from '../App/actions';
 import styles from './Intro.css';
 import icons from '../../icons';
 import Intro from '../../components/Intro';
@@ -31,6 +32,7 @@ export default class IntroApp extends  Component {
     this.actions = bindActionCreators(IntroActions, props.dispatch);
     this.goToSearch = ::this.goToSearch;
     this.getRecentPosts = ::this.getRecentPosts;
+    this.activatePost = ::this.activatePost;
   }
 
   componentWillMount() {
@@ -53,6 +55,11 @@ export default class IntroApp extends  Component {
 
   openMenu() {
     browserHistory.push('/categories');
+  }
+
+  activatePost(post) {
+    bindActionCreators(AppActions, this.props.dispatch).selectedPost(post);
+    browserHistory.push('/post');
   }
 
   render() {
@@ -84,6 +91,7 @@ export default class IntroApp extends  Component {
             editor={this.props.editor}
             recent={this.props.recent}
             getRecentPosts={this.getRecentPosts}
+            activatePost={this.activatePost}
           />
         }
         {

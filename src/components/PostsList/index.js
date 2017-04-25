@@ -13,15 +13,20 @@ export default class PostsList extends Component {
       excerpt:PropTypes.string.isRequired,
       content:PropTypes.string.isRequired,
     }).isRequired),
+    activatePost: PropTypes.func.isRequired,
     getCategory: PropTypes.func.isRequired,
     numFound: PropTypes.number.isRequired,
     post: PropTypes.shape({
-      id:PropTypes.string.isRequired,
+      id:PropTypes.string,
     thumbnail:PropTypes.string.isRequired,
     title_plain:PropTypes.string.isRequired,
     excerpt:PropTypes.string.isRequired,
     content:PropTypes.string.isRequired,
   }).isRequired,
+  };
+
+  static defaultProps = {
+    post: null,
   };
 
   constructor(props) {
@@ -63,7 +68,6 @@ export default class PostsList extends Component {
   }
 
   render () {
-    const { posts } = this.props;
     return (
       <ul className={classnames(this.props.styles ? this.props.styles : styles.postList)}
            onScroll={this.handleScroll}>

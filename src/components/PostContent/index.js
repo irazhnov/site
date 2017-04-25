@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import moment from 'moment'
 import styles from './PostContent.css';
 import icons from '../../icons';
+import  { EDITOR_CATEGORY } from '../../containers/IntroApp/constants';
+
 
 export default class PostsLContent extends Component {
   static propTypes = {
@@ -39,8 +41,10 @@ export default class PostsLContent extends Component {
         <button className={styles.backButton} onClick={() => { this.props.returnToList() }}
         ><icons.NavArrow /><span>BACK</span></button>
         <div className={styles.postContainer}>
-          <img src={post.thumbnail}
-               alt=""/>
+          { post && post.categories && post.categories[0].slug !== EDITOR_CATEGORY &&
+            <img src={post.thumbnail}
+                 alt=""/>
+          }
           <div className={styles.contentContainer}>
             <div className={styles.titleContent} dangerouslySetInnerHTML={this.createTitle()} ></div>
             <div className={'created'}>{moment(post.date).format('MMMM Do, YYYY')}</div>

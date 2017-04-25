@@ -8,6 +8,7 @@ export default class Intro extends Component {
   static propTypes = {
     editor: PropTypes.shape({}),
     recent: PropTypes.shape({}),
+    activatePost: PropTypes.func.isRequired,
     getRecentPosts: PropTypes.func.isRequired,
 //     post: PropTypes.shape({
 //       id:PropTypes.string.isRequired,
@@ -18,12 +19,14 @@ export default class Intro extends Component {
 //     }).isRequired,
   };
 
+
+
   render () {
     return (
       <div className={styles.editorPageContainer}>
         <PostEditorItem
           editor={this.props.editor}
-          activatePost={()=> {}}/>
+          activatePost={this.props.activatePost}/>
         <div className={styles.latestArticleTitle}>LATEST ARTICLES</div>
         {/*<PostRecentItem*/}
           {/*recent={this.props.recent}*/}
@@ -32,7 +35,7 @@ export default class Intro extends Component {
           styles={'introList'}
           numFound={this.props.recent.pages}
           posts={this.props.recent.posts}
-          activatePost={this.activatePost}
+          activatePost={this.props.activatePost}
           getCategory={this.props.getRecentPosts}/>
         }
       </div>
