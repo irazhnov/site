@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default () => (
-  <svg id="Isolation_Mode" dataName="Isolation Mode" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 98.7" width="60px" height="25px" style={{ fill: '#575757' }}>
+  <svg id="Isolation_Mode" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 98.7" width="60px" height="25px" style={{ fill: '#575757' }}>
     <path d="M57,34.7H49a3,3,0,0,0,0,6h8a5,5,0,0,1,5,5v42a5,5,0,0,1-5,5H11a5,5,0,0,1-5-5v-42a5,5,0,0,1,5-5h8a3,3,0,0,0,0-6H11a11,11,0,0,0-11,11v42a11,11,0,0,0,11,11H57a11,11,0,0,0,11-11v-42A11,11,0,0,0,57,34.7Z"/>
     <path d="M34,61.7a3,3,0,0,0-3,3v3a3,3,0,0,0,6,0v-3A3,3,0,0,0,34,61.7Z"/>
     <path d="M18.42,22.82,31,10.24V55.7a3,3,0,0,0,6,0V10.24L49.58,22.82a3.07,3.07,0,0,0,4.24,0,3,3,0,0,0,0-4.24L36.12.88a3,3,0,0,0-4.24,0l-17.7,17.7a3,3,0,1,0,4.24,4.24Z"/>

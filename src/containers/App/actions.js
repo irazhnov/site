@@ -19,3 +19,11 @@ export function cleanCategory() {
     type: types.CLEAN_CATEGORY,
   }
 }
+
+
+export function selectedPost(post) {
+  return {
+    type: types.SELECT_POST,
+    post: post,
+  }
+}

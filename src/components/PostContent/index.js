@@ -13,7 +13,14 @@ export default class PostsLContent extends Component {
       title_plain:PropTypes.string.isRequired,
       excerpt:PropTypes.string.isRequired,
       content:PropTypes.string.isRequired,
-    }).isRequired,
+    }),
+  };
+
+  static defaultProps = {
+    post: {
+      thumbnail: '',
+      date: {},
+    },
   };
 
   constructor(props) {
@@ -28,7 +35,7 @@ export default class PostsLContent extends Component {
   render () {
     const { post } = this.props;
     return (
-      <div>
+      <div className={styles.postPageContainer}>
         <button className={styles.backButton} onClick={() => { this.props.returnToList() }}
         ><icons.NavArrow /><span>BACK</span></button>
         <div className={styles.postContainer}>

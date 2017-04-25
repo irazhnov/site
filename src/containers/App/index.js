@@ -6,9 +6,9 @@ import classnames from 'classnames';
 
 import MainMenu from '../../components/MainMenu';
 import PostsList from '../../components/PostsList';
-import PostContent from '../../components/PostContent';
-import Intro from '../../components/Intro';
-import Ad from '../../components/Ad';
+// import PostContent from '../../components/PostContent';
+// import Intro from '../../components/Intro';
+// import Ad from '../../components/Ad';
 import * as AppActions from './actions';
 import styles from './App.css';
 import icons from '../../icons';
@@ -61,7 +61,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMenuVisible: false,
+      isMenuVisible: true,
       postMode: false,
     };
     this.receivedEvent = ::this.receivedEvent;
@@ -72,6 +72,7 @@ export default class App extends Component {
     this.activatePost = ::this.activatePost;
     this.returnToList = ::this.returnToList;
     this.goToSearch = ::this.goToSearch;
+    this.cleanCategory = ::this.cleanCategory;
 
     this.currentCategory = '';
     this.actions = bindActionCreators(AppActions, props.dispatch);
@@ -118,7 +119,9 @@ export default class App extends Component {
   }
   
   activatePost(post) {
-    this.setState({ postMode: post});
+//     this.setState({ postMode: post});
+    this.actions.selectedPost(post);
+    browserHistory.push('/post');
   }
 
   returnToList() {
@@ -127,6 +130,12 @@ export default class App extends Component {
 
   goToSearch() {
     browserHistory.push('/search');
+  }
+
+  cleanCategory(e) {
+    e.stopPropagation();
+    this.actions.cleanCategory();
+    browserHistory.push('/intro');
   }
 
   render() {
@@ -159,7 +168,7 @@ export default class App extends Component {
           { !this.state.isMenuVisible && title &&
             <div
               className={styles.categoryTitle}
-              onClick={(e) => {e.stopPropagation(); this.actions.cleanCategory()}}
+              onClick={this.cleanCategory}
             >
               <div className={styles.backToIntro}>
                 <icons.NavArrow />
@@ -175,7 +184,7 @@ export default class App extends Component {
           <MainMenu
             getCategory={this.getCategory}/>
         </div>
-        <div className={styles.postContainer}>
+        <div className={styles.postListContainer}>
           { !this.state.isMenuVisible && !this.state.postMode && this.props.app && this.props.app.posts.length > 0 && this.props.app.category &&
           <PostsList
             numFound={this.props.app.category.post_count}
@@ -189,9 +198,9 @@ export default class App extends Component {
               <div className={'spinner'} />
             </div>
           }
-          { this.state.postMode &&
-          <PostContent post={this.state.postMode} returnToList={this.returnToList}/>
-          }
+          {/*{ this.state.postMode &&*/}
+          {/*<PostContent post={this.state.postMode} returnToList={this.returnToList}/>*/}
+          {/*}*/}
         </div>
         {this.props.children}
       </div>

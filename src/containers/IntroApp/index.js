@@ -51,6 +51,10 @@ export default class IntroApp extends  Component {
     browserHistory.push('/search');
   }
 
+  openMenu() {
+    browserHistory.push('/categories');
+  }
+
   render() {
     return (
       <div style={{height: '100%'}}>
@@ -63,7 +67,7 @@ export default class IntroApp extends  Component {
             <icons.SearchLens />
           </div>
         </div>
-        <div className={'menuButton'} >
+        <div className={'menuButton'} onClick={this.openMenu}>
           <div className={'menuIcon'}>
             <div className={'menuLine'}></div>
             <div className={'menuLine'}></div>

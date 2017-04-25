@@ -70,7 +70,7 @@ export default class SearchApp extends Component {
 
   backToMenu() {
     this.actions.cleanSearch();
-    browserHistory.push('/categories');
+    browserHistory.goBack();
   }
 
   goToPost(post) {

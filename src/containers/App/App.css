@@ -19,7 +19,7 @@
     visibility: hidden;
 }
 
-:local(.postContainer){
+:local(.postListContainer){
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;

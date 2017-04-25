@@ -12,6 +12,7 @@ import rootSaga from './sagas';
 import IntroApp from './containers/IntroApp';
 import App from './containers/App';
 import SearchApp from './containers/SearchApp';
+import PostApp from './containers/PostApp';
 import NotFound from './containers/NotFound';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -58,9 +59,11 @@ ReactDOM.render(
         <Route path="/intro" component={IntroApp} />
         <Route path="/categories" component={App} />
         <Route path="/search" component={SearchApp} />
+        <Route path="/post" component={PostApp} />
         <Route path="/" component={IntroApp}>
           <IndexRedirect to="/intro" />
             <Route path="/categories/:categoryId" component={App} />
+
            {/*  <Route path="/article/:articleId/edit" component={WriterApp} />
           <Route path="/articles" component={ArticlesList} />
           <Route path="/articles/folder/:folderId" component={ArticlesList} />

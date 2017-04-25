@@ -3,10 +3,14 @@ import * as types from './constants';
 const initialState = {
   intro: null,
   fetching: false,
-    count: 0,
-    pages: 0,
-    category: {},
-    posts: [],
+  count: 0,
+  pages: 0,
+  category: {},
+  posts: [],
+  selectedPost: {
+    thumbnail: '',
+    date: {},
+  },
 };
 
 function reducer(state = initialState, action) {
@@ -43,6 +47,11 @@ function reducer(state = initialState, action) {
           editor: action.intro.editor,
           recent: action.intro.recent,
         },
+      };
+    case types.SELECT_POST:
+      return {
+        ...state,
+        selectedPost: action.post ? action.post : initialState.selectedPost,
       };
     default:
       return state;

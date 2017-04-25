@@ -6,6 +6,8 @@ export const FETCHING_CATEGORY_REQUESTED = 'FETCHING_CATEGORY_REQUESTED';
 export const EDITOR_CATEGORY = 'letter-from-editor';
 export const CLEAN_CATEGORY = 'CLEAN_CATEGORY';
 
+export const SELECT_POST = 'SELECT_POST';
+
 
 
 
