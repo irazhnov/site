@@ -19,9 +19,13 @@ export default class Intro extends Component {
 //     }).isRequired,
   };
 
-
-
   render () {
+    const recentPosts = this.props.recent.posts.filter((post) => {
+      return post.categories[0].slug !== 'jobs-from-indeed' &&
+        post.categories[0].slug !== 'letter-from-editor' &&
+        post.categories[0].slug !== 'test-your-knowledge';
+    });
+
     return (
       <div className={styles.editorPageContainer}>
         <PostEditorItem
@@ -34,7 +38,7 @@ export default class Intro extends Component {
         <PostsList
           styles={'introList'}
           numFound={this.props.recent.pages}
-          posts={this.props.recent.posts}
+          posts={recentPosts}
           activatePost={this.props.activatePost}
           getCategory={this.props.getRecentPosts}/>
         }

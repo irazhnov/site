@@ -71,7 +71,7 @@ export default class PostsList extends Component {
     return (
       <ul className={classnames(this.props.styles ? this.props.styles : styles.postList)}
            onScroll={this.handleScroll}>
-        {
+        { this.props.posts &&
           this.props.posts.map((item, i) =>
             <PostsListItem
               key={item.id}
