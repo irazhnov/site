@@ -20,9 +20,9 @@
 }
 
 :local(.postListContainer){
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    height: calc(100% - 108px);
+    overflow: hidden;
+    /*overflow-y: auto;*/
 }
 
 :local(.backToIntro) {
@@ -35,6 +35,7 @@
 :local(.categoryTitle) {
     width: 100%;
     display: inline-flex;
+    background-color: #245428;
 }
 :local(.categoryTitle span) {
     font-family: "OpenSansLight";

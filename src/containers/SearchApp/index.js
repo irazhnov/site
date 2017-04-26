@@ -52,7 +52,10 @@ export default class SearchApp extends Component {
   }
 
   componentWillMount() {
-//     this.actions.makeSearch('diabetes');
+    let ad = document.querySelector('#hiper-dic-leadtop9');
+    if (ad) {
+      ad.setAttribute('style', 'top: 55px; position: absolute; width: 320px; height: 50px ')
+    }
   }
 
   makeSearch(query) {
@@ -94,7 +97,6 @@ export default class SearchApp extends Component {
             goToPost={this.goToPost}
           />
         }
-
         { this.state.postMode &&
         <PostContent post={this.state.postMode} returnToList={this.returnToList}/>
         }

@@ -31,10 +31,16 @@
   padding-right: 25px;
 }
 
-:local(.searchListContainer) {
-  padding: 10px 0;
-  overflow-y: auto;
+:local(.listContainer) {
+  padding: 0;
+  overflow: hidden;
   height: calc(100% - 55px);
+}
+:local(.searchListContainer) {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow-y: auto;
   position: relative;
 }
 

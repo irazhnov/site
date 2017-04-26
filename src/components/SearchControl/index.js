@@ -91,16 +91,18 @@ export default class SearchControl extends Component {
           </div>
         }
         { posts &&
-        <ul className={styles.searchListContainer} onScroll={this.handleScroll}>
-          {
-          posts.map((item) =>
-          <SearchListItem
-            key={item.id}
-            post={item}
-            goToPost={this.props.goToPost}
-          />
-          )}
-      </ul>
+        <div className={styles.listContainer}>
+          <ul className={styles.searchListContainer} onScroll={this.handleScroll}>
+            {
+            posts.map((item) =>
+            <SearchListItem
+              key={item.id}
+              post={item}
+              goToPost={this.props.goToPost}
+            />
+            )}
+          </ul>
+        </div>
       }
       </div>
     )

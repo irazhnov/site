@@ -1,27 +1,7 @@
 :local(.postList){
   overflow-y: auto;
-  height: calc(100% - 96pt);
+  height: 100%;
   position: relative;
   padding: 0;
   margin: 5px;
-}
-
-/* (ldpi) Android*/
-@media only screen and (-webkit-device-pixel-ratio:.75){
-  /* CSS  */
-}
-
-/* (mdpi) Android*/
-@media only screen and (min-device-width : 480px) and (max-device-width : 800px) {
-  /* CSS  */
-}
-
-/* (hdpi) Android*/
-@media only screen and (-webkit-device-pixel-ratio:1.5){
-  /* CSS  */
-}
-
-/* iPads (portrait and landscape) */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-  /* CSS Instructions */
 }

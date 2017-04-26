@@ -35,13 +35,14 @@ export default class Intro extends Component {
         {/*<PostRecentItem*/}
           {/*recent={this.props.recent}*/}
           {/*activatePost={()=> {}}/>*/}
-        <PostsList
-          styles={'introList'}
-          numFound={this.props.recent.pages}
-          posts={recentPosts}
-          activatePost={this.props.activatePost}
-          getCategory={this.props.getRecentPosts}/>
-        }
+        <div className={styles.postListContainer}>
+          <PostsList
+            styles={'introList'}
+            numFound={this.props.recent.pages}
+            posts={recentPosts}
+            activatePost={this.props.activatePost}
+            getCategory={this.props.getRecentPosts}/>
+          </div>
       </div>
     );
   }

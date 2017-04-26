@@ -13,10 +13,16 @@
   padding-bottom: 10px;
 }
 
+:local(.postListContainer) {
+  height: calc(100% - 376pt);
+  overflow: hidden;
+  padding: 0;
+  margin: 0 5px;
+}
 :global(.introList) {
   overflow-y: auto;
-  height: calc(100% - 376pt);
+  height: 100%;
   position: relative;
   padding: 0;
-  margin: 5px;
+  margin: 0;
 }
