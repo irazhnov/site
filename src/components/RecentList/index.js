@@ -11,7 +11,7 @@ export default class PostsList extends Component {
       title_plain:PropTypes.string.isRequired,
       excerpt:PropTypes.string.isRequired,
       content:PropTypes.string.isRequired,
-    }).isRequired),
+    })),
     getCategory: PropTypes.func.isRequired,
     numFound: PropTypes.number.isRequired,
     post: PropTypes.shape({
@@ -21,6 +21,10 @@ export default class PostsList extends Component {
       excerpt:PropTypes.string.isRequired,
       content:PropTypes.string.isRequired,
     }).isRequired,
+  };
+
+  static defaultProps ={
+    posts: null,
   };
 
   constructor(props) {
@@ -66,7 +70,7 @@ export default class PostsList extends Component {
     return (
       <ul className={styles.postList}
           onScroll={this.handleScroll}>
-        {
+        { this.props.posts &&
           this.props.posts.map((item, i) =>
             <PostsListItem
               key={item.id}

@@ -1,4 +1,4 @@
-import { takeLatest } from 'redux-saga';
+import { takeLatest, delay } from 'redux-saga';
 import { put, call } from 'redux-saga/effects';
 
 import * as types from './constants';
@@ -28,6 +28,7 @@ export function* getRecentPost(options) {
   try {
     const dicClient = new DicClient.DefaultApi();
     yield put({ type: types.FETCHING_RECENT, fetching: true });
+    yield delay(350);
     const recent =  yield call([dicClient, dicClient.getRecentPostsGet], options.page, options.per_page);
     yield put({ type: types.FETCHING_RECENT, fetching: false });
     yield put({ type: types.FETCHING_RECENT_SUCCEEDED, recent});

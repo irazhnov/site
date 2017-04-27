@@ -1,7 +1,7 @@
 :local(.editorPageContainer) {
   position: relative;
   top: -25px;
-  height: 100%;
+  height: calc(100% - 108px);
 }
 :local(.latestArticleTitle) {
   font-family: 'OpenSansRegular';
@@ -14,7 +14,7 @@
 }
 
 :local(.postListContainer) {
-  height: calc(100% - 376pt);
+  height: calc(100% - 287pt);
   overflow: hidden;
   padding: 0;
   margin: 0 5px;
@@ -25,4 +25,8 @@
   position: relative;
   padding: 0;
   margin: 0;
+}
+
+:local(.spinner) {
+  transform: translate(-50%, 75%);
 }

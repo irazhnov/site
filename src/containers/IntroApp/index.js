@@ -1,4 +1,5 @@
 import React, { Component, PropTypes}  from 'react';
+import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
@@ -12,6 +13,7 @@ const PER_PAGE = 10;
 
 @connect(state => ({
   fetching: state.intro.fetching,
+  fetchingRecent: state.intro.fetchingRecent,
   editor: state.intro.editor,
   recent: state.intro.recent,
 }))
@@ -39,7 +41,7 @@ export default class IntroApp extends  Component {
     if(!this.props.editor) {
       this.actions.getEditorPost();
     }
-    if (!this.props.recent) {
+    if (this.props.recent.posts.length === 0) {
       this.actions.getRecentPosts(1, PER_PAGE);
     }
   }
@@ -88,6 +90,7 @@ export default class IntroApp extends  Component {
         <div className={'selectedHeader'}></div>
         { this.props.editor && this.props.recent &&
           <Intro
+            fetchingRecent={this.props.fetchingRecent}
             editor={this.props.editor}
             recent={this.props.recent}
             getRecentPosts={this.getRecentPosts}

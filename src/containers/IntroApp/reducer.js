@@ -2,12 +2,14 @@ import * as types from './constants';
 
 const initialState = {
   editor: null,
-  recent: null,
+  recent: {
+    posts: [],
+  },
   fetching: false,
+  fetchingRecent: false,
   count: 0,
   pages: 0,
   category: {},
-  posts: [],
 };
 
 function reducer(state = initialState, action) {
@@ -16,6 +18,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         fetching: action.fetching,
+      };
+    case types.FETCHING_RECENT:
+      return {
+        ...state,
+        fetchingRecent: action.fetching,
       };
     case types.FETCHING_INTRO_SUCCEEDED:
       return {
@@ -28,8 +35,14 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         recent: {
-          ...action.recent,
-        }
+          count: action.recent.count,
+          count_total: action.recent.count_total,
+          pages: action.recent.pages,
+          posts: [
+            ...state.recent.posts,
+            ...action.recent.posts,
+          ]
+        },
       };
     default: return state;
   }

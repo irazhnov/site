@@ -6,6 +6,7 @@ import styles from './Intro.css';
 
 export default class Intro extends Component {
   static propTypes = {
+    fetchingRecent: PropTypes.bool,
     editor: PropTypes.shape({}),
     recent: PropTypes.shape({}),
     activatePost: PropTypes.func.isRequired,
@@ -43,6 +44,13 @@ export default class Intro extends Component {
             activatePost={this.props.activatePost}
             getCategory={this.props.getRecentPosts}/>
           </div>
+        { this.props.fetchingRecent &&
+          <div className={'loadingContainer'}>
+            <div className={styles.logoContainer}>
+            </div>
+            <div className={'spinner'} />
+          </div>
+        }
       </div>
     );
   }
