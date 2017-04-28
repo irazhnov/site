@@ -64,9 +64,6 @@ export default class App extends Component {
       isMenuVisible: true,
       postMode: false,
     };
-    this.receivedEvent = ::this.receivedEvent;
-    this.addBanner = ::this.addBanner;
-    this.onDeviceReady = ::this.onDeviceReady;
     this.getCategory = ::this.getCategory;
     this.manageMenuVisibility = ::this.manageMenuVisibility;
     this.activatePost = ::this.activatePost;
@@ -78,24 +75,11 @@ export default class App extends Component {
     this.actions = bindActionCreators(AppActions, props.dispatch);
   }
 
-  componentWillMount() {
-//     this.actions.getIntroData();
-
-    document.addEventListener('deviceready', this.onDeviceReady, false);
-  }
-
-  onDeviceReady() {
-    this.receivedEvent('deviceready');
-  }
-
-  receivedEvent (id) {
-//     this.addBanner();
-    console.log('Received Event: ' + id);
-  }
-
-  addBanner() {
-    return;
-    console.warn('window.plugins.AdMob' + window.AdMob);
+  componentDidMount() {
+    let ad = document.querySelector('#hiper-dic-leadtop9');
+    if (ad) {
+      ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%);')
+    }
   }
 
   getCategory(category) {

@@ -51,10 +51,10 @@ export default class SearchApp extends Component {
     this.actions =  bindActionCreators(SearchActions, props.dispatch);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let ad = document.querySelector('#hiper-dic-leadtop9');
     if (ad) {
-      ad.setAttribute('style', 'top: 55px; position: absolute; width: 320px; height: 50px ')
+      ad.setAttribute('style', 'top: 55px; left: 50%; position: absolute; width: 320px; height: 50px; transform: translateX(-50%);')
     }
   }
 

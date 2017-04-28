@@ -46,6 +46,13 @@ export default class IntroApp extends  Component {
     }
   }
 
+  componentDidMount() {
+    let ad = document.querySelector('#hiper-dic-leadtop9');
+    if (ad) {
+      ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%);')
+    }
+  }
+
   getRecentPosts() {
    const page = this.props.recent && this.props.recent.posts && this.props.recent.posts.length ? this.props.recent && this.props.recent.posts && this.props.recent.posts.length / PER_PAGE + 1 : 1;
     this.actions.getRecentPosts(page, PER_PAGE);

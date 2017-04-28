@@ -19,6 +19,13 @@ export default class PostApp extends Component {
     this.actions = bindActionCreators(AppActions, props.dispatch);
   }
 
+  componentDidMount() {
+    let ad = document.querySelector('#hiper-dic-leadtop9');
+    if (ad) {
+      ad.setAttribute('style', 'position: static; width: 320px; height: 50px;')
+    }
+  }
+
   returnToList() {
     this.actions.selectedPost(null);
     browserHistory.goBack();

@@ -20,7 +20,7 @@
 }
 
 :local(.postListContainer){
-    height: calc(100% - 108px);
+    height: calc(100% - 158px);
     overflow: hidden;
     /*overflow-y: auto;*/
 }
