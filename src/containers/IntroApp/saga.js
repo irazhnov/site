@@ -21,7 +21,7 @@ export function* getEditorPost(options) {
 }
 
 export function* getEditorPostFlow() {
-  yield* takeLatest(types.FETCHING_INTRO_REQUESTED, getEditorPost);
+  yield takeLatest(types.FETCHING_INTRO_REQUESTED, getEditorPost);
 }
 
 export function* getRecentPost(options) {
@@ -40,5 +40,5 @@ export function* getRecentPost(options) {
 }
 
 export function* getRecentPostFlow() {
-  yield* takeLatest(types.FETCHING_RECENT_REQUESTED, getRecentPost);
+  yield takeLatest(types.FETCHING_RECENT_REQUESTED, getRecentPost);
 }

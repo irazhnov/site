@@ -1,4 +1,4 @@
-import { takeLatest } from 'redux-saga';
+import { delay, takeLatest } from 'redux-saga';
 import { put, call } from 'redux-saga/effects';
 
 import * as types from './constants';
@@ -12,6 +12,7 @@ export function* getCategory(options) {
     const dicClient = new DicClient.DefaultApi();
 //     dicClient.diabetesTherapiesGet(1, callback);
     yield put({ type: types.FETCHING_CATEGORY, fetching: true });
+    yield delay(350);
     const feed =  yield call([dicClient, dicClient.getCategoryPostsGet], options.category, options.page, options.per_page);
 //     debugger;
     yield put({ type: types.FETCHING_CATEGORY, fetching: false });
@@ -24,5 +25,5 @@ export function* getCategory(options) {
 }
 
 export function* getCategoryFlow() {
-  yield* takeLatest(types.FETCHING_CATEGORY_REQUESTED, getCategory);
+  yield takeLatest(types.FETCHING_CATEGORY_REQUESTED, getCategory);
 }

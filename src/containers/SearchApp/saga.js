@@ -24,7 +24,7 @@ export function* freeSearch(options) {
 }
 
 export function* freeSearchFlow() {
-  yield* takeLatest(types.FETCHING_FREE_SEARCH_REQUESTED, freeSearch);
+  yield takeLatest(types.FETCHING_FREE_SEARCH_REQUESTED, freeSearch);
 }
 
 export function* freePaginatedSearch(options) {
@@ -45,5 +45,5 @@ export function* freePaginatedSearch(options) {
 }
 
 export function* freePaginatedSearchFlow() {
-  yield* takeLatest(types.FETCHING_PAGINATED_FREE_SEARCH_REQUESTED, freePaginatedSearch);
+  yield takeLatest(types.FETCHING_PAGINATED_FREE_SEARCH_REQUESTED, freePaginatedSearch);
 }
