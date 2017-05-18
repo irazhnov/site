@@ -1,0 +1,10 @@
+:local(.postImage) {
+  width: 100%;
+}
+:local(.created) {
+  padding-left: 15px;
+}
+:local(.imageContainer) {
+  height: 150px;
+  overflow: hidden;
+}

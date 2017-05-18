@@ -32,4 +32,5 @@
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#FFFFFF" />
     <preference name="StatusBarStyle" value="default" />
+    <preference name="Orientation" value="portrait" />
 </widget>

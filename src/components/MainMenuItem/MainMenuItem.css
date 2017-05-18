@@ -19,6 +19,8 @@
   left: 100%;
   top: 0;
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
   border-left: 1px solid #838383;
 }
 :local(.menuArrow){

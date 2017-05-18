@@ -75,12 +75,12 @@ export default class App extends Component {
     this.actions = bindActionCreators(AppActions, props.dispatch);
   }
 
-  componentDidMount() {
-    let ad = document.querySelector('#hiper-dic-leadtop9');
-    if (ad) {
-      ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%);')
-    }
-  }
+//   componentDidMount() {
+//     let ad = document.querySelector('#hiper-dic-leadtop9');
+//     if (ad) {
+//       ad.setAttribute('style', 'position: static; width: 320px; height: 50px;');
+//     }
+//   }
 
   getCategory(category) {
     if (category) {
@@ -99,7 +99,11 @@ export default class App extends Component {
   }
 
   manageMenuVisibility() {
-    this.setState({ isMenuVisible: !this.state.isMenuVisible });
+    if (this.props.app.posts.length > 0) {
+      this.setState({isMenuVisible: !this.state.isMenuVisible});
+    } else {
+      browserHistory.push('/intro');
+    }
   }
   
   activatePost(post) {
@@ -123,6 +127,13 @@ export default class App extends Component {
   }
 
   render() {
+    const ad = document.querySelector('#hiper-dic-leadtop9');
+    if (ad && this.state.isMenuVisible) {
+      ad.setAttribute('style', 'position: static; width: 320px; height: 50px;')
+    } else {
+      ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%);')
+    }
+
     const title = this.props.app && this.props.app.category ? this.props.app.category.title : '';
     return (
       <div style={{ height: '100%' }}>

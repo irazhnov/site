@@ -7,6 +7,16 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
+:local(.postContainer img){
+  width: 100%;
+  overflow: hidden;
+}
+
+:local(.postContainer p img){
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
 :local(.backButton svg) {
   float: left;

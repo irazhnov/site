@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment'
-import styles from '../PostsListItem/PostsListItem.css';
+import classnames from 'classnames';
+import stylesList from '../PostsListItem/PostsListItem.css';
+import styles from './PostRecentItem.css';
 
-export default class PostsListItem extends Component {
+export default class PostRecentItem extends Component {
   static propTypes = {
     activatePost: PropTypes.func.isRequired,
     mode: PropTypes.string,
@@ -43,24 +45,23 @@ export default class PostsListItem extends Component {
   createExcerpt(post) { return this.props.mode === '' ? {__html: post.excerpt} : {__html: post.content}; };
 
   render () {
-    const post = this.props.recent ? this.props.recent.posts[0] : {};
+    const { post } = this.props;
     return (
-      <div className={styles.postItemContainer}>
-        <div className={styles.postItemContent}>
-          <div className={styles.editorHeader}>
+      <div className={stylesList.postItemContainer}>
+        <div className={stylesList.postItemContent}>
+          <div className={styles.imageContainer}>
             <img
               className={styles.postImage}
               src={post.thumbnail}
               alt=""/>
-            <div className={styles.postTitle} dangerouslySetInnerHTML={this.createTitle(post)} ></div>
           </div>
-
-          <div className={'created'}>{moment(post.date).format('MMMM Do, YYYY')}</div>
-          <div className={styles.postsText} dangerouslySetInnerHTML={this.createExcerpt(post)} ></div>
+          <div className={stylesList.postTitle} dangerouslySetInnerHTML={this.createTitle(post)} ></div>
+          <div className={classnames('created', styles.created)}>{moment(post.date).format('MMMM Do, YYYY')}</div>
+          {/*<div className={stylesList.postsText} dangerouslySetInnerHTML={this.createExcerpt(post)} ></div>*/}
         </div>
         {
           this.props.mode === '' &&
-          <button className={styles.readMore} onClick={() => { this.props.activatePost(post) }}
+          <button className={stylesList.readMore} onClick={() => { this.props.activatePost(post) }}
           >READ MORE</button>
         }
       </div>

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import PostsListItem from '../../components/PostsListItem';
+import PostRecentItem from '../../components/PostRecentItem';
 import styles from './PostsList.css';
 
 
@@ -13,6 +14,7 @@ export default class PostsList extends Component {
       excerpt:PropTypes.string.isRequired,
       content:PropTypes.string.isRequired,
     }).isRequired),
+    typeItems: PropTypes.string.isRequired,
     activatePost: PropTypes.func.isRequired,
     getCategory: PropTypes.func.isRequired,
     numFound: PropTypes.number.isRequired,
@@ -27,6 +29,7 @@ export default class PostsList extends Component {
 
   static defaultProps = {
     post: null,
+    typeItems: '',
   };
 
   constructor(props) {
@@ -50,21 +53,6 @@ export default class PostsList extends Component {
       (listEl.offsetHeight * 2)) {
       this.props.getCategory();
     }
-
-    // changing paging numbers
-//     for (let i = 1; i <= this.props.adminTags.items.length; i += this.props.postsPerPage) {
-//       const postItem = this[`postItem${i}`] ? this[`postItem${i}`] : null;
-//
-//       if (postItem) {
-//         const offsetTop = postItem.offsetTop;
-//         //  magic minus calculation height of container
-//         if (listEl.scrollTop > offsetTop) {
-//           this.setState({
-//             currentPage: i === 1 ? 1 : Math.floor(i / this.props.postsPerPage) + 1,
-//           });
-//         }
-//       }
-//     }
   }
 
   render () {
@@ -73,12 +61,28 @@ export default class PostsList extends Component {
            onScroll={this.handleScroll}>
         { this.props.posts &&
           this.props.posts.map((item, i) =>
-            <PostsListItem
-              key={item.id}
-              ref={(c) => { this[`postItem${i + 1}`] = c; }}
-              post={item}
-              activatePost={this.props.activatePost}
-            />
+          <div>
+            { this.props.typeItems === '' &&
+              <PostsListItem
+                key={item.id}
+                ref={(c) => {
+                  this[`postItem${i + 1}`] = c;
+                }}
+                post={item}
+                activatePost={this.props.activatePost}
+              />
+            }
+            { this.props.typeItems === 'Recent' &&
+              <PostRecentItem
+                key={item.id}
+                ref={(c) => {
+                  this[`postItem${i + 1}`] = c;
+                }}
+                post={item}
+                activatePost={this.props.activatePost}
+              />
+            }
+          </div>
           )
         }
       </ul>

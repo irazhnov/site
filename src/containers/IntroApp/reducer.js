@@ -36,7 +36,7 @@ function reducer(state = initialState, action) {
         ...state,
         recent: {
           count: action.recent.count,
-          count_total: action.recent.count_total,
+//           count_total: action.recent.count_total,
           pages: action.recent.pages,
           posts: [
             ...state.recent.posts,
