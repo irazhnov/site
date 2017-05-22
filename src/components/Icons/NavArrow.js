@@ -2,8 +2,8 @@ import React from 'react';
 export default () => (
   <svg
    viewBox="0 0 131.06773 114.66667"
-   height="25"
-   width="35"
+   height="20"
+   width="30"
    id="svg2"
    version="1.1">
     <defs

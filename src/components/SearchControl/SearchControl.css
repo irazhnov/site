@@ -15,10 +15,15 @@
   /*visibility: hidden;*/
   /*pointer-events: none;*/
 /*}*/
-/*:local(.backIconActive) {*/
-  /*visibility: visible;*/
-  /*pointer-events: auto;*/
-/*}*/
+:local(.resultTitle) {
+  font-family: 'OpenSansRegular', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 10px;
+  color: #898989;
+}
 :local(.searchInput) {
   font-family: 'OpenSansRegular';
   font-size: 20px;
@@ -32,7 +37,7 @@
 }
 
 :local(.listContainer) {
-  padding: 0;
+  padding: 50px 0 0 0;
   overflow: hidden;
   height: calc(100% - 55px);
 }

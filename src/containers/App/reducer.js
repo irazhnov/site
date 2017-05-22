@@ -40,18 +40,13 @@ function reducer(state = initialState, action) {
         category: {},
         posts: [],
       };
-    case types.FETCHING_INTRO_SUCCEEDED:
-      return {
-        ...state,
-        intro: {
-          editor: action.intro.editor,
-          recent: action.intro.recent,
-        },
-      };
     case types.SELECT_POST:
       return {
         ...state,
-        selectedPost: action.post ? action.post : initialState.selectedPost,
+        selectedPost: action.post ? action.post : {
+            thumbnail: '',
+            date: {},
+          },
       };
     default:
       return state;

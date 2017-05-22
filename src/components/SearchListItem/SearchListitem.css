@@ -1,7 +1,7 @@
 :local(.itemContainer){
 }
 :local(.itemContainer:nth-child(2n+1)){
-  background-color: #ecf8ff !important;
+  background-color: #f7f7f7 !important;
 }
 
 :local(.itemContainer:nth-child(2n)){
@@ -11,7 +11,7 @@
 :local(.contentContainer){
   font-family: 'OpenSansLight';
   font-size: 12px;
-  margin: 0 10pt 0 10pt;
+  margin: 0 35pt 0 10pt;
 }
 
 :local(.iconBack svg g g g g path){
@@ -19,6 +19,7 @@
 }
 :local(.iconBack){
   position: absolute;
+  padding-top: 10px;
   right: 10pt;
   transform: scale(-1,1);
 }

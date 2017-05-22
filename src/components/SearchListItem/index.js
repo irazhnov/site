@@ -24,7 +24,6 @@ export default class SearchListItem extends Component {
   createContent() { return {__html: this.props.post.excerpt };};
 
   render() {
-    const { post } = this.props;
     return(
       <div
         className={styles.itemContainer}

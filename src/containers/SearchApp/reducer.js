@@ -25,20 +25,9 @@ function reducer(state = initialState, action) {
             ...action.selected.posts,
           ]
       };
-//     case types.FETCHING_PAGINATED_FREE_SEARCH_SUCCEEDED:
-//       return {
-//         ...state,
-//         selected: {
-//           ...state.selected,
-//           posts: [
-//             ...state.selected.posts,
-//             ...action.selected.posts,
-//           ]
-//         },
-//       };
     case types.CLEAN_SEARCH:
       return {
-        initialState,
+        ...initialState,
       };
     case types.FETCHING_FREE_SEARCH_FAILED:
       return {

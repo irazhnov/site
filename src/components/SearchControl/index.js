@@ -58,7 +58,7 @@ export default class SearchControl extends Component {
     // lazy load
     if (this.props.selected.posts.length < this.props.selected.count_total &&
       listEl.scrollTop > listEl.scrollHeight -
-      (listEl.offsetHeight * 2)) {
+      (listEl.offsetHeight * 2) && !this.props.fetching) {
       this.props.makeSearch(this.query);
     }
   }
@@ -90,8 +90,9 @@ export default class SearchControl extends Component {
             <div className={'spinner'} />
           </div>
         }
-        { posts &&
+        { posts && posts.length > 0 &&
         <div className={styles.listContainer}>
+          <div className={styles.resultTitle}>SEARCH RESULTS</div>
           <ul className={styles.searchListContainer} onScroll={this.handleScroll}>
             {
             posts.map((item) =>
