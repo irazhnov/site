@@ -1,10 +1,13 @@
 :local(.postImage) {
-  width: 100%;
+  /*width: 100%;*/
 }
 :local(.created) {
   padding-left: 15px;
 }
 :local(.imageContainer) {
   height: 150px;
-  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #630460;
 }

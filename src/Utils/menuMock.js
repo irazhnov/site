@@ -1,5 +1,5 @@
 const menuMock = [
-    {label: 'Therapies', slug:'diabetes-therapies', id: '00',
+    {label: 'Therapies', slug:'therapies-all-categories', id: '00',
       submenu: [
         {label: 'Bromocriptine-QR (Cycloset)', slug: 'bromocriptine-mesylate-cycloset'},
         {label: 'Alpha-glucosidase Therapy', slug: 'alphaglucosidase'},
@@ -20,7 +20,7 @@ const menuMock = [
         ]
     },
     {
-    label: 'Conditions', slug:'conditions', id: '01',
+    label: 'Conditions', slug:'conditions-all-categories', id: '01',
       submenu: [
         {label: 'Alzheimer\\’s', slug: 'alzheimers'},
         {label: 'Gestational Diabetes', slug: 'gestational-diabetes'},
@@ -32,7 +32,7 @@ const menuMock = [
       ]
     },
     {
-    label: 'Specialties', slug: 'specialties', id: '02',
+    label: 'Specialties', slug: 'specialties-all-categories', id: '02',
       submenu: [
         {label: 'Bone & Joint', slug: 'musculoskeletal'},
         {label: 'Cardiology', slug: 'cardiology'},
@@ -58,7 +58,7 @@ const menuMock = [
 //         {label: 'Mastery Series Archive', slug: 'mastery-series/'},
 //         {label: 'Therapy Series Archive', slug: 'therapy-series/'},
 //     ]},
-    { label: 'For Your Practice', slug: 'for-your-practice', id: '04',
+    { label: 'For Your Practice', slug: 'for-your-practice-all-categories', id: '04',
       submenu: [
         {label: 'CME', slug: 'cme'},
         {label: 'Clinician Mobile Apps', slug: 'clinician-mobile-apps'},

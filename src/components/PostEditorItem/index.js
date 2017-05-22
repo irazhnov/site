@@ -33,10 +33,8 @@ export default class PostEditorItem extends Component {
   constructor(props) {
     super(props);
     this.createExcerpt = ::this.createExcerpt;
-    this.createTitle = ::this.createTitle;
   }
 
-  createTitle(post) { return {__html: post.title_plain}; };
   createExcerpt(post) { return this.props.mode === '' ? {__html: post.excerpt} : {__html: post.content}; };
 
   render () {
@@ -54,7 +52,7 @@ export default class PostEditorItem extends Component {
 
             <div className={styles.contentContainer}>
               <div className={'created'}>{moment(post.date).format('MMMM Do, YYYY')}</div>
-              <div className={styles.postTitle} dangerouslySetInnerHTML={this.createTitle(post)} ></div>
+              <div className={styles.postTitle} >"Letter from Editior"</div>
               <div className={styles.editorText} dangerouslySetInnerHTML={this.createExcerpt(post)} ></div>
             </div>
           </div>

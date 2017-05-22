@@ -18,6 +18,10 @@ static propTypes = {
     this.state = {isSubMenuVisible: false};
     this.deselectMenu = :: this.deselectMenu;
     this.selectMenu = :: this.selectMenu;
+    this.onMouseDown = :: this.onMouseDown;
+    this.onMouseUp = :: this.onMouseUp;
+    this.cleanTimeout = :: this.cleanTimeout;
+    this.longTapTimeout;
   }
 
   selectMenu() {
@@ -28,13 +32,33 @@ static propTypes = {
     this.setState({isSubMenuVisible: false });
   }
 
+  onMouseDown() {
+    this.cleanTimeout();
+    this.longTapTimeout = setTimeout(() => {
+//       this.props.getSubCategoryData(this.props.menuData.slug)
+    }, 1000);
+  }
+
+  onMouseUp() {
+    this.cleanTimeout();
+      this.props.onMenuClicked(this.props.menuData);
+  }
+
+  cleanTimeout() {
+    if(this.longTapTimeout){
+      clearTimeout(this.longTapTimeout);
+      this.longTapTimeout = null;
+    }
+  }
+
   render () {
     const { label} = this.props.menuData;
     return (
       <div>
         <div
           className={styles.itemContainer}
-          onClick={() => {this.props.onMenuClicked(this.props.menuData);}}
+          onTouchStart={this.onMouseDown}
+          onTouchEnd={this.onMouseUp}
         >{label}
           <div className={styles.menuArrow}>
             <icons.MenuArrow />
