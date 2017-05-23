@@ -42,8 +42,10 @@ export default class PostsLContent extends Component {
         ><icons.NavArrow /><span>BACK</span></button>
         <div className={styles.postContainer}>
           { post && post.categories && post.categories[0].slug !== EDITOR_CATEGORY &&
+          <div className={styles.imageContainer}>
             <img src={post.thumbnail}
                  alt=""/>
+          </div>
           }
           <div className={styles.contentContainer}>
             <div className={styles.titleContent} dangerouslySetInnerHTML={this.createTitle()} ></div>

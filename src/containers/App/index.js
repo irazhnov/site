@@ -70,6 +70,7 @@ export default class App extends Component {
     this.returnToList = ::this.returnToList;
     this.goToSearch = ::this.goToSearch;
     this.cleanCategory = ::this.cleanCategory;
+    this.convert = ::this.convert;
 
     this.currentCategory = '';
     this.actions = bindActionCreators(AppActions, props.dispatch);
@@ -126,6 +127,17 @@ export default class App extends Component {
     browserHistory.push('/intro');
   }
 
+  convert(str) {
+    if (!str) {
+      return;
+    }
+    str = str.replace(/&amp;/g, '&');
+    str = str.replace(/&gt;/g, '>');
+    str = str.replace(/&lt;/g, '<');
+    str = str.replace(/&quot;/g, '"');
+    return str;
+  }
+
   render() {
     const ad = document.querySelector('#hiper-dic-leadtop9');
     if (ad && this.state.isMenuVisible) {
@@ -134,7 +146,7 @@ export default class App extends Component {
       ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%);')
     }
 
-    const title = this.props.app && this.props.app.category ? this.props.app.category.title : '';
+    const title = this.props.app && this.props.app.category ? this.convert(this.props.app.category.title) : '';
     return (
       <div style={{ height: '100%' }}>
         <div className={'searchHeader'} onClick={this.goToSearch}>
