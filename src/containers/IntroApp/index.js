@@ -49,7 +49,7 @@ export default class IntroApp extends  Component {
   componentDidMount() {
     let ad = document.querySelector('#hiper-dic-leadtop9');
     if (ad) {
-      ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%);')
+      ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%); display: block')
     }
   }
 
@@ -73,8 +73,8 @@ export default class IntroApp extends  Component {
 
   render() {
     return (
-      <div style={{height: '100%'}}>
-        <div className={'searchHeader'} onClick={this.goToSearch}>
+      <div className="mainContainer" >
+        <div className="searchHeader" onClick={this.goToSearch}>
           <div className={'searchInput'}>
             <span style={{color: '#245428'}}>Diabetes</span>
             <span style={{color: '#cba24e'}}>In</span>

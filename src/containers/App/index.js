@@ -143,7 +143,7 @@ export default class App extends Component {
     if (ad && this.state.isMenuVisible) {
       ad.setAttribute('style', 'position: static; width: 320px; height: 50px;')
     } else {
-      ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%);')
+      ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%); display: block')
     }
 
     const title = this.props.app && this.props.app.category ? this.convert(this.props.app.category.title) : '';

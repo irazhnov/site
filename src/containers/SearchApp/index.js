@@ -54,7 +54,7 @@ export default class SearchApp extends Component {
   componentDidMount() {
     let ad = document.querySelector('#hiper-dic-leadtop9');
     if (ad) {
-      ad.setAttribute('style', 'top: 55px; left: 50%; position: absolute; width: 320px; height: 50px; transform: translateX(-50%);')
+      ad.setAttribute('style', 'top: 55px; left: 50%; position: absolute; width: 320px; height: 50px; transform: translateX(-50%); display: block')
     }
   }
 
