@@ -2,13 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import classnames from 'classnames';
 
-import MainMenu from '../../components/MainMenu';
 import PostsList from '../../components/PostsList';
-// import PostContent from '../../components/PostContent';
-// import Intro from '../../components/Intro';
-// import Ad from '../../components/Ad';
 import * as AppActions from './actions';
 import styles from './App.css';
 import icons from '../../icons';
@@ -92,6 +87,7 @@ export default class App extends Component {
       this.setState({ isMenuVisible: false});
     }
     const pageNumber = this.props.app.posts.length > 0 ? this.props.app.posts.length / PER_PAGE + 1 : 1;
+
     this.actions.getCategoryList({
       category: this.currentCategory,
       page: pageNumber,
@@ -100,15 +96,10 @@ export default class App extends Component {
   }
 
   manageMenuVisibility() {
-    if (this.props.app.posts.length > 0) {
-      this.setState({isMenuVisible: !this.state.isMenuVisible});
-    } else {
-      browserHistory.push('/intro');
-    }
+    browserHistory.push('/menu');
   }
   
   activatePost(post) {
-//     this.setState({ postMode: post});
     this.actions.selectedPost(post);
     browserHistory.push('/post');
   }
@@ -140,12 +131,9 @@ export default class App extends Component {
 
   render() {
     const ad = document.querySelector('#hiper-dic-leadtop9');
-    if (ad && this.state.isMenuVisible) {
-      ad.setAttribute('style', 'position: static; width: 320px; height: 50px;')
-    } else {
-      ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%); display: block')
-    }
-
+      if (ad) {
+        ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%); display: block')
+      }
     const title = this.props.app && this.props.app.category ? this.convert(this.props.app.category.title) : '';
     return (
       <div style={{ height: '100%' }}>
@@ -158,7 +146,6 @@ export default class App extends Component {
             <icons.SearchLens />
           </div>
         </div>
-        {/*<Ad />*/}
         <div className={'menuButton'} onClick={this.manageMenuVisibility}>
           <div className={'menuIcon'}>
             <div className={'menuLine'}></div>
@@ -172,7 +159,7 @@ export default class App extends Component {
         </div>
 
         <div className={'selectedHeader'}>
-          { !this.state.isMenuVisible && title &&
+          { title &&
             <div
               className={styles.categoryTitle}
               onClick={this.cleanCategory}
@@ -187,12 +174,12 @@ export default class App extends Component {
         {/*{ this.props.intro && !this.props.app.posts.length > 0 &&*/}
         {/*<Intro intro={this.props.intro} />*/}
         {/*}*/}
-        <div className={classnames(styles.menuContainer, {[styles.menuActivated]: !this.state.isMenuVisible} )}>
-          <MainMenu
-            getCategory={this.getCategory}/>
-        </div>
+        {/*<div className={classnames(styles.menuContainer, {[styles.menuActivated]: !this.state.isMenuVisible} )}>*/}
+          {/*<MainMenu*/}
+            {/*getCategory={this.getCategory}/>*/}
+        {/*</div>*/}
         <div className={styles.postListContainer}>
-          { !this.state.isMenuVisible && !this.state.postMode && this.props.app && this.props.app.posts.length > 0 && this.props.app.category &&
+          { !this.state.postMode && this.props.app && this.props.app.posts.length > 0 && this.props.app.category &&
           <PostsList
             numFound={this.props.app.category.post_count}
             posts={this.props.app.posts}

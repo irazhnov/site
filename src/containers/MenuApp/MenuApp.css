@@ -1,0 +1,38 @@
+:local(.menuHeader svg g g g g path){
+  /*fill: #fff !important;*/
+  stroke: white !important;
+}
+:local(.menuHeader){
+  height: 42px;
+  background-color: #245428;
+  border-bottom: 5px solid #102612;
+  display: flex;
+  justify-content: space-between;
+}
+
+:local(.menuContainer){
+  position: absolute;
+  height: calc(100% - 42px);
+  width: 40%;
+  border-right: 1px solid #838383;
+  top: 42px;
+  background-color: white;
+}
+:local(.menuActivated){
+  visibility: hidden;
+}
+:local(.menuTitle){
+  font-family: "OpenSansLight";
+  color: white;
+  font-size: 22px;
+  line-height: 39px;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+}
+:local(.mainMenuTitle){
+  font-family: "OpenSansRegular";
+  color: #102612;
+  line-height: 39px;
+  padding-right: 2%;
+}

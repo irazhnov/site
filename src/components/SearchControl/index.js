@@ -9,8 +9,9 @@ export default class SearchControl extends Component {
     goToPost: PropTypes.func.isRequired,
     backToMenu: PropTypes.func.isRequired,
     makeSearch: PropTypes.func.isRequired,
-    fetching: PropTypes.bool.isRequired,
+//     fetching: PropTypes.bool.isRequired,
     selected: PropTypes.shape({
+      fetching: PropTypes.bool.isRequired,
       count_total: PropTypes.number,
       posts:  PropTypes.arrayOf(PropTypes.shape({
         id:PropTypes.string.isRequired,
@@ -58,7 +59,7 @@ export default class SearchControl extends Component {
     // lazy load
     if (this.props.selected.posts.length < this.props.selected.count_total &&
       listEl.scrollTop > listEl.scrollHeight -
-      (listEl.offsetHeight * 2) && !this.props.fetching) {
+      (listEl.offsetHeight * 2) && !this.props.selected.fetching) {
       this.props.makeSearch(this.query);
     }
   }
@@ -71,7 +72,7 @@ export default class SearchControl extends Component {
           className={styles.backButton}
         >
           <div
-            onClick={(e) => {e.stopPropagation(); this.input.value = ''; this.props.backToMenu()}}
+            onClick={(e) => {e.stopPropagation(); this.props.backToMenu()}}
           >
             <icons.NavArrow />
           </div>

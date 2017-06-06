@@ -5,6 +5,7 @@ import icons from '../../icons';
 
 export default class ManinMenuItem extends Component {
 static propTypes = {
+  swipeVisibility: PropTypes.func.isRequired,
   getSubCategoryData:  PropTypes.func.isRequired,
   onMenuClicked:  PropTypes.func.isRequired,
   menuData: PropTypes.shape({
@@ -18,6 +19,7 @@ static propTypes = {
     this.state = {isSubMenuVisible: false};
     this.deselectMenu = :: this.deselectMenu;
     this.selectMenu = :: this.selectMenu;
+    this.onScroll = :: this.onScroll;
 //     this.onMouseDown = :: this.onMouseDown;
 //     this.onMouseUp = :: this.onMouseUp;
 //     this.cleanTimeout = :: this.cleanTimeout;
@@ -51,6 +53,12 @@ static propTypes = {
 //     }
 //   }
 
+  onScroll(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.swipeVisibility(e.target.scrollTop === 0);
+  }
+
   render () {
     const { label} = this.props.menuData;
     return (
@@ -62,16 +70,18 @@ static propTypes = {
           <div className={styles.menuArrow}>
             <icons.MenuArrow />
           </div>
-
         </div>
-        <div className={styles.subMenuContainer}>
+        <div className={styles.subMenuContainer} onScroll={this.onScroll}>
         {
           this.state.isSubMenuVisible &&
           this.props.menuData.submenu.map((item) =>
-            <SubMenuItem
-              key={Math.random()}
-              data={item}
-              getSubCategoryData={this.props.getSubCategoryData}/>
+            <div>
+              <SubMenuItem
+                key={item.slug}
+                data={item}
+                getSubCategoryData={this.props.getSubCategoryData}
+              />
+            </div>
             )
         }
         </div>

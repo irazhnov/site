@@ -9,7 +9,7 @@ export default class PostsListItem extends Component {
     mode: PropTypes.string,
     post: PropTypes.shape({
       id:PropTypes.string.isRequired,
-      thumbnail:PropTypes.string.isRequired,
+      thumbnail:PropTypes.string,
       title_plain:PropTypes.string.isRequired,
       excerpt:PropTypes.string.isRequired,
       content:PropTypes.string.isRequired,
@@ -18,6 +18,9 @@ export default class PostsListItem extends Component {
 
   static defaultProps = {
     mode: '',
+    post: {
+      thumbnail: '',
+    }
   };
 
   constructor(props) {

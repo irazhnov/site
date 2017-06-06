@@ -7,6 +7,7 @@ import MenuArrow from './components/Icons/MenuArrow';
 import NavArrow from './components/Icons/NavArrow';
 import SearchLens from './components/Icons/SearchLens';
 import Share from './components/Icons/Share';
+import SwipeMore from './components/Icons/SwipeMore';
 
 const icons = {
   Logo,
@@ -18,5 +19,6 @@ const icons = {
   NavArrow,
   SearchLens,
   Share,
+  SwipeMore,
 };
 export default icons;

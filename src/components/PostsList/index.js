@@ -17,19 +17,20 @@ export default class PostsList extends Component {
     typeItems: PropTypes.string.isRequired,
     activatePost: PropTypes.func.isRequired,
     getCategory: PropTypes.func.isRequired,
-    numFound: PropTypes.number.isRequired,
+    numFound: PropTypes.number,
     post: PropTypes.shape({
       id:PropTypes.string,
     thumbnail:PropTypes.string.isRequired,
     title_plain:PropTypes.string.isRequired,
     excerpt:PropTypes.string.isRequired,
     content:PropTypes.string.isRequired,
-  }).isRequired,
+  }),
   };
 
   static defaultProps = {
     post: null,
     typeItems: '',
+    numFound: null,
   };
 
   constructor(props) {

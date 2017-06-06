@@ -9,11 +9,6 @@ export default class SubMenuItem extends Component {
       }),
   };
 
-  constructor(props) {
-    super(props);
-
-  }
-
   render () {
     const { label, slug} = this.props.data;
     return (

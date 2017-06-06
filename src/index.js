@@ -13,7 +13,9 @@ import IntroApp from './containers/IntroApp';
 import App from './containers/App';
 import SearchApp from './containers/SearchApp';
 import PostApp from './containers/PostApp';
+import MenuApp from './containers/MenuApp';
 import NotFound from './containers/NotFound';
+// import '../assets/gray.png';
 
 const sagaMiddleware = createSagaMiddleware();
 const reducer = combineReducers({
@@ -57,6 +59,7 @@ ReactDOM.render(
     <Provider store={store}>
       <Router history={history}>
         <Route path="/intro" component={IntroApp} />
+        <Route path="/menu" component={MenuApp} />
         <Route path="/categories" component={App} />
         <Route path="/search" component={SearchApp} />
         <Route path="/post" component={PostApp} />

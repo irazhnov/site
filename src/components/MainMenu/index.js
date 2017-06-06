@@ -7,6 +7,9 @@ import styles from './MainMenu.css';
 
 
 export default class ManinMenu extends Component {
+  static propTypes = {
+    swipeVisibility: PropTypes.func.isRequired,
+  };
 
   constructor(props) {
     super(props);
@@ -34,15 +37,24 @@ export default class ManinMenu extends Component {
           menuMock.map((item) =>
             <MainMenuItem
               ref={(c) => { this[item.id] = c; }}
-              key={Math.random()}
+              key={item.slug}
               menuData={item}
               getSubCategoryData={this.getSubCategoryData}
               onMenuClicked={this.onMenuClicked}
+              swipeVisibility={this.props.swipeVisibility}
             />
           )
         }
         <div className={classnames('logo', styles.menuLogo)}>
           <icons.LogoMenu />
+        </div>
+        <div
+          className={styles.swipeLayout}
+        >
+          <div className={styles.iconSwipe}>
+            <icons.SwipeMore />
+          </div>
+          <span>SWIPE FOR MORE</span>
         </div>
       </div>
     )

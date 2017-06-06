@@ -20,10 +20,12 @@ const PER_PAGE = 10;
 export default class IntroApp extends  Component {
   static propTypes = {
     fetching: PropTypes.bool,
+    fetchingRecent: PropTypes.bool,
   };
 
   static defaultProps = {
     fetching: false,
+    fetchingRecent: false,
   };
 
   constructor(props) {
@@ -55,7 +57,9 @@ export default class IntroApp extends  Component {
 
   getRecentPosts() {
    const page = this.props.recent && this.props.recent.posts && this.props.recent.posts.length ? this.props.recent && this.props.recent.posts && this.props.recent.posts.length / PER_PAGE + 1 : 1;
-    this.actions.getRecentPosts(page, PER_PAGE);
+   if (!this.props.fetchingRecent) {
+     this.actions.getRecentPosts(page, PER_PAGE);
+   }
   }
 
   goToSearch() {
@@ -63,7 +67,7 @@ export default class IntroApp extends  Component {
   }
 
   openMenu() {
-    browserHistory.push('/categories');
+    browserHistory.push('/menu');
   }
 
   activatePost(post) {

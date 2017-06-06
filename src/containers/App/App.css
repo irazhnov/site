@@ -3,21 +3,6 @@
     background-color: red;
 }
 
-:local(.menuContainer) {
-    height: calc(100% - 108px);
-}
-
-:local(.menuContainer){
-    position: absolute;
-    height: calc(100% - 108px);
-    width: 40%;
-    border-right: 1px solid #838383;
-    top: 108px;
-    background-color: white;
-}
-:local(.menuActivated){
-    visibility: hidden;
-}
 
 :local(.postListContainer){
     height: calc(100% - 158px);

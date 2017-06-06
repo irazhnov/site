@@ -72,7 +72,7 @@ export default class SearchApp extends Component {
 //   }
 
   backToMenu() {
-    this.actions.cleanSearch();
+//     this.actions.cleanSearch();
     browserHistory.goBack();
   }
 
