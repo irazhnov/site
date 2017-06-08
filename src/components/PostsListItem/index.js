@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import moment from 'moment'
 import styles from './PostsListItem.css';
 import icons from '../../icons';
+import { getImageSrc, getIframeUrl, extractIframe } from '../../Utils/helper';
 
 export default class PostsListItem extends Component {
   static propTypes = {
@@ -34,13 +35,14 @@ export default class PostsListItem extends Component {
 
   render () {
     const { post } = this.props;
+    const src = getImageSrc(post.thumbnail);
     return (
       <div className={styles.postItemContainer}>
         <div className={styles.postItemContent}>
           <div className={styles.postHeader}>
             <img
               className={styles.postImage}
-              src={post.thumbnail}
+              src={src}
               alt=""/>
             <div className={styles.postTitle} dangerouslySetInnerHTML={this.createTitle()} ></div>
           </div>

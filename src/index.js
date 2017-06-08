@@ -16,6 +16,8 @@ import PostApp from './containers/PostApp';
 import MenuApp from './containers/MenuApp';
 import NotFound from './containers/NotFound';
 // import '../assets/gray.png';
+import '../assets/noImage.png';
+import '../assets/noImageRetina.png';
 
 const sagaMiddleware = createSagaMiddleware();
 const reducer = combineReducers({

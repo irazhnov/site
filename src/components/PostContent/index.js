@@ -32,7 +32,9 @@ export default class PostsLContent extends Component {
   }
 
   createTitle() { return {__html: this.props.post.title_plain };};
-  createContent() { return {__html: this.props.post.content };};
+  createContent() {
+    return {
+      __html: this.props.post.content };};
 
   render () {
     const { post } = this.props;

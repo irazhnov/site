@@ -3,6 +3,7 @@ import moment from 'moment'
 import classnames from 'classnames';
 import stylesList from '../PostsListItem/PostsListItem.css';
 import styles from './PostRecentItem.css';
+import { getImageSrc, getIframeUrl, extractIframe } from '../../Utils/helper';
 
 export default class PostRecentItem extends Component {
   static propTypes = {
@@ -41,18 +42,24 @@ export default class PostRecentItem extends Component {
     this.createTitle = ::this.createTitle;
   }
 
+  componentDidMount() {
+
+  }
+
   createTitle(post) { return {__html: post.title_plain}; };
   createExcerpt(post) { return this.props.mode === '' ? {__html: post.excerpt} : {__html: post.content}; };
 
   render () {
     const { post } = this.props;
+    const src = getImageSrc(post.thumbnail);
+
     return (
       <div className={stylesList.postItemContainer}>
         <div className={stylesList.postItemContent}>
           <div className={styles.imageContainer}>
             <img
               className={styles.postImage}
-              src={post.thumbnail}
+              src={src}
               alt=""/>
           </div>
           <div className={stylesList.postTitle} dangerouslySetInnerHTML={this.createTitle(post)} ></div>
