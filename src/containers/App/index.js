@@ -56,7 +56,6 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMenuVisible: true,
       postMode: false,
     };
     this.getCategory = ::this.getCategory;
@@ -82,17 +81,21 @@ export default class App extends Component {
     if (category) {
       this.currentCategory = category;
       this.actions.cleanCategory();
+    }else {
+      this.currentCategory = this.props.app.category.slug;
     }
-    if (this.state.isMenuVisible) {
-      this.setState({ isMenuVisible: false});
-    }
+//     if (this.state.isMenuVisible) {
+//       this.setState({ isMenuVisible: false});
+//     }
     const pageNumber = this.props.app.posts.length > 0 ? this.props.app.posts.length / PER_PAGE + 1 : 1;
 
-    this.actions.getCategoryList({
-      category: this.currentCategory,
-      page: pageNumber,
-      per_page: PER_PAGE,
-    })
+    if (!this.props.app.fetching) {
+      this.actions.getCategoryList({
+        category: this.currentCategory,
+        page: pageNumber,
+        per_page: PER_PAGE,
+      })
+    }
   }
 
   manageMenuVisibility() {
