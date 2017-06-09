@@ -23,13 +23,6 @@ export default class PostRecentItem extends Component {
         content:PropTypes.string.isRequired,
       }))
     }),
-//     post: PropTypes.shape({
-//       id:PropTypes.string.isRequired,
-//       thumbnail:PropTypes.string.isRequired,
-//       title_plain:PropTypes.string.isRequired,
-//       excerpt:PropTypes.string.isRequired,
-//       content:PropTypes.string.isRequired,
-//     }).isRequired,
   };
 
   static defaultProps = {
@@ -40,10 +33,6 @@ export default class PostRecentItem extends Component {
     super(props);
     this.createExcerpt = ::this.createExcerpt;
     this.createTitle = ::this.createTitle;
-  }
-
-  componentDidMount() {
-
   }
 
   createTitle(post) { return {__html: post.title_plain}; };

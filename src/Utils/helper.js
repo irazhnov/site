@@ -7,8 +7,8 @@ export function isRetinaDisplay() {
   return false;
 }
 
-export function extractIframe(str, label) {
-  return str.replace(/(<iframe.*?>.*?<\/iframe>)/g, `<button id="buttonAction">${label}</button>`);
+export function extractIframe(str, url, label) {
+  return str.replace(/(<iframe.*?>.*?<\/iframe>)/g, `<a href="${url}">${label}</a>`);
 }
 
 export function getIframeUrl(str) {
