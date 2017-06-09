@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment'
+import classnames from 'classnames';
 import styles from './PostContent.css';
 import icons from '../../icons';
 import  { EDITOR_CATEGORY } from '../../containers/IntroApp/constants';
-import { getImageSrc, getIframeUrl, extractIframe } from '../../Utils/helper';
+import { getImageSrc, extractIframe } from '../../Utils/helper';
 
 export default class PostsContent extends Component {
   static propTypes = {
@@ -96,8 +97,8 @@ export default class PostsContent extends Component {
           }
           <div className={styles.contentContainer}>
             <div className={styles.titleContent} dangerouslySetInnerHTML={this.createTitle()} ></div>
-            <div className={'created'}>{moment(post.date).format('MMMM Do, YYYY')}</div>
-            <div dangerouslySetInnerHTML={this.createContent()} ></div>
+            <div className={classnames('created', styles.created)}>{moment(post.date).format('MMMM Do, YYYY')}</div>
+            <div className={styles.content} dangerouslySetInnerHTML={this.createContent()} ></div>
           </div>
         </div>
       </div>

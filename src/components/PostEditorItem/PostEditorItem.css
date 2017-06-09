@@ -28,7 +28,7 @@
 :local(.editorText) {
   font-family: "OpenSansLight";
   text-align: left;
-  font-size: 16px;
+  font-size: 15px;
   color: #333333;
 }
 
@@ -37,10 +37,11 @@
   height: 100%;
 }
 :local(.editorText){
-  font-size: 13px;
+  font-size: 12px;
   line-height: 22px;
   height: calc(100% - 49px);
   overflow: auto;
+  padding: 0 10px;
 }
 :local(.editorText p){
   padding: 0;
@@ -54,7 +55,7 @@
 }
 
 :local(.postTitle){
-  padding: 5px 15px;
+  padding: 5px 15px 0 10px;
   /*line-height: 30px;*/
 }
 

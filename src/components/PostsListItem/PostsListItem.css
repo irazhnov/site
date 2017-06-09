@@ -29,7 +29,7 @@
 :local(.postsText) {
   font-family: "OpenSansLight", sans-serif;
   text-align: left;
-  font-size: 16px;
+  font-size: 15px;
   color: #333333;
 }
 
@@ -38,7 +38,7 @@
 }
 :local(.postsText p){
   padding: 0;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 :local(.postTitle){

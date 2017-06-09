@@ -12,7 +12,7 @@
 :local(.swipeLayout){
   width: 81px;
   position: absolute;
-  left: 200%;
+  left: 195%;
   bottom: 20px;
   text-align: center;
 }
