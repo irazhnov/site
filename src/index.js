@@ -15,7 +15,7 @@ import SearchApp from './containers/SearchApp';
 import PostApp from './containers/PostApp';
 import MenuApp from './containers/MenuApp';
 import NotFound from './containers/NotFound';
-// import '../assets/gray.png';
+import '../assets/gray.png';
 import '../assets/noImage.png';
 import '../assets/noImageRetina.png';
 

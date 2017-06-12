@@ -77,7 +77,7 @@ export default class IntroApp extends  Component {
 
   render() {
     return (
-      <div className="mainContainer" >
+      <div className={classnames("mainContainer", {["mainContainerLoaded"] : this.props.editor } )} >
         <div className="searchHeader" onClick={this.goToSearch}>
           <div className={'searchInput'}>
             <span style={{color: '#245428'}}>Diabetes</span>
