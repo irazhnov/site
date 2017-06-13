@@ -139,7 +139,7 @@ export default class App extends Component {
       }
     const title = this.props.app && this.props.app.category ? this.convert(this.props.app.category.title) : '';
     return (
-      <div style={{ height: '100%' }}>
+      <div className="categoriesContainer">
         <div className={'searchHeader'} onClick={this.goToSearch}>
           <div className={'searchInput'}>
             <span style={{color:'#245428'}}>Diabetes</span>

@@ -3,9 +3,6 @@
   height: 33%;
 }
 :local(.editorItemContent){
-  /*overflow-x: hidden;*/
-  /*overflow-y: auto;*/
-  /*padding: 0 3% 0 0;*/
   border-top: 1px solid #575757;
   border-left: 1px solid #575757;
   border-right: 1px solid #575757;
@@ -20,8 +17,6 @@
 }
 :local(.editorImage){
   width: 100px;
-  /*height: 150px;*/
-  /*margin-right: 5px;*/
 }
 
 :local(.postTitle),
@@ -33,19 +28,19 @@
 }
 
 :local(.contentContainer){
-  margin: 0 5px 0 5px;
+  margin: 10px 5px 0 5px;
   height: 100%;
 }
 :local(.editorText){
   font-size: 12px;
-  line-height: 22px;
-  height: calc(100% - 49px);
+  line-height: 19px;
+  height: calc(100% - 56px);
   overflow: auto;
   padding: 0 10px;
 }
 :local(.editorText p){
   padding: 0;
-  margin-bottom: 0;
+  margin: 5px 0 0 0;
 }
 
 :local(.imageContainer){

@@ -83,7 +83,7 @@ export default class PostsContent extends Component {
 
   render () {
     const { post } = this.props;
-    const src = getImageSrc(post.thumbnail);
+    const src = getImageSrc(post.thumbnail) ? post.thumbnail : 'android_asset/www/assets/noImageRetina.png';
     return (
       <div className={styles.postPageContainer}>
         <button className={styles.backButton} onClick={() => { this.props.returnToList() }}
@@ -95,7 +95,7 @@ export default class PostsContent extends Component {
                  alt=""/>
           </div>
           }
-          <div className={styles.contentContainer}>
+          <div className={styles.contentContainer} >
             <div className={styles.titleContent} dangerouslySetInnerHTML={this.createTitle()} ></div>
             <div className={classnames('created', styles.created)}>{moment(post.date).format('MMMM Do, YYYY')}</div>
             <div className={styles.content} dangerouslySetInnerHTML={this.createContent()} ></div>

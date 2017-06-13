@@ -35,7 +35,7 @@ export default class PostsListItem extends Component {
 
   render () {
     const { post } = this.props;
-    const src = getImageSrc(post.thumbnail);
+    const src = getImageSrc(post.thumbnail) ? post.thumbnail : 'android_asset/www/assets/noImageRetina.png';
     return (
       <div className={styles.postItemContainer}>
         <div className={styles.postItemContent}>

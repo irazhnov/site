@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment'
 import styles from './PostEditorItem.css';
+import { getImageSrc } from '../../Utils/helper';
 
 export default class PostEditorItem extends Component {
   static propTypes = {
@@ -39,6 +40,7 @@ export default class PostEditorItem extends Component {
 
   render () {
     const post = this.props.editor ? this.props.editor.posts[0] : {};
+    const src = getImageSrc(post.thumbnail) ? post.thumbnail : 'assets/noImageRetina.png';
     return (
       <div className={styles.editorItemContainer}>
         <div className={styles.editorItemContent}>
@@ -46,10 +48,9 @@ export default class PostEditorItem extends Component {
             <div className={styles.imageContainer}>
               <img
                 className={styles.editorImage}
-                src={post.thumbnail}
+                src={src}
                 alt=""/>
             </div>
-
             <div className={styles.contentContainer}>
               <div className={'created'}>{moment(post.date).format('MMMM Do, YYYY')}</div>
               <div className={styles.postTitle} >Letter from Editior</div>

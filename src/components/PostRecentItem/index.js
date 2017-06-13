@@ -40,10 +40,10 @@ export default class PostRecentItem extends Component {
 
   render () {
     const { post } = this.props;
-    const src = getImageSrc(post.thumbnail);
+    const src = getImageSrc(post.thumbnail) ? post.thumbnail : 'android_asset/www/assets/noImageRetina.png';
 
     return (
-      <div className={stylesList.postItemContainer}>
+      <div className={stylesList.postItemContainer} >
         <div className={stylesList.postItemContent}>
           <div className={styles.imageContainer}>
             <img

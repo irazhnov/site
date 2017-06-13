@@ -25,9 +25,11 @@ export function getIframeUrl(str) {
 export function getImageSrc(url) {
   if (url && url !== 'null') {
     return url;
-  } else if (isRetinaDisplay()) {
-    return 'assets/noImageRetina.png';
-  } else {
-    return 'assets/noImage.png';
   }
+  return null;
+//   else if (isRetinaDisplay()) {
+//     return 'android_asset/www/assets/noImageRetina.png';
+//   } else {
+//     return 'android_asset/www/assets/noImage.png';
+//   }
 }

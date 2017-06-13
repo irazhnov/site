@@ -77,7 +77,7 @@ export default class IntroApp extends  Component {
 
   render() {
     return (
-      <div className={classnames("mainContainer", {["mainContainerLoaded"] : this.props.editor } )} >
+      <div className={classnames("mainContainer", {["mainContainerLoading"] : !this.props.editor } )} >
         <div className="searchHeader" onClick={this.goToSearch}>
           <div className={'searchInput'}>
             <span style={{color: '#245428'}}>Diabetes</span>
@@ -110,11 +110,10 @@ export default class IntroApp extends  Component {
         }
         {
           this.props.fetching &&
-          <div className={'loadingContainer'}>
+          <div className={classnames('loadingContainer', "backgroundWhite")}>
             <div className={styles.logoContainer}>
               <icons.LogoFull />
             </div>
-
             <div className={'spinner'} />
           </div>
         }

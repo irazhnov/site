@@ -92,7 +92,7 @@ export default class SearchApp extends Component {
   render () {
     const { fetching } = this.props.searchData;
     return (
-      <div style={{ height: '100%' }}>
+      <div style={{ height: '100%', backgroundColor: '#fff' }}>
         { !this.state.postMode &&
           <SearchControl
             selected={this.props.searchData}

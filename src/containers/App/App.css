@@ -1,13 +1,15 @@
+:global(.categoriesContainer) {
+    height: 100%;
+}
+
 :local(.mainContainer) {
     height: 300px;
     background-color: red;
 }
 
-
 :local(.postListContainer){
     height: calc(100% - 158px);
     overflow: hidden;
-    /*overflow-y: auto;*/
 }
 
 :local(.backToIntro) {
@@ -31,13 +33,7 @@
     text-align: right;
     padding-right: 20px;
 }
-/*:local(.menuTitle) {*/
-    /*font-family: "OpenSansRegular";*/
-    /*font-size: 16px;*/
-    /*letter-spacing: 1.05px;*/
-    /*color: #2c6230;*/
-    /*line-height: 36px;*/
-/*}*/
+
 :global(.loadingContainer){
     position: absolute;
     z-index: 10;
@@ -57,6 +53,10 @@
     border-right-color: #166332;
     border-bottom-color: #166332;
     border-top-color: #e8ebed;
+}
+
+:global(.backgroundWhite) {
+    background-color: white;
 }
 
 @-webkit-keyframes rotating {

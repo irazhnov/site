@@ -1,8 +1,8 @@
 :global(.mainContainer) {
   height: 100%;
 }
-:global(.mainContainerLoaded) {
-  background: url(".././../../assets/gray.png");
+:global(.mainContainerLoading) {
+  background-color: white;
 }
 
 :global(.menuLine) {

@@ -6,6 +6,7 @@
   height: calc(100% - 40px);
   overflow-x: hidden;
   overflow-y: auto;
+  background-color: #fff;
 }
 :local(.postContainer img){
   /*width: 100%;*/

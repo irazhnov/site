@@ -12,6 +12,7 @@
   font-family: 'OpenSansLight';
   font-size: 12px;
   margin: 0 35pt 0 10pt;
+  background-color: #fff;
 }
 
 :local(.iconBack svg g g g g path){

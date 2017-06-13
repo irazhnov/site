@@ -22,7 +22,7 @@
   display: inline-flex;
 }
 :local(.postImage){
-  width: 155pt;
+  width: 155px;
   /*height: 104pt;*/
 }
 
