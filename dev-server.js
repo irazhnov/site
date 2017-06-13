@@ -7,9 +7,9 @@ new WebpackDevServer(webpack(config), {
   hot: true,
 
   historyApiFallback: true
-}).listen(3000, '0.0.0.0', function (err, result) {
+}).listen(3003, '0.0.0.0', function (err, result) {
   if (err) {
     return console.log(err);
   }
-  console.log('Webpack Dev Server listening at http://0.0.0.0:3000/');
+  console.log('Webpack Dev Server listening at http://0.0.0.0:3003/');
 });
