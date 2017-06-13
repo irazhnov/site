@@ -56,13 +56,6 @@ export default class SearchControl extends Component {
     }
   }
 
-  onChange(e) {
-//     if(e.target.value !== '') {
-//       this.query = e.target.value;
-//       this.props.makeSearch(e.target.value);
-//     }
-  }
-
   makeSearch() {
     if (this.input.value !== '') {
       this.query = this.input.value;
