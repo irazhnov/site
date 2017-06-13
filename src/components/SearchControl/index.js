@@ -7,6 +7,7 @@ import icons from '../../icons';
 export default class SearchControl extends Component {
   static propTypes = {
     goToPost: PropTypes.func.isRequired,
+    cleanSearch: PropTypes.func.isRequired,
     backToMenu: PropTypes.func.isRequired,
     makeSearch: PropTypes.func.isRequired,
 //     fetching: PropTypes.bool.isRequired,
@@ -25,25 +26,54 @@ export default class SearchControl extends Component {
 
   static defaultProps = {
     selected: {
-      count_total: 0,
+      count_total: null,
       posts: [],
     },
   };
+
   constructor(props) {
     super(props);
     this.createContent = ::this.createContent;
     this.createTitle = ::this.createTitle;
     this.onChange = ::this.onChange;
     this.handleScroll = ::this.handleScroll;
+    this.onKeyDown = ::this.onKeyDown;
+    this.makeSearch = ::this.makeSearch;
+
+    window.addEventListener('keydown', this.onKeyDown);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.onKeyDown);
   }
 
   createTitle() { return {__html: this.props.post.title_plain };};
   createContent() { return {__html: this.props.post.content };};
 
+  onKeyDown(e) {
+    if (e.keyCode === 13) {
+      this.makeSearch();
+    }
+  }
+
   onChange(e) {
-    if(e.target.value !== '') {
-      this.query = e.target.value;
-      this.props.makeSearch(e.target.value);
+//     if(e.target.value !== '') {
+//       this.query = e.target.value;
+//       this.props.makeSearch(e.target.value);
+//     }
+  }
+
+  makeSearch() {
+    if (this.input.value !== '') {
+      this.query = this.input.value;
+      if (this.props.selected.count_total === 0) {
+        this.props.cleanSearch();
+      }
+
+      this.props.makeSearch(this.input.value);
+      if (Keyboard && Keyboard.hide) {
+        Keyboard.hide();
+      }
     }
   }
 
@@ -60,7 +90,7 @@ export default class SearchControl extends Component {
     if (this.props.selected.posts.length < this.props.selected.count_total &&
       listEl.scrollTop > listEl.scrollHeight -
       (listEl.offsetHeight * 2) && !this.props.selected.fetching) {
-      this.props.makeSearch(this.query);
+      this.makeSearch(this.query);
     }
   }
 
@@ -80,10 +110,9 @@ export default class SearchControl extends Component {
           ref={(c) =>{ this.input = c; }}
           className={styles.searchInput} placeholder="Search"
           onChange={this.onChange}/>
-          <div className={styles.searchLensLogo}>
+          <div className={styles.searchLensLogo} onClick={this.makeSearch}>
             <icons.SearchLens />
           </div>
-
         </div>
         {
           this.props.fetching && this.query !== '' &&
@@ -105,6 +134,11 @@ export default class SearchControl extends Component {
             )}
           </ul>
         </div>
+      }
+      {this.props.selected.count_total === 0 &&
+      <div className={'loadingContainer'}>
+        <span className={styles.noResults}>No Results</span>
+      </div>
       }
       </div>
     )

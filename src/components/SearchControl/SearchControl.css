@@ -22,7 +22,7 @@
 }
 :local(.searchInput) {
   font-family: 'OpenSansRegular';
-  font-size: 20px;
+  font-size: 18px;
   width: 100%;
   height: 30px;
   line-height: 25px;
@@ -47,10 +47,23 @@
 
 :local(.searchLensLogo) {
   position: absolute;
-  right: 25px;
-  top: 10px;
+  right: 8px;
+  top: 8px;
+  width: 43px;
+  height: 39px;
 }
 :local(.searchInput) {
   width: 100%;
   height: 40px;
+}
+:local(.noResults) {
+  font-family: 'OpenSansRegular';
+  font-size: 18px;
+  /*width: 100%;*/
+  height: 30px;
+  /*line-height: 25px;*/
+  /*margin: 7px 10px 5px 12px;*/
+  /*outline: none;*/
+  color: #2a2a2a;
+  /*padding-right: 25px;*/
 }

@@ -43,6 +43,7 @@ export default class SearchApp extends Component {
     this.state = {
       postMode: null,
     };
+    this.cleanSearch = ::this.cleanSearch;
     this.makeSearch = ::this.makeSearch;
     this.backToMenu = ::this.backToMenu;
     this.goToPost = ::this.goToPost;
@@ -60,7 +61,7 @@ export default class SearchApp extends Component {
 
   makeSearch(query) {
     if(query !== '') {
-      const page = this.props.searchData.posts.length > 0 ? (this.props.searchData.posts.length / PER_PAGE) + 1 : 1;
+      const page = this.props.searchData.posts.length > 0 ? Math.round(this.props.searchData.posts.length / PER_PAGE) + 1 : 1;
       this.actions.makeSearch(query, page, PER_PAGE);
     }
   }
@@ -74,6 +75,10 @@ export default class SearchApp extends Component {
   backToMenu() {
 //     this.actions.cleanSearch();
     browserHistory.goBack();
+  }
+
+  cleanSearch() {
+    this.actions.cleanSearch();
   }
 
   goToPost(post) {
@@ -93,6 +98,7 @@ export default class SearchApp extends Component {
             selected={this.props.searchData}
             fetching={fetching}
             makeSearch={this.makeSearch}
+            cleanSearch={this.cleanSearch}
             backToMenu={this.backToMenu}
             goToPost={this.goToPost}
           />

@@ -3,7 +3,7 @@ import * as types from './constants';
 const initialState = {
   fetching: false,
   count: 0,
-  count_total: 0,
+  count_total: null,
   pages: 0,
   posts: [],
 };
@@ -21,7 +21,6 @@ function reducer(state = initialState, action) {
         count: action.selected.count,
         count_total: action.selected.count_total,
           posts: [
-            ...state.posts,
             ...action.selected.posts,
           ]
       };
