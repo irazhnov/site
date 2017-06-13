@@ -12,7 +12,7 @@ const PER_PAGE = 10;
   searchData: state.search,
 }))
 export default class SearchApp extends Component {
-  static propsTypes = {
+  static propTypes = {
     searchData: PropTypes.shape({
       fetching: PropTypes.bool.isRequired,
       selected: PropTypes.shape({
