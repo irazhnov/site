@@ -35,7 +35,6 @@ export default class SearchControl extends Component {
     super(props);
     this.createContent = ::this.createContent;
     this.createTitle = ::this.createTitle;
-    this.onChange = ::this.onChange;
     this.handleScroll = ::this.handleScroll;
     this.onKeyDown = ::this.onKeyDown;
     this.makeSearch = ::this.makeSearch;
