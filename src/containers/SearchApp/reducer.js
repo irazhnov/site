@@ -21,6 +21,7 @@ function reducer(state = initialState, action) {
         count: action.selected.count,
         count_total: action.selected.count_total,
           posts: [
+            ...state.posts,
             ...action.selected.posts,
           ]
       };

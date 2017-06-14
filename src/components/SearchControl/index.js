@@ -57,11 +57,10 @@ export default class SearchControl extends Component {
 
   makeSearch() {
     if (this.input.value !== '') {
-      this.query = this.input.value;
-      if (this.props.selected.count_total === 0) {
+      if (this.props.selected.count_total === 0  || this.query !== this.input.value) {
         this.props.cleanSearch();
       }
-
+      this.query = this.input.value;
       this.props.makeSearch(this.input.value);
       if (Keyboard && Keyboard.hide) {
         Keyboard.hide();

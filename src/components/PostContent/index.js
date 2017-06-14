@@ -96,7 +96,9 @@ export default class PostsContent extends Component {
           </div>
           }
           <div className={styles.contentContainer} >
+            { post && post.categories && post.categories[0].slug !== EDITOR_CATEGORY &&
             <div className={styles.titleContent} dangerouslySetInnerHTML={this.createTitle()} ></div>
+            }
             <div className={classnames('created', styles.created)}>{moment(post.date).format('MMMM Do, YYYY')}</div>
             <div className={styles.content} dangerouslySetInnerHTML={this.createContent()} ></div>
           </div>

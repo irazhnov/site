@@ -1,6 +1,7 @@
 :local(.itemContainer){
 }
-:local(.itemContainer:nth-child(2n+1)){
+:local(.itemContainer:nth-child(2n+1)),
+:local(.itemContainer:nth-child(2n+1) *){
   background-color: #f7f7f7 !important;
 }
 
@@ -8,6 +9,9 @@
   background-color: white !important;
 }
 
+:local(.itemContainer:nth-child(2n+1) p){
+  padding-bottom: 10px;
+}
 :local(.contentContainer){
   font-family: 'OpenSansLight';
   font-size: 12px;

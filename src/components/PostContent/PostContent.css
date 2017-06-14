@@ -45,13 +45,14 @@
 
 :local(.titleContent){
   font-size: 15px;
+  padding-top: 10px;
 }
 :local(.imageContainer) {
   display: flex;
   justify-content: center;
 }
 :local(.created) {
-  padding-left: 0;
+  padding: 5px 0 0 0;
 }
 :local(.content) {
   font-size: 12px;

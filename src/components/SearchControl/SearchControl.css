@@ -17,7 +17,7 @@
   letter-spacing: 1.5px;
   width: 100%;
   text-align: center;
-  padding-bottom: 10px;
+  padding: 10px 0;
   color: #898989;
 }
 :local(.searchInput) {
@@ -58,7 +58,7 @@
 }
 :local(.noResults) {
   font-family: 'OpenSansRegular';
-  font-size: 18px;
+  font-size: 22px;
   /*width: 100%;*/
   height: 30px;
   /*line-height: 25px;*/

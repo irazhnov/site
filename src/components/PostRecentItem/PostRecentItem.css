@@ -2,7 +2,7 @@
   /*width: 150px;*/
 }
 :local(.created) {
-  padding-left: 15px;
+  padding: 5px 0 0 15px;
 }
 :local(.imageContainer) {
   height: 150px;
