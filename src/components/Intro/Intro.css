@@ -1,7 +1,7 @@
 :local(.editorPageContainer) {
   position: relative;
   top: -25px;
-  height: calc(100% - 108px);
+  height: calc(100% - 124px);
 }
 :local(.latestArticleTitle) {
   font-family: 'OpenSansRegular', sans-serif;

@@ -3,22 +3,3 @@
   bottom: 10px;
   padding: 10px 20px;
 }
-
-:local(.iconSwipe){
-  margin-left: 14px;
-  width: 50px;
-  height:50px;
-}
-:local(.swipeLayout){
-  width: 81px;
-  position: absolute;
-  left: 195%;
-  bottom: 20px;
-  text-align: center;
-}
-:local(.swipeLayout span){
-
-}
-:local(.swipeVisibility){
-  opacity: 0.5;
-}

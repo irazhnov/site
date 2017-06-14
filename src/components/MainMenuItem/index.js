@@ -16,7 +16,10 @@ static propTypes = {
 
   constructor(props) {
     super(props);
-    this.state = {isSubMenuVisible: false};
+    this.state = {
+      isSubMenuVisible: false,
+      isSwipeIconVisible: false,
+    };
     this.deselectMenu = :: this.deselectMenu;
     this.selectMenu = :: this.selectMenu;
     this.onScroll = :: this.onScroll;
@@ -33,6 +36,7 @@ static propTypes = {
   deselectMenu() {
     this.setState({isSubMenuVisible: false });
   }
+
 
 //   onMouseDown() {
 //     this.cleanTimeout();
@@ -71,7 +75,11 @@ static propTypes = {
             <icons.MenuArrow />
           </div>
         </div>
-        <div className={styles.subMenuContainer} onScroll={this.onScroll}>
+        <div
+          ref={(c) => this.subMenu = c}
+          className={styles.subMenuContainer}
+          onScroll={this.onScroll}
+        >
         {
           this.state.isSubMenuVisible &&
           this.props.menuData.submenu.map((item) =>
@@ -81,8 +89,19 @@ static propTypes = {
                 data={item}
                 getSubCategoryData={this.props.getSubCategoryData}
               />
+
             </div>
             )
+        }
+        {this.state.isSubMenuVisible && (this.props.menuData.id === '00' || this.props.menuData.id === '02') &&
+          <div
+            className={styles.swipeLayout}
+          >
+            <div className={styles.iconSwipe}>
+              <icons.SwipeMore />
+            </div>
+            <span>SWIPE FOR MORE</span>
+          </div>
         }
         </div>
       </div>

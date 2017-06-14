@@ -28,3 +28,24 @@
   position: absolute;
   transform: translate(0, -86%);
 }
+
+:local(.swipeLayout){
+  width: 81px;
+  position: absolute;
+  left: 70%;
+  bottom: 20px;
+  text-align: center;
+  z-index: 1;
+}
+:local(.swipeLayout span){
+
+}
+:local(.swipeVisibility){
+  opacity: 0.5;
+}
+
+:local(.iconSwipe){
+  margin-left: 14px;
+  width: 50px;
+  height:50px;
+}

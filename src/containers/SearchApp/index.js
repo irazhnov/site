@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 import SearchControl from '../../components/SearchControl';
 import PostContent from '../../components/PostContent';
 import * as SearchActions from '../SearchApp/actions';
+import * as AppActions from '../App/actions';
+
 
 const PER_PAGE = 10;
 
@@ -55,9 +57,19 @@ export default class SearchApp extends Component {
   componentDidMount() {
     let ad = document.querySelector('#hiper-dic-leadtop9');
     if (ad) {
-      ad.setAttribute('style', 'top: 55px; left: 50%; position: absolute; width: 320px; height: 50px; transform: translateX(-50%); display: block')
+      ad.setAttribute('style', 'top: 54px; left: 50%; position: absolute; width: 320px; height: 50px; transform: translateX(-50%); display: block')
     }
   }
+
+//   componentDidUpdate() {
+//     let ad = document.querySelector('#hiper-dic-leadtop9');
+//     if (ad && this.state.postMode) {
+//       ad.setAttribute('style', 'display: none');
+//     }
+//     if (ad && !this.state.postMode) {
+//       ad.setAttribute('style', 'top: 54px; left: 50%; position: absolute; width: 320px; height: 50px; transform: translateX(-50%); display: block')
+//     }
+//   }
 
   makeSearch(query) {
     if(query !== '') {
@@ -82,7 +94,9 @@ export default class SearchApp extends Component {
   }
 
   goToPost(post) {
-    this.setState({ postMode : post });
+    bindActionCreators(AppActions, this.props.dispatch).selectedPost(post);
+    browserHistory.push('/post');
+//     this.setState({ postMode : post });
   }
 
   returnToList() {

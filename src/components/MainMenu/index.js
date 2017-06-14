@@ -48,14 +48,6 @@ export default class ManinMenu extends Component {
         <div className={classnames('logo', styles.menuLogo)}>
           <icons.LogoMenu />
         </div>
-        <div
-          className={styles.swipeLayout}
-        >
-          <div className={styles.iconSwipe}>
-            <icons.SwipeMore />
-          </div>
-          <span>SWIPE FOR MORE</span>
-        </div>
       </div>
     )
   }
