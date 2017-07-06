@@ -25,7 +25,7 @@
     background-color: #245428;
 }
 :local(.categoryTitle span) {
-    font-family: "OpenSansLight";
+    font-family: "OpenSansLight", sans-serif;
     color: white;
     font-size: 17px;
     line-height: 36px;

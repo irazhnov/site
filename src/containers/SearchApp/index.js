@@ -50,7 +50,6 @@ export default class SearchApp extends Component {
     this.backToMenu = ::this.backToMenu;
     this.goToPost = ::this.goToPost;
     this.returnToList = ::this.returnToList;
-//     this.makeSearchByPage = ::this.makeSearchByPage;
     this.actions =  bindActionCreators(SearchActions, props.dispatch);
   }
 
@@ -78,14 +77,8 @@ export default class SearchApp extends Component {
     }
   }
 
-//   makeSearchByPage(query) {
-//     if(query !== '') {
-//       this.actions.makeSearchByPage(query, this.props.searchData.selected.posts.length / this.props.searchData.selected.count + 1);
-//     }
-//   }
 
   backToMenu() {
-//     this.actions.cleanSearch();
     browserHistory.goBack();
   }
 
@@ -96,7 +89,6 @@ export default class SearchApp extends Component {
   goToPost(post) {
     bindActionCreators(AppActions, this.props.dispatch).selectedPost(post);
     browserHistory.push('/post');
-//     this.setState({ postMode : post });
   }
 
   returnToList() {

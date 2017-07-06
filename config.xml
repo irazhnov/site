@@ -29,9 +29,11 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="StatusBarBackgroundColor" value="#FFFFFF" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
     <preference name="StatusBarStyle" value="default" />
     <preference name="Orientation" value="portrait" />
+    <plugin name="cordova-plugin-device" spec="^1.1.6" />
     <plugin name="cordova-plugin-keyboard" spec="^1.1.5" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.2.3" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
 </widget>

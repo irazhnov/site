@@ -25,3 +25,12 @@ cordova run ios -device
 #cordova plugin add https://github.com/Rickgbw/cordova-plugin-dfp
 
 #cordova plugin add cordova-plugin-admob-simple
+
+#NEW
+#install plugin to hide Status Bar
+
+cordova plugin add cordova-plugin-statusbar
+
+#install plugin to detect device info
+
+cordova plugin add cordova-plugin-device
