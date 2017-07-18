@@ -93,7 +93,7 @@
 
 
 body {
-    font-family: 'OpenSansRegular';
+    font-family: 'OpenSansRegular', 'OpenSansLight', sans-serif;
 }
 
 :global(::-webkit-scrollbar){
