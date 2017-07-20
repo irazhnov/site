@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import styles from './PostContent.css';
 import icons from '../../icons';
 import  { EDITOR_CATEGORY } from '../../containers/IntroApp/constants';
-import { getImageSrc, extractIframe } from '../../Utils/helper';
+import { getImageSrc, extractIframe, getFallbackImage } from '../../Utils/helper';
 
 export default class PostsContent extends Component {
   static propTypes = {
@@ -83,7 +83,7 @@ export default class PostsContent extends Component {
 
   render () {
     const { post } = this.props;
-    const src = getImageSrc(post.thumbnail) ? post.thumbnail : 'android_asset/www/assets/noImageRetina.png';
+    const src = getImageSrc(post.thumbnail) ? post.thumbnail : getFallbackImage();
     return (
       <div className={styles.postPageContainer}>
         <button className={styles.backButton} onClick={() => { this.props.returnToList() }}

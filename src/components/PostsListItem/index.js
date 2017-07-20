@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import moment from 'moment'
 import styles from './PostsListItem.css';
 import icons from '../../icons';
-import { getImageSrc, getIframeUrl, extractIframe } from '../../Utils/helper';
+import { getImageSrc, getIframeUrl, extractIframe, getFallbackImage } from '../../Utils/helper';
 
 export default class PostsListItem extends Component {
   static propTypes = {
@@ -35,7 +35,7 @@ export default class PostsListItem extends Component {
 
   render () {
     const { post } = this.props;
-    const src = getImageSrc(post.thumbnail) ? post.thumbnail : 'android_asset/www/assets/noImageRetina.png';
+    const src = getImageSrc(post.thumbnail) ? post.thumbnail : getFallbackImage();
     return (
       <div className={styles.postItemContainer}>
         <div className={styles.postItemContent}>

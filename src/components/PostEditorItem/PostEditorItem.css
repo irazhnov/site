@@ -21,7 +21,9 @@
 
 :local(.postTitle),
 :local(.editorText) {
-  font-family: "OpenSansLight";
+  font-family: "Open Sans";
+  font-weight: 300;
+  font-style: normal;
   text-align: left;
   font-size: 15px;
   color: #333333;

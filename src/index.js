@@ -68,14 +68,6 @@ ReactDOM.render(
         <Route path="/" component={IntroApp}>
           <IndexRedirect to="/intro" />
             <Route path="/categories/:categoryId" component={App} />
-
-           {/*  <Route path="/article/:articleId/edit" component={WriterApp} />
-          <Route path="/articles" component={ArticlesList} />
-          <Route path="/articles/folder/:folderId" component={ArticlesList} />
-          <Route path="/admin" component={AdminApp}>
-            <Route path="tags" component={AdminTagsApp} />
-          </Route>
-          */}
           <Route path="*" component={NotFound} />
         </Route>
       </Router>
