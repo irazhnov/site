@@ -53,7 +53,7 @@ export default class PostEditorItem extends Component {
             </div>
             <div className={styles.contentContainer}>
               <div className={'created'}>{moment(post.date).format('MMMM Do, YYYY')}</div>
-              <div className={styles.postTitle} >Letter from Editior</div>
+              <div className={styles.postTitle} >Letter from Editor</div>
               <div className={styles.editorText} dangerouslySetInnerHTML={this.createExcerpt(post)} ></div>
             </div>
           </div>
