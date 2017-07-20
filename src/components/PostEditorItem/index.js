@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment'
 import styles from './PostEditorItem.css';
-import { getImageSrc } from '../../Utils/helper';
+import { getImageSrc, getFallbackImage } from '../../Utils/helper';
 
 export default class PostEditorItem extends Component {
   static propTypes = {
@@ -27,7 +27,7 @@ export default class PostEditorItem extends Component {
     mode: '',
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     return JSON.stringify(this.props.editor) !== JSON.stringify(nextProps.editor);
   }
 
@@ -40,7 +40,7 @@ export default class PostEditorItem extends Component {
 
   render () {
     const post = this.props.editor ? this.props.editor.posts[0] : {};
-    const src = getImageSrc(post.thumbnail) ? post.thumbnail : 'assets/noImageRetina.png';
+    const src = getImageSrc(post.thumbnail) ? post.thumbnail : getFallbackImage();
     return (
       <div className={styles.editorItemContainer}>
         <div className={styles.editorItemContent}>
