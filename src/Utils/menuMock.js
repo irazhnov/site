@@ -22,7 +22,7 @@ const menuMock = [
     {
     label: 'Conditions', slug:'conditions-all-categories', id: '01',
       submenu: [
-        {label: 'Alzheimer\\’s', slug: 'alzheimers'},
+        {label: 'Alzheimer’s', slug: 'alzheimers'},
         {label: 'Gestational Diabetes', slug: 'gestational-diabetes'},
         {label: 'MODY/LADA', slug: 'mody-lada'},
         {label: 'Obesity', slug: 'obesity'},
