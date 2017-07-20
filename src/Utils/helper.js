@@ -38,5 +38,5 @@ export function getFallbackImage() {
   if (window.navigator.userAgent.indexOf('Android') >=0) {
     return 'android_asset/www/assets/noImageRetina.png';
   }
-  return 'www/assets/noImageRetina.png';
+  return 'assets/noImageRetina.png';
 }
