@@ -25,7 +25,9 @@
     background-color: #245428;
 }
 :local(.categoryTitle span) {
-    font-family: "OpenSansLight", sans-serif;
+    font-family: "Open Sans", sans-serif;;
+    font-weight: 300;
+    font-style: normal;
     color: white;
     font-size: 17px;
     line-height: 36px;
@@ -68,32 +70,35 @@
     }
 }
 
-@font-face {
-    font-family: "OpenSansRegular";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../../fonts/OpenSansRegular.eot"),
-    /*src: local('OpenSansRegular'),*/
-        url("../../../fonts/OpenSansRegular.eot?#iefix")format("embedded-opentype"),
-        url("../../../fonts/OpenSansRegular.woff") format("woff"),
-        url("../../../fonts/OpenSansRegular.ttf") format("truetype");
-}
+/*@import url("../../../fonts");*/
 
-@font-face {
-    font-family: "OpenSansLight";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../../../fonts/OpenSansLight.eot"),
-    /*src: local('OpenSansLight'),*/
-    url("../../../fonts/OpenSansLight.eot?#iefix")format("embedded-opentype"),
-    url("../../../fonts/OpenSansLight.woff") format("woff"),
-    url("../../../fonts/OpenSansLight.ttf") format("truetype");
-}
+/*@font-face {*/
+    /*font-family: "OpenSansRegular";*/
+    /*font-style: normal;*/
+    /*font-weight: normal;*/
+    /*src: url("../../../fonts/OpenSansRegular.eot"),*/
+    /*!*src: local('OpenSansRegular'),*!*/
+        /*url("../../../fonts/OpenSansRegular.eot?#iefix")format("embedded-opentype"),*/
+        /*url("../../../fonts/OpenSansRegular.woff") format("woff"),*/
+        /*url("../../../fonts/OpenSansRegular.ttf") format("truetype");*/
+/*}*/
+
+/*@font-face {*/
+    /*font-family: "OpenSansLight";*/
+    /*font-style: normal;*/
+    /*font-weight: normal;*/
+    /*src: url("../../../fonts/OpenSansLight.eot"),*/
+    /*!*src: local('OpenSansLight'),*!*/
+    /*url("../../../fonts/OpenSansLight.eot?#iefix")format("embedded-opentype"),*/
+    /*url("../../../fonts/OpenSansLight.woff") format("woff"),*/
+    /*url("../../../fonts/OpenSansLight.ttf") format("truetype");*/
+/*}*/
 
 
 
 body {
-    font-family: 'OpenSansRegular', 'OpenSansLight', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
 }
 
 :global(::-webkit-scrollbar){

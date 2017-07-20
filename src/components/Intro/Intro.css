@@ -4,7 +4,8 @@
   height: calc(100% - 124px);
 }
 :local(.latestArticleTitle) {
-  font-family: 'OpenSansRegular', sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
   font-size: 22px;
   color: #2e6733;
   letter-spacing: 1.5px;

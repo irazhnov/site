@@ -28,7 +28,8 @@
 }
 
 :global(.menuTitle) {
-  font-family: "OpenSansRegular";
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
   font-size: 16px;
   letter-spacing: 1.05px;
   color: #2c6230;

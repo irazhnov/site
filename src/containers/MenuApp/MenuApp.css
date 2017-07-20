@@ -1,5 +1,4 @@
 :local(.menuHeader svg g g g g path){
-  /*fill: #fff !important;*/
   stroke: white !important;
 }
 :local(.menuHeader){
@@ -22,7 +21,9 @@
   visibility: hidden;
 }
 :local(.menuTitle){
-  font-family: "OpenSansLight";
+  font-family: "Open Sans";
+  font-weight: 300;
+  font-style: normal;
   color: white;
   font-size: 22px;
   line-height: 39px;
@@ -31,7 +32,8 @@
   padding-right: 20px;
 }
 :local(.mainMenuTitle){
-  font-family: "OpenSansRegular";
+  font-family: "Open Sans";
+  font-style: normal;
   color: #102612;
   line-height: 39px;
   padding-right: 2%;

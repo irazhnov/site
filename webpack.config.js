@@ -70,9 +70,9 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif)$/, loader: 'file-loader?name=assets/[name].[ext]',
       },
-      {
-        test: /\.(eot|woff|ttf)$/, loader: 'file-loader?name=fonts/[name].[ext]&context=./www/fonts"',
-      },
+//       {
+//         test: /\.(eot|woff|ttf)$/, loader: 'file-loader?name=fonts/[name].[ext]&context=./www/fonts"',
+//       },
       {
         test: /\.json$/, loader: 'json',
       },

@@ -57,14 +57,17 @@
 }
 
 :global(.created){
-  font-family: "OpenSansLight", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
   text-align: left;
   color: #008ed7;
   font-size: 14px !important;
   padding-left: 10px;
 }
 :local(.readMore){
-  font-family: "OpenSansRegular", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
   font-size: 14px;
   width: 100%;
   height: 40px;

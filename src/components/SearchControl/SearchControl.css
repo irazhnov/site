@@ -12,7 +12,8 @@
 }
 
 :local(.resultTitle) {
-  font-family: 'OpenSansRegular', sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
   font-size: 14px;
   letter-spacing: 1.5px;
   width: 100%;
@@ -21,7 +22,8 @@
   color: #898989;
 }
 :local(.searchInput) {
-  font-family: 'OpenSansRegular';
+  font-family: "Open Sans";
+  font-style: normal;
   font-size: 18px;
   width: 100%;
   height: 30px;
@@ -57,13 +59,9 @@
   height: 40px;
 }
 :local(.noResults) {
-  font-family: 'OpenSansRegular';
+  font-family: "Open Sans";
+  font-style: normal;
   font-size: 22px;
-  /*width: 100%;*/
   height: 30px;
-  /*line-height: 25px;*/
-  /*margin: 7px 10px 5px 12px;*/
-  /*outline: none;*/
   color: #2a2a2a;
-  /*padding-right: 25px;*/
 }
