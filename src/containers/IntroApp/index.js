@@ -61,8 +61,10 @@ export default class IntroApp extends  Component {
   }
 
   onDeviceReady() {
-    console.log('device ' + device.platform);
+//     console.log('device ' + device.platform);
+
     if (device.platform.indexOf('OS') >= 0) {
+      window.navigator.splashscreen.hide();
       StatusBar.hide();
     }
     let ad = document.querySelector('#hiper-dic-leadtop9');
