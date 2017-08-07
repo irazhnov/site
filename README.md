@@ -34,3 +34,5 @@ cordova plugin add cordova-plugin-statusbar
 #install plugin to detect device info
 
 cordova plugin add cordova-plugin-device
+
+cordova plugin add cordova-plugin-splashscreen
