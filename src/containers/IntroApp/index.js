@@ -32,12 +32,16 @@ export default class IntroApp extends  Component {
     super(props);
     this.state = {
       fetching: true,
+      latitude: '245428',
+      longitude: '245428',
     };
     document.addEventListener("deviceready", this.onDeviceReady, false);
     this.actions = bindActionCreators(IntroActions, props.dispatch);
     this.goToSearch = ::this.goToSearch;
     this.getRecentPosts = ::this.getRecentPosts;
     this.activatePost = ::this.activatePost;
+    this.geolocationSuccess = ::this.geolocationSuccess;
+    this.geolocationError = ::this.geolocationError;
   }
 
   componentWillMount() {
@@ -71,6 +75,12 @@ export default class IntroApp extends  Component {
     if (ad) {
       ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%); display: block')
     }
+    if (window.navigator && window.navigator.geolocation) {
+      window.navigator.geolocation.getCurrentPosition(this.geolocationSuccess,
+        this.geolocationError,
+        { timeout: 30000 });
+    }
+
   }
 
   getRecentPosts() {
@@ -78,6 +88,24 @@ export default class IntroApp extends  Component {
    if (!this.props.fetchingRecent) {
      this.actions.getRecentPosts(page, PER_PAGE);
    }
+  }
+
+  geolocationSuccess(position) {
+    console.warn();
+    this.setState({
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
+    });
+  }
+
+  geolocationError(error) {
+  console.log(error.code);
+  if (this.state.latitude !== '') {
+    this.setState({
+      latitude: '245428',
+      longitude: '245428',
+    });
+    }
   }
 
   goToSearch() {
@@ -105,6 +133,12 @@ export default class IntroApp extends  Component {
             <icons.SearchLens />
           </div>
         </div>
+        {this.state.latitude !== '' &&
+          <div className={styles.geo}>
+            <span>{`latitude: ${this.state.latitude}`}</span>
+            <span>{`longitude: ${this.state.longitude}`}</span>
+          </div>
+        }
         <div className={'menuButton'} onClick={this.openMenu}>
           <div className={'menuIcon'}>
             <div className={'menuLine'}></div>
