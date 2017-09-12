@@ -6,6 +6,6 @@ hooks
 .DS_Store
 dist
 .idea
-res
+
 fonts
 www
