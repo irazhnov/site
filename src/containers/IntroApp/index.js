@@ -32,16 +32,17 @@ export default class IntroApp extends  Component {
     super(props);
     this.state = {
       fetching: true,
-      latitude: '245428',
-      longitude: '245428',
+      latitude: '',
+      longitude: '',
     };
-    document.addEventListener("deviceready", this.onDeviceReady, false);
     this.actions = bindActionCreators(IntroActions, props.dispatch);
     this.goToSearch = ::this.goToSearch;
     this.getRecentPosts = ::this.getRecentPosts;
     this.activatePost = ::this.activatePost;
     this.geolocationSuccess = ::this.geolocationSuccess;
     this.geolocationError = ::this.geolocationError;
+    this.onDeviceReady = ::this.onDeviceReady;
+    document.addEventListener("deviceready", this.onDeviceReady, false);
   }
 
   componentWillMount() {
@@ -58,6 +59,7 @@ export default class IntroApp extends  Component {
     if (ad) {
       ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%); display: block')
     }
+    console.log('componentDidMount');
   }
 
   componentWillUnmount() {
@@ -65,7 +67,7 @@ export default class IntroApp extends  Component {
   }
 
   onDeviceReady() {
-//     console.log('device ' + device.platform);
+    console.log('device ' + device.platform);
 
     if (device.platform.indexOf('OS') >= 0) {
       window.navigator.splashscreen.hide();
@@ -76,7 +78,7 @@ export default class IntroApp extends  Component {
       ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%); display: block')
     }
     if (window.navigator && window.navigator.geolocation) {
-      window.navigator.geolocation.getCurrentPosition(this.geolocationSuccess,
+      window.navigator.geolocation.watchPosition(this.geolocationSuccess,
         this.geolocationError,
         { timeout: 30000 });
     }
@@ -96,15 +98,18 @@ export default class IntroApp extends  Component {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,
     });
+    window.googletag.pubads().setTargeting('geo1', '123');
+    window.googletag.pubads().setLocation(position.coords.latitude, position.coords.longitude);
   }
 
   geolocationError(error) {
   console.log(error.code);
-  if (this.state.latitude !== '') {
+  if (this.state.latitude === '') {
     this.setState({
-      latitude: '245428',
-      longitude: '245428',
+      latitude: `Not detected `,
+      longitude: 'Not detected',
     });
+    window.googletag.pubads().setTargeting('geo1', '0');
     }
   }
 
