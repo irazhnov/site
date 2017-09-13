@@ -11,13 +11,27 @@ import Intro from '../../components/Intro';
 
 const PER_PAGE = 10;
 
-@connect(state => ({
+const geo = {
+  geolocations:[
+    {
+      id: "123",
+      latitude: "53.937875",
+      longitude: "28.6827659",
+      radius: "50",
+    }
+  ],
+};
+
+@connect (state => ({
   fetching: state.intro.fetching,
   fetchingRecent: state.intro.fetchingRecent,
   editor: state.intro.editor,
   recent: state.intro.recent,
 }))
 export default class IntroApp extends  Component {
+  static rad(x) {
+             return x * Math.PI / 180;
+  }
   static propTypes = {
     fetching: PropTypes.bool,
     fetchingRecent: PropTypes.bool,
@@ -34,6 +48,7 @@ export default class IntroApp extends  Component {
       fetching: true,
       latitude: '',
       longitude: '',
+      distance: '',
     };
     this.actions = bindActionCreators(IntroActions, props.dispatch);
     this.goToSearch = ::this.goToSearch;
@@ -42,6 +57,7 @@ export default class IntroApp extends  Component {
     this.geolocationSuccess = ::this.geolocationSuccess;
     this.geolocationError = ::this.geolocationError;
     this.onDeviceReady = ::this.onDeviceReady;
+    this.calculateDistance = ::this.calculateDistance;
     document.addEventListener("deviceready", this.onDeviceReady, false);
   }
 
@@ -98,8 +114,30 @@ export default class IntroApp extends  Component {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,
     });
-    window.googletag.pubads().setTargeting('geo1', '123');
+    
+    for (let i=0; i < geo.geolocations.length; i++) {
+      if (this.calculateDistance(geo.geolocations[i], position.coords) < Number(geo.geolocations[i].radius)) {
+        window.googletag.pubads().setTargeting('geo1', geo.geolocations[i].id);
+      } else {
+        window.googletag.pubads().setTargeting('geo1', "0");
+      }
+    }
     window.googletag.pubads().setLocation(position.coords.latitude, position.coords.longitude);
+  }
+  
+  calculateDistance(p1, p2) {
+    const R = 6378137; // Earth’s mean radius in meter
+    const dLat = IntroApp.rad(p2.latitude - p1.latitude);
+    const dLong = IntroApp.rad(p2.longitude - p1.longitude);
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(IntroApp.rad(p1.latitude)) * Math.cos(IntroApp.rad(p2.latitude)) *
+      Math.sin(dLong / 2) * Math.sin(dLong / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = Math.round(R * c);
+    this.setState({
+      distance: d,
+    });
+    return d; // returns the distance in meter
   }
 
   geolocationError(error) {
@@ -141,7 +179,8 @@ export default class IntroApp extends  Component {
         {this.state.latitude !== '' &&
           <div className={styles.geo}>
             <span>{`latitude: ${this.state.latitude}`}</span>
-            <span>{`longitude: ${this.state.longitude}`}</span>
+            <span>{` longitude: ${this.state.longitude}`}</span>
+            <span>{` distance: ${this.state.distance}`}</span>
           </div>
         }
         <div className={'menuButton'} onClick={this.openMenu}>
