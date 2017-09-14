@@ -1,7 +1,7 @@
 import { fork } from 'redux-saga/effects';
 import {   getCategoryFlow } from './containers/App/saga';
 import { freeSearchFlow } from './containers/SearchApp/saga';
-import { getEditorPostFlow, getRecentPostFlow } from './containers/IntroApp/saga';
+import { getEditorPostFlow, getRecentPostFlow, getGeoFlow } from './containers/IntroApp/saga';
 
 // The root saga is what we actually send to Redux's middleware. In here we fork
 // each saga so that they are all "active" and listening.
@@ -12,4 +12,5 @@ export default function* rootSaga() {
  yield fork(getCategoryFlow);
  yield fork(getEditorPostFlow);
  yield fork(getRecentPostFlow);
+ yield fork(getGeoFlow);
 }

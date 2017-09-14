@@ -1,6 +1,7 @@
 import * as types from './constants';
 
 const initialState = {
+  geo: {},
   editor: null,
   recent: {
     posts: [],
@@ -43,6 +44,11 @@ function reducer(state = initialState, action) {
           ]
         },
       };
+    case types.FETCHING_GEO_SUCCEEDED:
+      return {
+        ...state,
+        geo: action.geo,
+    };
     default: return state;
   }
 }

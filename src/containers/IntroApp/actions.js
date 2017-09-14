@@ -16,3 +16,9 @@ export function getRecentPosts(page = 1, per_page = 1) {
     per_page: per_page,
   };
 }
+
+export function getGeo() {
+  return {
+   type: types.GEO_REQUESTED,
+  }
+}

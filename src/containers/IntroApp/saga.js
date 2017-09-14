@@ -42,3 +42,18 @@ export function* getRecentPost(options) {
 export function* getRecentPostFlow() {
   yield takeLatest(types.FETCHING_RECENT_REQUESTED, getRecentPost);
 }
+
+export function* getGeo() {
+  try {
+    const dicClient = new DicClient.DefaultApi();
+    yield put({ type: types.FETCHING_GEO_REQUESTED});
+    const geo =  yield call([dicClient, dicClient.geoGet]);
+    yield put({ type: types.FETCHING_GEO_SUCCEEDED, geo: geo});
+  } catch(e) {
+    put({type: types.FETCHING_GEO_FAILED, message: e, error: true, payload: e  });
+  }
+}
+
+export function* getGeoFlow() {
+  yield takeLatest(types.GEO_REQUESTED, getGeo);
+}

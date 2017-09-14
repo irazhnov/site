@@ -27,6 +27,7 @@ const geo = {
   fetchingRecent: state.intro.fetchingRecent,
   editor: state.intro.editor,
   recent: state.intro.recent,
+  geo: state.intro.geo,
 }))
 export default class IntroApp extends  Component {
   static rad(x) {
@@ -59,6 +60,7 @@ export default class IntroApp extends  Component {
     this.onDeviceReady = ::this.onDeviceReady;
     this.calculateDistance = ::this.calculateDistance;
     document.addEventListener("deviceready", this.onDeviceReady, false);
+    this.actions.getGeo();
   }
 
   componentWillMount() {
@@ -76,6 +78,7 @@ export default class IntroApp extends  Component {
       ad.setAttribute('style', 'left: 50%; position: absolute; width: 320px; height: 50px; bottom: 0; transform: translateX(-50%); display: block')
     }
     console.log('componentDidMount');
+
   }
 
   componentWillUnmount() {
@@ -114,12 +117,15 @@ export default class IntroApp extends  Component {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,
     });
-    
-    for (let i=0; i < geo.geolocations.length; i++) {
-      if (this.calculateDistance(geo.geolocations[i], position.coords) < Number(geo.geolocations[i].radius)) {
-        window.googletag.pubads().setTargeting('geo1', geo.geolocations[i].id);
-      } else {
-        window.googletag.pubads().setTargeting('geo1', "0");
+    const geo = this.props.geo;
+    if (geo.geolocations && geo.geolocations.length > 0) {
+
+      for (let i = 0; i < geo.geolocations.length; i++) {
+        if (this.calculateDistance(geo.geolocations[i], position.coords) < Number(geo.geolocations[i].radius)) {
+          window.googletag.pubads().setTargeting('geo1', geo.geolocations[i].id);
+        } else {
+          window.googletag.pubads().setTargeting('geo1', "0");
+        }
       }
     }
     window.googletag.pubads().setLocation(position.coords.latitude, position.coords.longitude);
